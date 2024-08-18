@@ -1,0 +1,37 @@
+permissions: 
+  contents: write
+  pull-requests: write
+
+on:
+  workflow_call:
+
+jobs:
+  sync-python-template:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone templete
+        run: |
+          git clone https://github.com/Glatzel/py-template.git temp
+      
+      - name: Copy files
+        run: |
+          Copy-Item ./temp/ruff.toml ruff.toml
+          Copy-Item ./temp/.gitignore .gitignore
+          Copy-Item ./temp/init_pixi_env.ps1 ./scripts/init_pixi_env.ps1
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Sync template files
+          title: Sync template files
+          branch: sync-template-files
+          base: main
+          labels: Action
+          delete-branch: true
+          add-paths: |
+            ruff.toml
+            .gitignore
+          assignees: Glatzel
