@@ -1,4 +1,11 @@
 line-length = 120
+exclude = [".pixi"]
+
+[format]
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[lint]
 select = [
     "C4",   # flake8-comprehensions
     "D2",   # flake8-docstrings
@@ -16,11 +23,5 @@ select = [
     "UP",   # pyupgrade
 ]
 ignore = []
-exclude = [".pixi"]
-
-[format]
-docstring-code-format = true
-docstring-code-line-length = 80
-
 [lint.pydocstyle]
 convention = "numpy"
