@@ -9,9 +9,6 @@ on:
         test_path:
           default: ./tests
           type: string
-        python_path:
-          default: $PYTHONPATH
-          type: string
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
