@@ -27,3 +27,4 @@ jobs:
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
           pixi run pytest "${{inputs.test_path}}"
+        shell: pwsh
