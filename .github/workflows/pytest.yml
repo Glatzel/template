@@ -9,6 +9,9 @@ on:
         test_path:
           default: ./tests
           type: string
+        python_path:
+          type: string
+          default:
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
@@ -22,5 +25,6 @@ jobs:
 
       - name: pytest
         run: |
+          $Env:PYTHONPATH = "${{inputs.python_path}}" 
           pixi run pytest "${{inputs.test_path}}"
         shell: pwsh
