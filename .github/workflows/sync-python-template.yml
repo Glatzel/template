@@ -17,7 +17,6 @@ jobs:
       
       - name: Copy files
         run: |
-          Copy-Item ./temp/.gitignore .gitignore
           Copy-Item ./temp/init_pixi_env.ps1 ./scripts/init_pixi_env.ps1
           Copy-Item ./temp/ruff.toml ruff.toml
 

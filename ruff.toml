@@ -16,6 +16,7 @@ select = [
     "UP",   # pyupgrade
 ]
 ignore = []
+exclude = [".pixi"]
 
 [format]
 docstring-code-format = true
