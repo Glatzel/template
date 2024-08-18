@@ -17,7 +17,7 @@ jobs:
       
       - name: Copy files
         run: |
-          Copy-Item ./temp/template ./ -Recurse
+          Copy-Item ./temp/template/* ./ -Recurse
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
