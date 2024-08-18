@@ -17,7 +17,9 @@ jobs:
       
       - name: Copy files
         run: |
-          Copy-Item ./temp/template/* ./ -Recurse
+          New-Item ./scripts -ItemType Directory -ErrorAction SilentlyContinue
+          Copy-Item ./temp/template/scripts/init_pixi_env.ps1 ./scripts/init_pixi_env.ps1
+          Copy-Item ./temp/template/ruff.toml ./ruff.toml
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
