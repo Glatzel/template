@@ -1,12 +1,14 @@
 name: pytest
 
 on:
-    workflow_dispatch:
+    workflow_call:
       inputs:
         machine:
           default: ubuntu-latest
+          type: string
         test_path:
-          default: "./tests"
+          default: ./tests
+          type: string
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
