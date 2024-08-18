@@ -4,7 +4,7 @@ on:
     workflow_call:
       inputs:
         machine:
-          default: ubuntu-latest
+          required: true
           type: string
         test_path:
           default: ./tests
