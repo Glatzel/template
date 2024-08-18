@@ -1,0 +1,25 @@
+line-length = 120
+select = [
+    "C4",   # flake8-comprehensions
+    "D2",   # flake8-docstrings
+    "D3",   # flake8-docstrings
+    "D4",   # flake8-docstrings
+    "E",    # pycodestyle
+    "F",    # Pyflakes
+    "I",    # isort
+    "NPY",  # NumPy-specific rules
+    "TID",  # flake8-tidy-imports
+    "W",    # pycodestyle
+    "PERF", # Perflint
+    "FURB", # refurb
+    "RUF",  # Ruff-specific rules
+    "UP",   # pyupgrade
+]
+ignore = []
+
+[format]
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[lint.pydocstyle]
+convention = "numpy"
