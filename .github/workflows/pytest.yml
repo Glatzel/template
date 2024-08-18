@@ -1,0 +1,24 @@
+name: pytest
+
+on:
+    workflow_dispatch:
+      inputs:
+        machine:
+          default: ubuntu-latest
+        test_path:
+          default: "./tests"
+jobs:
+  pytest:
+    runs-on: ${{inputs.machine}}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          run-install: false
+
+      - name: pytest
+        run: |
+          $Env:PYTHONPATH = "$PYTHONPATH;$pwd/src"
+          pixi run pytest "${{inputs.test_path}}"
