@@ -17,9 +17,9 @@ jobs:
       
       - name: Copy files
         run: |
-          Copy-Item ./temp/ruff.toml ruff.toml
           Copy-Item ./temp/.gitignore .gitignore
           Copy-Item ./temp/init_pixi_env.ps1 ./scripts/init_pixi_env.ps1
+          Copy-Item ./temp/ruff.toml ruff.toml
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
@@ -31,7 +31,4 @@ jobs:
           base: main
           labels: Action
           delete-branch: true
-          add-paths: |
-            ruff.toml
-            .gitignore
           assignees: Glatzel
