@@ -1,0 +1,13 @@
+__pycache__
+.benchmarks
+.pixi
+.VSCodeCounter
+bin
+diff.md
+dist
+doc/build
+doc/source/reference/api
+draft
+histogram
+report.html
+temp
