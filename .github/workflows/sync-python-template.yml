@@ -20,7 +20,7 @@ jobs:
           New-Item ./scripts -ItemType Directory -ErrorAction SilentlyContinue
           Copy-Item ./temp/template/scripts/* ./scripts
           Copy-Item ./temp/template/ruff.toml ./ruff.toml
-          Remove-Item ./temp Remove-Item -Recurse
+          Remove-Item ./temp -Recurse
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
