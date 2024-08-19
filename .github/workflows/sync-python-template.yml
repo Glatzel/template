@@ -16,6 +16,7 @@ jobs:
           git clone https://github.com/Glatzel/py-template.git temp
       
       - name: Copy files
+        if: ${{ success() }}
         run: |
           New-Item ./scripts -ItemType Directory -ErrorAction SilentlyContinue
           Copy-Item ./temp/template/scripts/* ./scripts
@@ -23,6 +24,7 @@ jobs:
           Remove-Item ./temp -Recurse -Force
 
       - name: Create pull request
+        if: ${{ success() }}
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

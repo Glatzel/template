@@ -13,9 +13,11 @@ jobs:
           run-install: false
 
       - name: install ruff
+        if: ${{ success() }}
         run: |
           pixi global install ruff
 
       - name: lint
+        if: ${{ success() }}
         run: |
           ruff check --output-format=github .
