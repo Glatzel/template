@@ -10,3 +10,5 @@ group:
       Glatzel/zygs
   - files:
     - source: template/ruff.toml
+      dest: ruff.toml
+    repos: Glatzel/xm-metro-qr
