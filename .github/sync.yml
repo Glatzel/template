@@ -5,6 +5,7 @@ group:
     repos: |
       Glatzel/G-Houdini
       Glatzel/G-Rhino
+      Glatzel/knitting
       Glatzel/py-glatzel
       Glatzel/watch-media
       Glatzel/zygs
