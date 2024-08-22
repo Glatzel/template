@@ -5,11 +5,9 @@ group:
     repos: |
       Glatzel/G-Houdini
       Glatzel/G-Rhino
+      Glatzel/jxws
       Glatzel/knitting
       Glatzel/py-glatzel
+      Glatzel/xm-metro-qr
       Glatzel/watch-media
       Glatzel/zygs
-  - files:
-    - source: template/ruff.toml
-      dest: ruff.toml
-    repos: Glatzel/xm-metro-qr
