@@ -1,0 +1,6 @@
+group:
+  - files:
+    - source: template/
+      dest: /
+    repos: |
+      Glatzel/py-glatzel

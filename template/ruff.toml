@@ -22,6 +22,6 @@ select = [
     "RUF",  # Ruff-specific rules
     "UP",   # pyupgrade
 ]
-ignore = []
+
 [lint.pydocstyle]
 convention = "numpy"
