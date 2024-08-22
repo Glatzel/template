@@ -15,5 +15,5 @@ jobs:
         with:
           GH_PAT: ${{ secrets.GH_PAT }}
           PR_LABELS: action
-          REVIEWERS: Glatzel
+          ASSIGNEES: Glatzel
           COMMIT_PREFIX: "chore: sync template files."
