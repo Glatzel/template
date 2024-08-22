@@ -3,4 +3,10 @@ group:
     - source: template/
       dest: ./
     repos: |
+      Glatzel/G-Houdini
+      Glatzel/G-Rhino
       Glatzel/py-glatzel
+      Glatzel/watch-media
+      Glatzel/zygs
+  - files:
+    - source: template/ruff.toml
