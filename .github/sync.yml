@@ -3,6 +3,7 @@ group:
     - source: template/
       dest: ./
     repos: |
+      Glatzel/dxf2kml
       Glatzel/G-Benchmark
       Glatzel/G-Houdini
       Glatzel/G-Rhino
