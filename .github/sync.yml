@@ -3,6 +3,7 @@ group:
     - source: template/
       dest: ./
     repos: |
+      Glatzel/G-Benchmark
       Glatzel/G-Houdini
       Glatzel/G-Rhino
       Glatzel/jxws
