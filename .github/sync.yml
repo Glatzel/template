@@ -4,7 +4,6 @@ group:
       dest: ./
     repos: |
       Glatzel/dxf2kml
-      Glatzel/G-Benchmark
       Glatzel/G-Houdini
       Glatzel/G-Rhino
       Glatzel/jxws
@@ -13,3 +12,19 @@ group:
       Glatzel/xm-metro-qr
       Glatzel/watch-media
       Glatzel/zygs
+
+  - files:
+    - source: template/ruff.toml
+      dest: |
+        audio_load/ruff.toml
+        broadcast/ruff.toml
+        datumcompense/ruff.toml
+        fft/ruff.toml
+    - source: template/scripts/
+      dest: |
+        audio_load/
+        broadcast/
+        datumcompense/
+        fft/
+    repos: |
+      Glatzel/G-Benchmark
