@@ -19,7 +19,7 @@ group:
     - source: template/ruff.toml
       dest: broadcast/ruff.toml
     - source: template/ruff.toml
-      dest: datumcompense/ruff.toml
+      dest: datum_compense/ruff.toml
     - source: template/ruff.toml
       dest: fft/ruff.toml
 
@@ -28,7 +28,7 @@ group:
     - source: template/scripts/
       dest: broadcast/
     - source: template/scripts/
-      dest: datumcompense/
+      dest: datum_compense/
     - source: template/scripts/
       dest: fft/
 
