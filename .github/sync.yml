@@ -17,11 +17,11 @@ group:
     - source: template/ruff.toml
       dest: audio_load/ruff.toml
     - source: template/ruff.toml
-      dest:broadcast/ruff.toml
+      dest: broadcast/ruff.toml
     - source: template/ruff.toml
-      dest:datumcompense/ruff.toml
+      dest: datumcompense/ruff.toml
     - source: template/ruff.toml
-      dest:fft/ruff.toml
+      dest: fft/ruff.toml
 
     - source: template/scripts/
       dest: audio_load/
