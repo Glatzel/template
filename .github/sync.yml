@@ -4,6 +4,7 @@ group:
       dest: ./
     repos: |
       Glatzel/dxf2kml
+      Glatzel/G-Benchmark
       Glatzel/G-Houdini
       Glatzel/G-Rhino
       Glatzel/jxws
@@ -12,4 +13,4 @@ group:
       Glatzel/xm-metro-qr
       Glatzel/watch-media
       Glatzel/zygs
-      Glatzel/G-Benchmark
+      
