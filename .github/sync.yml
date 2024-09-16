@@ -5,11 +5,11 @@ group:
     repos: |
       Glatzel/dxf2kml
       Glatzel/G-Benchmark
-      Glatzel/G-Houdini
       Glatzel/G-Rhino
       Glatzel/jxws
       Glatzel/knitting
       Glatzel/py-glatzel
-      Glatzel/xm-metro-qr
+      Glatzel/vinaya
       Glatzel/watch-media
+      Glatzel/xm-metro-qr
       Glatzel/zygs
