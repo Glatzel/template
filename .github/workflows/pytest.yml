@@ -11,7 +11,10 @@ on:
           type: string
         python_path:
           type: string
-          default:
+          default: ""
+        pixi_python_env:
+            type: string
+            default: default
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
@@ -27,4 +30,4 @@ jobs:
         if: runner.os == 'Windows' && success()
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}" 
-          pixi run pytest "${{inputs.test_path}}"
+          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}"
