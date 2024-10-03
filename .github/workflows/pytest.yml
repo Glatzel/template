@@ -74,3 +74,4 @@ jobs:
           pixi global install coverage
           coverage report --fail-under=${{inputs.cov_thr}}
           $env:GITHUB_STEP_SUMMARY = coverage report --format=markdown
+          write-output $env:GITHUB_STEP_SUMMARY $lastexitcode
