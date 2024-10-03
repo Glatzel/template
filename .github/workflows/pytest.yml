@@ -51,4 +51,4 @@ jobs:
         with:
           name: Pytest Report (${{inputs.name}})
           path: results/pytest.xml
-          reporter: jest-junit
+          reporter: java-junit
