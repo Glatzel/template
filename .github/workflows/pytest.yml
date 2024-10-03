@@ -73,4 +73,4 @@ jobs:
         run: |
           pixi global install coverage
           coverage report --fail-under=${{inputs.cov_thr}}
-          coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
+          $env:GITHUB_STEP_SUMMARY = coverage report --format=markdown
