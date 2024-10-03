@@ -44,35 +44,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Update Submodule
-      #   if: ${{inputs.submodule}}
-      #   run: git submodule update --init --recursive
+      - name: Update Submodule
+        if: ${{inputs.submodule}}
+        run: git submodule update --init --recursive
 
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           run-install: false
 
-      # - name: pytest
-      #   if: runner.os == 'Windows' && success()
-      #   run: |
-      #     $Env:PYTHONPATH = "${{inputs.python_path}}"
-      #     pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
+      - name: pytest
+        if: runner.os == 'Windows' && success()
+        run: |
+          $Env:PYTHONPATH = "${{inputs.python_path}}"
+          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
 
-      # - name: Test Report
-      #   uses: dorny/test-reporter@main
-      #   if: success() || failure()    
-      #   with:
-      #     name: Pytest Report (${{inputs.name}})
-      #     path: results/pytest.xml
-      #     reporter: java-junit
-      #     use-actions-summary: "true"
+      - name: Test Report
+        uses: dorny/test-reporter@main
+        if: success() || failure()    
+        with:
+          name: Pytest Report (${{inputs.name}})
+          path: results/pytest.xml
+          reporter: java-junit
+          use-actions-summary: "true"
 
       - name: Coverage Summary
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
-          pixi global install coverage
-          # pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
-          # pixi run -e ${{inputs.pixi_python_env}} coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
-          coverage report --fail-under=${{inputs.cov_thr}}
-          coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
