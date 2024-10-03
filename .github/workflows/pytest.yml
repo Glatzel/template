@@ -71,6 +71,6 @@ jobs:
       - name: Coverage
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
-          pixi run python coverage report --fail-under=${{inputs.cov_thr}}
+          pixi run coverage report --fail-under=${{inputs.cov_thr}}
           echo "## Coverage summary" >> $GITHUB_STEP_SUMMARY
-          pixi run python coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
+          pixi run coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
