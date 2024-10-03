@@ -58,6 +58,9 @@ jobs:
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
           pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
+      - name: Test Report Title
+        run: |
+          "## Test Report"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
       - name: Test Report
         uses: dorny/test-reporter@main
@@ -72,6 +75,5 @@ jobs:
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
           pixi global install coverage
-          coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          coverage report --fail-under=${{inputs.cov_thr}}
-          "test summ" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          coverage report --fail-under=${{inputs.cov_thr}} --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
