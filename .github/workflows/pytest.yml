@@ -24,6 +24,10 @@ on:
         submodule:
           type: boolean
           default: false
+permissions:
+  contents: read
+  actions: read
+  checks: write
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
