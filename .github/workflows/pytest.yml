@@ -50,9 +50,10 @@ jobs:
           pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_arg}}
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@main
         if: success() || failure()    
         with:
           name: Pytest Report (${{inputs.name}})
           path: results/pytest.xml
           reporter: java-junit
+          use-actions-summary: "true"
