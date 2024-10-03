@@ -74,7 +74,6 @@ jobs:
       - name: Coverage Summary
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
-          pixi global install coverage
           "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
