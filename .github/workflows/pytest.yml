@@ -72,6 +72,5 @@ jobs:
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
           pixi global install coverage
-          $env:GITHUB_STEP_SUMMARY = coverage report --format=markdown
+          coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           coverage report --fail-under=${{inputs.cov_thr}}
-          write-output $env:GITHUB_STEP_SUMMARY $lastexitcode
