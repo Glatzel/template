@@ -74,3 +74,4 @@ jobs:
           pixi global install coverage
           coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           coverage report --fail-under=${{inputs.cov_thr}}
+          "test summ" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
