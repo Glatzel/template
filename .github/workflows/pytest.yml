@@ -9,6 +9,9 @@ on:
         machine:
           required: true
           type: string
+        submodule:
+          type: boolean
+          default: false
         test_path:
           default: ./tests
           type: string
@@ -18,12 +21,19 @@ on:
         pixi_python_env:
             type: string
             default: default
-        test_arg:
+        test_args:
           type: string
           default: ""
-        submodule:
-          type: boolean
-          default: false
+        cov_name:
+          type: string
+          default : ""
+        cov_args:
+          type: string
+          default : ""
+        cov_thr:
+          type: number
+          default: 100
+        
 permissions:
   contents: read
   actions: read
@@ -46,8 +56,8 @@ jobs:
       - name: pytest
         if: runner.os == 'Windows' && success()
         run: |
-          $Env:PYTHONPATH = "${{inputs.python_path}}" 
-          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_arg}}
+          $Env:PYTHONPATH = "${{inputs.python_path}}"
+          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
 
       - name: Test Report
         uses: dorny/test-reporter@main
@@ -57,3 +67,10 @@ jobs:
           path: results/pytest.xml
           reporter: java-junit
           use-actions-summary: "true"
+
+      - name: Coverage
+        if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
+        run: |
+          coverage report --fail-under=${{inputs.cov_thr}}
+          echo "## Coverage summary" >> $GITHUB_STEP_SUMMARY
+          pixi run python coverage report --format=markdown >> $env:GITHUB_STEP_SUMMARY
