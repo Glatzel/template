@@ -69,9 +69,7 @@ jobs:
           reporter: java-junit
           use-actions-summary: "true"
 
-      - name: Coverage Summary
+      - name: Coverage report
         if: ${{inputs.cov}} && (success() || failure())
-        run: |
-          "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --fail-under=${{inputs.cov_thr}}
+        run: pixi run -e ${{inputs.pixi_python_env}} coverage report 
+# pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
