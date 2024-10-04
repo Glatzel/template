@@ -1,9 +1,13 @@
 on:
   workflow_call:
+    inputs:
+      machine:
+        type: string
+        required: true
 
 jobs:
   sync-python-template:
-    runs-on: windows-latest
+    runs-on: ${{inputs.machine}}
     steps:
       - uses: actions/checkout@v4
       
@@ -13,11 +17,15 @@ jobs:
           run-install: false
 
       - name: install ruff
-        if: ${{ success() }}
         run: |
           pixi global install ruff
 
-      - name: lint
-        if: ${{ success() }}
+      - name: lint(windows)
+        if: runner.os == 'Windows'
         run: |
-          ruff check --output-format=github .
+          ruff check --output-format=github . | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+
+      - name: lint(linux)
+        if: runner.os == 'Linux'
+        run: |
+          ruff check --output-format=github . >> $GITHUB_STEP_SUMMARY
