@@ -30,14 +30,17 @@ jobs:
               pattern: coverage-data-${{inputs.machine}}-*
               merge-multiple: true
 
-          - name: Combine coverage and check cover
-            if: runner.os == 'Windows'
+          - name: Combine coverage and summary
             run: |
               coverage combine
               coverage html --skip-covered --skip-empty
-              
-              "## Coverage Summary (Windows)" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+              "## Coverage Summary (${{inputs.machine}})" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
               coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+
+          - name: check cover
+            if: runner.os == 'Windows'
+            shell: cmd
+            run: |
               coverage report --fail-under=${{inputs.cov_thr}}
 
           - name: Upload HTML report
