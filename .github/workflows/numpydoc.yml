@@ -33,6 +33,7 @@ jobs:
           $env:PYTHONUTF8=1
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
           numpydoc lint $files ${{inputs.args}} >> lint.md
+          write-output "latestexit:$LASTEXITCODE"
           "lint_result=$lastexitcode" >> "$env:GITHUB_ENV"
         continue-on-error: true
 
