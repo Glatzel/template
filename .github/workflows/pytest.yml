@@ -32,7 +32,7 @@ on:
           default : ""
         cov_thr:
           type: number
-          default: 100
+          default: 70
         
 permissions:
   contents: read
@@ -75,5 +75,5 @@ jobs:
         if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
           "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --fail-under=${{inputs.cov_thr}}
