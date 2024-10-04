@@ -37,5 +37,5 @@ jobs:
         with:
           name: Lint Report
           path: lint.xml
-          reporter: jest-junit
+          reporter: java-junit
           use-actions-summary: "true"
