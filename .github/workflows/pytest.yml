@@ -70,6 +70,51 @@ jobs:
           use-actions-summary: "true"
 
       - name: Coverage report
-        if: ${{inputs.cov}} && (success() || failure())
-        run: pixi run -e ${{inputs.pixi_python_env}} coverage report 
-# pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+        if: ${{inputs.cov}}
+        run: |
+          pixi run -e ${{inputs.pixi_python_env}} coverage report
+          Rename-Item .coverage .coverage.${{inputs.name}}
+
+      - name: Upload coverage data
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-data-${{inputs.name}}
+          path: '${{ github.workspace }}/.coverage.${{inputs.name}}'
+          include-hidden-files: true
+          if-no-files-found: error
+
+  coverage:
+    name: Coverage Summary
+    runs-on: ubuntu-24.04
+    needs: pytest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          run-install: false
+
+      - name: Install coverage
+        run: pip global install coverage
+
+      - name: Download data
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ github.workspace }}
+          pattern: coverage-data-*
+          merge-multiple: true
+
+      - name: Combine coverage and fail if it's <100%
+        run: |
+          coverage combine
+          coverage html --skip-covered --skip-empty
+          coverage report --fail-under=${{inputs.cov_thr}}
+          coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload HTML report
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report
+          path: htmlcov
