@@ -36,6 +36,6 @@ jobs:
         if: success() || failure()
         with:
           name: Lint Report
-          path: results/pytest.xml
+          path: lint.xml
           reporter: jest-junit
           use-actions-summary: "true"
