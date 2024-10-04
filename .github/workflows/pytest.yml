@@ -52,8 +52,10 @@ jobs:
         if: runner.os == 'Windows' && success()
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
-          if ("${{inputs.cov}}" -eq "true"){$cov_args="--cov --cov-report="}
-          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml $cov_args ${{inputs.test_args}}
+          if ("${{inputs.cov}}" -eq "true")
+          {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
+          else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
+          
 
       - name: Test Report
         uses: dorny/test-reporter@main
