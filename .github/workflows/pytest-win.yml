@@ -6,6 +6,9 @@ on:
         name:
           required: true
           type: string
+        machine:
+          required: true
+          type: string
         submodule:
           type: boolean
           default: false
@@ -35,7 +38,7 @@ permissions:
 
 jobs:
   pytest:
-    runs-on: windows-latest
+    runs-on: ${{inputs.machine}}
     steps:
       # setup
       - uses: actions/checkout@v4
