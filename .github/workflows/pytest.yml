@@ -40,6 +40,7 @@ jobs:
   pytest:
     runs-on: ${{inputs.machine}}
     steps:
+      # setup
       - uses: actions/checkout@v4
 
       - name: Update Submodule
@@ -50,7 +51,7 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           run-install: false
-
+      # test
       - name: pytest
         if: runner.os == 'Windows' && success()
         run: |
@@ -60,27 +61,30 @@ jobs:
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
         continue-on-error: true
 
-      - name: check cover
-        id: check_cover
-        if: inputs.cov && success() 
-        run: |
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
-        continue-on-error: true
-
-      - name: Coverage summary
-        if: inputs.cov && success()
+      # coverage
+      - name: Coverage summary and check cover
+        if: inputs.cov && (success() || failure())
+        id: coverage
         run: |
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
+        continue-on-error: true
 
-      - name: Upload HTML report
-        if: inputs.cov && job.steps.check_cover.status == failure()
+      - name: Upload cov HTML report
+        if: inputs.cov && job.steps.coverage.status == failure()
         uses: actions/upload-artifact@v4
         with:
           name: ${{inputs.name}}-cov-html-report
           path: htmlcov
 
+      - name: Set coverage status
+        if: inputs.cov && (success() || failure())
+        run: |
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
+
+      # test report
       - name: Test Report title
         if: success() || failure()
         run: |
