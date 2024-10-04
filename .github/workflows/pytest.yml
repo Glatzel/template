@@ -55,15 +55,6 @@ jobs:
           if ("${{inputs.cov}}" -eq "true")
           {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
-          
-      - name: Test Report
-        uses: dorny/test-reporter@main
-        if: success() || failure()    
-        with:
-          name: Pytest Report (${{inputs.name}})
-          path: results/pytest.xml
-          reporter: java-junit
-          use-actions-summary: "true"
 
       - name: Coverage report
         if: ${{inputs.cov}} &&( success() || failure())
@@ -79,3 +70,12 @@ jobs:
           path: '${{ github.workspace }}/.coverage.${{inputs.machine}}.${{inputs.name}}'
           include-hidden-files: true
           if-no-files-found: error
+
+      - name: Test Report
+        uses: dorny/test-reporter@main
+        if: success() || failure()    
+        with:
+          name: Pytest Report (${{inputs.name}})
+          path: results/pytest.xml
+          reporter: java-junit
+          use-actions-summary: "true"
