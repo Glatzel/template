@@ -54,7 +54,7 @@ jobs:
         if: runner.os == 'Windows' && success()
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
-          if (){$cov_args="--cov --cov-report="}
+          if (${{inputs.cov}}){$cov_args="--cov --cov-report="}
           pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml $cov_args ${{inputs.test_args}}
       - name: Test Report Title
         run: |
