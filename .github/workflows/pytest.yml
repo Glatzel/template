@@ -24,9 +24,9 @@ on:
         test_args:
           type: string
           default: ""
-        cov_name:
-          type: string
-          default : ""
+        cov:
+          type: boolean
+          default : false
         cov_args:
           type: string
           default : ""
@@ -72,7 +72,7 @@ jobs:
           use-actions-summary: "true"
 
       - name: Coverage Summary
-        if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
+        if: ${{inputs.cov}} && (success() || failure())
         run: |
           "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
