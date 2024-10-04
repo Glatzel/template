@@ -9,9 +9,6 @@ on:
         machine:
           required: true
           type: string
-        pixi_python_env:
-            type: string
-            default: default
         submodule:
           type: boolean
           default: false
@@ -21,12 +18,15 @@ on:
         python_path:
           type: string
           default: ""
+        pixi_python_env:
+            type: string
+            default: default
         test_args:
           type: string
           default: ""
-        cov:
-          type: boolean
-          default: false
+        cov_name:
+          type: string
+          default : ""
         cov_args:
           type: string
           default : ""
@@ -40,11 +40,7 @@ permissions:
   checks: write
 jobs:
   pytest:
-    strategy:
-      matrix:
-        machines: ${{inputs.machine}}
-        pixi_python_envs: ${{inputs.pixi_python_env}}
-    runs-on: ${{matrix.machines}}
+    runs-on: ${{inputs.machine}}
     steps:
       - uses: actions/checkout@v4
 
@@ -61,7 +57,7 @@ jobs:
         if: runner.os == 'Windows' && success()
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
-          pixi run -e ${{matrix.pixi_python_envs}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
+          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
       - name: Test Report Title
         run: |
           "## Test Report"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
@@ -76,8 +72,8 @@ jobs:
           use-actions-summary: "true"
 
       - name: Coverage Summary
-        if: ${{inputs.cov}} && (success() || failure())
+        if: ${{inputs.cov_name == inputs.name}} && (success() || failure())
         run: |
           "## Coverage Summary"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{matrix.pixi_python_envs}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          pixi run -e ${{matrix.pixi_python_envs}} coverage report --skip-covered --fail-under=${{inputs.cov_thr}}
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --fail-under=${{inputs.cov_thr}}
