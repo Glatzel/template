@@ -27,9 +27,6 @@ on:
         cov:
           type: boolean
           default : false
-        cov_args:
-          type: string
-          default : ""
         cov_thr:
           type: number
           default: 70
@@ -57,7 +54,8 @@ jobs:
         if: runner.os == 'Windows' && success()
         run: |
           $Env:PYTHONPATH = "${{inputs.python_path}}"
-          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.cov_args}} ${{inputs.test_args}}
+          if (){$cov_args="--cov --cov-report="}
+          pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml $cov_args ${{inputs.test_args}}
       - name: Test Report Title
         run: |
           "## Test Report"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
