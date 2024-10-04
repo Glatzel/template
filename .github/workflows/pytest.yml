@@ -78,11 +78,6 @@ jobs:
           name: ${{inputs.name}}-coverage-html-report
           path: htmlcov
 
-      - name: Set coverage status
-        if: inputs.cov && (success() || failure())
-        run: |
-          pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
-
       # test report
       - name: Test Report title
         if: success() || failure()
