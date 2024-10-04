@@ -1,0 +1,40 @@
+on:
+  workflow_call:
+    inputs:
+      machine:
+        type: string
+        required: true
+      files:
+        type: string
+        required: true
+      ignore:
+        type: string
+        default: ""
+
+jobs:
+  numpydoc-lint:
+    runs-on: ${{inputs.machine}}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          run-install: false
+
+      - name: install numpydoc
+        run: |
+          pixi global install numpydoc
+
+      - name: lint(windows)
+        if: runner.os == 'Windows'
+        id: lint
+        run: |
+          $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
+          numpydoc lint $files --ignore ${{inputs.ignore}}>> lint.md
+        continue-on-error: true
+
+      - name: Lint Report
+        if: job.steps.lint.status == failure()
+        run: |
+          $lastexitcode=1
