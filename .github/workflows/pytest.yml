@@ -71,7 +71,6 @@ jobs:
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-          Rename-Item .coverage .coverage.${{inputs.machine}}.${{inputs.name}}
 
       - name: Upload HTML report
         if: inputs.cov && (steps.check_cover.outcome == 'failure')
