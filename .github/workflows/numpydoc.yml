@@ -22,22 +22,10 @@ jobs:
         with:
           run-install: false
 
-      - name: install numpydoc
-        run: |
-          pixi global install numpydoc
-
       - name: lint(windows)
         if: runner.os == 'Windows'
         id: lint
         run: |
           $env:PYTHONUTF8=1
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
-          numpydoc lint $files ${{inputs.args}} >> lint.md
-          write-output "latestexit:$LASTEXITCODE"
-          "lint_result=$lastexitcode" >> "$env:GITHUB_ENV"
-        continue-on-error: true
-
-      - name: Lint Report
-        if: env.lint_result == 'true'
-        run: |
-          $lastexitcode=1
+          pixi run numpydoc lint $files ${{inputs.args}}
