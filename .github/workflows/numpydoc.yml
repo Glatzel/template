@@ -25,11 +25,6 @@ jobs:
       - name: install numpydoc
         run: |
           pixi global install numpydoc
-            
-      - name: Install Language Packs
-        if: runner.os == 'Windows'
-        run: |
-          Install-Language -Language zh-CN
 
       - name: lint(windows)
         if: runner.os == 'Windows'
