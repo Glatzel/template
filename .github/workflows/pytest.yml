@@ -56,7 +56,6 @@ jobs:
           {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
           
-
       - name: Test Report
         uses: dorny/test-reporter@main
         if: success() || failure()    
@@ -67,15 +66,16 @@ jobs:
           use-actions-summary: "true"
 
       - name: Coverage report
-        if: ${{inputs.cov}}
+        if: ${{inputs.cov}} &&( success() || failure())
         run: |
           pixi run -e ${{inputs.pixi_python_env}} coverage report
-          Rename-Item .coverage .coverage.${{inputs.name}}
+          Rename-Item .coverage .coverage.${{inputs.machine}}.${{inputs.name}}
 
       - name: Upload coverage data
+        if: ${{inputs.cov}} &&( success() || failure())
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-data-${{inputs.name}}
-          path: '${{ github.workspace }}/.coverage.${{inputs.name}}'
+          name: coverage-data-${{inputs.machine}}-${{inputs.name}}
+          path: '${{ github.workspace }}/.coverage.${{inputs.machine}}.${{inputs.name}}'
           include-hidden-files: true
           if-no-files-found: error
