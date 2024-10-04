@@ -2,6 +2,9 @@ name: coverage
 on:
   workflow_call:
     inputs:
+        machine:
+          type: string
+          required: true
         cov_thr:
           type: number
           default: 70
