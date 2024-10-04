@@ -9,6 +9,9 @@ on:
         machine:
           required: true
           type: string
+        pixi_python_env:
+            type: string
+            default: default
         submodule:
           type: boolean
           default: false
@@ -18,9 +21,6 @@ on:
         python_path:
           type: string
           default: ""
-        pixi_python_env:
-            type: string
-            default: default
         test_args:
           type: string
           default: ""
