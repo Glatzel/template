@@ -30,6 +30,7 @@ jobs:
         if: runner.os == 'Windows'
         id: lint
         run: |
+          $env:PYTHONUTF8=1
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
           numpydoc lint $files ${{inputs.ignore}}>> lint.md
         continue-on-error: true
