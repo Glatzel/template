@@ -28,4 +28,4 @@ jobs:
         run: |
           $env:PYTHONUTF8=1
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
-          pixi run numpydoc lint $files ${{inputs.args}}
+          pixi exec numpydoc lint $files ${{inputs.args}}
