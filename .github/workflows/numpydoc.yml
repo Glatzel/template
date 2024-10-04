@@ -31,7 +31,7 @@ jobs:
         id: lint
         run: |
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
-          numpydoc lint $files --ignore ${{inputs.ignore}}>> lint.md
+          numpydoc lint $files ${{inputs.ignore}}>> lint.md
         continue-on-error: true
 
       - name: Lint Report
