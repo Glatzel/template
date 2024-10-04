@@ -27,6 +27,9 @@ on:
         cov:
           type: boolean
           default : false
+        cov_thr:
+          type: number
+          default: 100
 
 permissions:
   contents: read
@@ -56,20 +59,26 @@ jobs:
           {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
 
-      - name: Coverage report
-        if: ${{inputs.cov && ( success() || failure()) }} 
+      - name: Coverage summary
+        if: inputs.cov && ( success() || failure())
         run: |
+          coverage html --skip-covered --skip-empty
           pixi run -e ${{inputs.pixi_python_env}} coverage report
           Rename-Item .coverage .coverage.${{inputs.machine}}.${{inputs.name}}
 
-      - name: Upload coverage data
-        if: ${{inputs.cov && ( success() || failure())}} 
+      - name: check cover
+        id: check_cover
+        if: inputs.cov && ( success() || failure())
+        shell: cmd
+        run: |
+          coverage report --fail-under=${{inputs.cov_thr}}
+
+      - name: Upload HTML report
+        if: inputs.cov && (steps.check_cover.outcome == 'failure')
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-data-${{inputs.machine}}-${{inputs.name}}
-          path: '${{ github.workspace }}/.coverage.${{inputs.machine}}.${{inputs.name}}'
-          include-hidden-files: true
-          if-no-files-found: error
+          name: ${{inputs.name}}-cov-html-report
+          path: htmlcov
 
       - name: Test Report
         uses: dorny/test-reporter@main
