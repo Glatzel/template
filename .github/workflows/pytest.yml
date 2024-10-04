@@ -73,7 +73,7 @@ jobs:
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
       - name: Upload HTML report
-        if: inputs.cov && (steps.check_cover.outcome == 'failure')
+        if: inputs.cov && (job.steps.check_cover.status == failure())
         uses: actions/upload-artifact@v4
         with:
           name: ${{inputs.name}}-cov-html-report
