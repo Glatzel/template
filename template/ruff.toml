@@ -23,5 +23,8 @@ select = [
     "UP",   # pyupgrade
 ]
 
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
 [lint.pydocstyle]
 convention = "numpy"
