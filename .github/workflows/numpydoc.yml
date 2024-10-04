@@ -33,9 +33,10 @@ jobs:
           $env:PYTHONUTF8=1
           $files = Get-ChildItem -Path "${{inputs.files}}" -Recurse
           numpydoc lint $files ${{inputs.args}}>> lint.md
+          "lint_result=$lastexitcode" >> "$env:GITHUB_ENV"
         continue-on-error: true
 
       - name: Lint Report
-        if: job.steps.lint.status == failure()
+        if: env.lint_result !=0
         run: |
           $lastexitcode=1
