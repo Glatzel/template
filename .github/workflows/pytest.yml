@@ -76,7 +76,7 @@ jobs:
         if: inputs.cov && job.steps.coverage.status == failure()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{inputs.name}}-cov-html-report
+          name: ${{inputs.name}}-coverage-html-report
           path: htmlcov
 
       - name: Set coverage status
