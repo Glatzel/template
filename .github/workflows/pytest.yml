@@ -58,13 +58,13 @@ jobs:
           if ("${{inputs.cov}}" -eq "true")
           {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
-        continue-on-error: true
 
       - name: check cover
         id: check_cover
         if: inputs.cov && ( success() || failure())
         run: |
           pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
+        continue-on-error: true
 
       - name: Coverage summary
         if: inputs.cov && (success() || failure())
@@ -74,7 +74,7 @@ jobs:
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
       - name: Upload HTML report
-        if: inputs.cov && (job.steps.check_cover.status == failure())
+        if: inputs.cov && (job.steps.check_cover.status == failure()) && (success() || failure())
         uses: actions/upload-artifact@v4
         with:
           name: ${{inputs.name}}-cov-html-report
