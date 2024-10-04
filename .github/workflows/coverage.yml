@@ -7,11 +7,11 @@ on:
           required: true
         cov_thr:
           type: number
-          default: 70
+          default: 100
 jobs:
     coverage:
         name: Coverage Summary
-        runs-on: ubuntu-24.04
+        runs-on: ${{inputs.machine}}
         steps:
           - uses: actions/checkout@v4
 
@@ -27,15 +27,18 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               path: ${{ github.workspace }}
-              pattern: coverage-data-*
+              pattern: coverage-data-${{inputs.machine}}-*
               merge-multiple: true
 
           - name: Combine coverage and check cover
+            if: runner.os == 'Windows'
             run: |
               coverage combine
               coverage html --skip-covered --skip-empty
+              
+              "## Coverage Summary (Windows)" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+              coverage report --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
               coverage report --fail-under=${{inputs.cov_thr}}
-              coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
 
           - name: Upload HTML report
             if: ${{ failure() }}
