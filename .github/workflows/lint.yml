@@ -6,7 +6,7 @@ on:
         required: true
 
 jobs:
-  sync-python-template:
+  ruff-lint:
     runs-on: ${{inputs.machine}}
     steps:
       - uses: actions/checkout@v4
@@ -23,12 +23,12 @@ jobs:
       - name: lint(windows)
         if: runner.os == 'Windows'
         run: |
-          ruff check --output-format=github . >> lint.xml
+          ruff check --output-format=junit . >> lint.xml
 
       - name: lint(linux)
         if: runner.os == 'Linux'
         run: |
-          ruff check --output-format=github . >> lint.xml
+          ruff check --output-format=junit . >> lint.xml
             - name: Test Report title
 
       - name: Lint Report
