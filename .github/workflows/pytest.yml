@@ -27,14 +27,12 @@ on:
         cov:
           type: boolean
           default : false
-        cov_thr:
-          type: number
-          default: 70
-        
+
 permissions:
   contents: read
   actions: read
   checks: write
+
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
@@ -56,9 +54,6 @@ jobs:
           $Env:PYTHONPATH = "${{inputs.python_path}}"
           if (${{inputs.cov}}){$cov_args="--cov --cov-report="}
           pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml $cov_args ${{inputs.test_args}}
-      - name: Test Report Title
-        run: |
-          "## Test Report"| Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
       - name: Test Report
         uses: dorny/test-reporter@main
@@ -82,39 +77,3 @@ jobs:
           path: '${{ github.workspace }}/.coverage.${{inputs.name}}'
           include-hidden-files: true
           if-no-files-found: error
-
-  coverage:
-    name: Coverage Summary
-    runs-on: ubuntu-24.04
-    needs: pytest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up pixi
-        uses: prefix-dev/setup-pixi@v0.8.1
-        with:
-          run-install: false
-
-      - name: Install coverage
-        run: pip global install coverage
-
-      - name: Download data
-        uses: actions/download-artifact@v4
-        with:
-          path: ${{ github.workspace }}
-          pattern: coverage-data-*
-          merge-multiple: true
-
-      - name: Combine coverage and fail if it's <100%
-        run: |
-          coverage combine
-          coverage html --skip-covered --skip-empty
-          coverage report --fail-under=${{inputs.cov_thr}}
-          coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
-
-      - name: Upload HTML report
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: html-report
-          path: htmlcov
