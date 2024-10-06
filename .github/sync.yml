@@ -4,10 +4,11 @@ group:
       dest: ./
     repos: |
       Glatzel/dxf2kml
-      Glatzel/G-Benchmark
-      Glatzel/G-Rhino
+      Glatzel/hippo
       Glatzel/jxws
       Glatzel/knitting
+      Glatzel/py-bench-arithmetic
+      Glatzel/py-bench-audio
       Glatzel/py-glatzel
       Glatzel/vinaya
       Glatzel/watch-media
