@@ -44,4 +44,3 @@ jobs:
           delete-branch: true
           add-paths: pixi.lock
           assignees: Glatzel
-          draft: always-true
