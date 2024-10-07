@@ -4,7 +4,9 @@ on:
       machine:
         type: string
         required: true
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   ruff-lint:
     runs-on: ${{inputs.machine}}

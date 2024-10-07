@@ -10,7 +10,9 @@ on:
       args:
         type: string
         default: ""
-
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   numpydoc-lint:
     runs-on: ${{inputs.machine}}
