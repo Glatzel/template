@@ -6,6 +6,13 @@ permissions:
 
 on:
   workflow_call:
+    inputs:
+      no-install:
+        type: boolean
+        default: false
+      base:
+        type: string
+        default: main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -22,16 +29,18 @@ jobs:
         with:
           run-install: false
 
-      - name: Install pixi-diff-to-markdown
-        if: ${{ success() }}
+      - name: Install pixi-diff-to-markdown no-install
+        if: inputs.no-install
         run: pixi global install pixi-diff-to-markdown
 
-      - name: Update lockfiles
-        if: ${{ success() }}
+      - name: Update lockfiles install
+        if: !inputs.no-install
+        run: pixi update --json | pixi exec pixi-diff-to-markdown >> diff.md
+
+      - name: Update lockfiles install
         run: pixi update --json | pixi exec pixi-diff-to-markdown >> diff.md
 
       - name: Create pull request
-        if: ${{ success() }}
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -39,7 +48,7 @@ jobs:
           title: "chore: update pixi lockfile"
           body-path: diff.md
           branch: update-pixi
-          base: main
+          base: ${{inputs.base}}
           labels: action
           delete-branch: true
           add-paths: pixi.lock
