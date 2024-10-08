@@ -9,9 +9,12 @@ on:
         machine:
           required: true
           type: string
-        submodule:
+        update_submodule:
           type: boolean
           default: false
+        submodule_path:
+          type: string
+          default: ""
         test_path:
           default: ./tests
           type: string
@@ -48,8 +51,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update Submodule
-        if: ${{inputs.submodule}}
-        run: git submodule update --init --recursive
+        if: ${{inputs.update_submodule}}
+        run: git submodule update --init --recursive ${{inputs.submodule_path}}
 
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
