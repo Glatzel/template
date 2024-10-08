@@ -42,7 +42,7 @@ on:
         cov_thr:
           description: Coverage threshold.
           type: number
-          default: 50
+          default: 100
 
 permissions:
   contents: read

@@ -22,16 +22,9 @@ jobs:
         run: |
           pixi global install ruff
 
-      - name: lint(windows)
-        if: runner.os == 'Windows'
+      - name: lint
         run: |
           ruff check --output-format=junit . >> lint.xml
-
-      - name: lint(linux)
-        if: runner.os == 'Linux'
-        run: |
-          ruff check --output-format=junit . >> lint.xml
-            - name: Test Report title
 
       - name: Lint Report
         uses: dorny/test-reporter@main
