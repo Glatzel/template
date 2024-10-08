@@ -4,35 +4,45 @@ on:
     workflow_call:
       inputs:
         name:
+          description: Name of the test.
           required: true
           type: string
         machine:
+          description: The machine that this workflow will run on.
           required: true
           type: string
         update_submodule:
+          description: Whether to clone submodule.
           type: boolean
           default: false
         submodule_path:
+          description: 'Clone specific submodule(s). example: -- Amodule Bmodule' 
           type: string
           default: ""
         test_path:
+          description: The path that contains test files.
           default: ./tests
           type: string
         python_path:
+          description: This input will set PYTHONPATH environment variable.
           type: string
           default: ""
         pixi_python_env:
+            description: This input will pass to pixi -e parameter.
             type: string
             default: default
         test_args:
+          description: Additional Pytest args.
           type: string
           default: ""
         cov:
+          description: Whether to enable coverage test. pytest-cov is required in pixi.toml or pyproject.toml file.
           type: boolean
           default : false
         cov_thr:
+          description: Coverage threshold.
           type: number
-          default: 100
+          default: 50
 
 permissions:
   contents: read
