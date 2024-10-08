@@ -45,7 +45,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update pixi lockfile
-          title: "chore: update pixi lockfile"
+          title: "build: update pixi lockfile"
           body-path: diff.md
           branch: update-pixi
           base: ${{inputs.base}}
