@@ -37,9 +37,6 @@ jobs:
         if: ${{! inputs.no-install}}
         run: pixi update --json | pixi exec pixi-diff-to-markdown >> diff.md
 
-      - name: Update lockfiles install
-        run: pixi update --json | pixi exec pixi-diff-to-markdown >> diff.md
-
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
