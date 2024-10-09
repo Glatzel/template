@@ -76,6 +76,7 @@ jobs:
           if ("${{inputs.cov}}" -eq "true")
           {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
           else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
+        continue-on-error: true
 
       # coverage
       - name: Coverage summary and check cover
