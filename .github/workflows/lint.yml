@@ -1,16 +1,10 @@
 name: lint
 on:
   workflow_call:
-    inputs:
-      machine:
-        type: string
-        required: true
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+
 jobs:
   ruff-lint:
-    runs-on: ${{inputs.machine}}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
