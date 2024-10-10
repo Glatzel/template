@@ -1,48 +1,48 @@
 name: pytest
 
 on:
-    workflow_call:
-      inputs:
-        name:
-          description: Name of the test.
-          required: true
-          type: string
-        machine:
-          description: The machine that this workflow will run on.
-          required: true
-          type: string
-        update_submodule:
-          description: Whether to clone submodule.
-          type: boolean
-          default: false
-        submodule_path:
-          description: 'Clone specific submodule(s). example: -- Amodule Bmodule' 
-          type: string
-          default: ""
-        test_path:
-          description: The path that contains test files.
-          default: ./tests
-          type: string
-        python_path:
-          description: This input will set PYTHONPATH environment variable.
-          type: string
-          default: ""
-        pixi_python_env:
-            description: This input will pass to pixi -e parameter.
-            type: string
-            default: default
-        test_args:
-          description: Additional Pytest args.
-          type: string
-          default: ""
-        cov:
-          description: Whether to enable coverage test. pytest-cov is required in pixi.toml or pyproject.toml file.
-          type: boolean
-          default : false
-        cov_thr:
-          description: Coverage threshold.
-          type: number
-          default: 100
+  workflow_call:
+    inputs:
+      name:
+        description: Name of the test.
+        required: true
+        type: string
+      machine:
+        description: The machine that this workflow will run on.
+        required: true
+        type: string
+      update_submodule:
+        description: Whether to clone submodule.
+        type: boolean
+        default: false
+      submodule_path:
+        description: "Clone specific submodule(s). example: -- Amodule Bmodule"
+        type: string
+        default: ""
+      test_path:
+        description: The path that contains test files.
+        default: ./tests
+        type: string
+      pythonpath:
+        description: This input will set PYTHONPATH environment variable.
+        type: string
+        default: ""
+      pixi_python_env:
+        description: This input will pass to pixi -e parameter.
+        type: string
+        default: default
+      test_args:
+        description: Additional Pytest args.
+        type: string
+        default: ""
+      cov:
+        description: Whether to enable coverage test. pytest-cov is required in pixi.toml or pyproject.toml file.
+        type: boolean
+        default: false
+      cov_thr:
+        description: Coverage threshold.
+        type: number
+        default: 100
 
 permissions:
   contents: read
@@ -56,38 +56,37 @@ concurrency:
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
+    env:
+      PYTHONPATH: pythonpath
     steps:
       # setup
       - uses: actions/checkout@v4
 
       - name: Update Submodule
-        if: ${{inputs.update_submodule}}
-        run: git submodule update --init --recursive ${{inputs.submodule_path}}
+        if: ${{ inputs.update_submodule }}
+        run: git submodule update --init --recursive ${{ inputs.submodule_path }}
 
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           run-install: false
-      # test
-      - name: pytest
-        if: runner.os == 'Windows'
-        run: |
-          $Env:PYTHONPATH = "${{inputs.python_path}}"
-          if ("${{inputs.cov}}" -eq "true")
-          {pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}}
-          else{pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}}
-        continue-on-error: true
 
-      # coverage
+      # test
+      - name: pytest (no cov)
+        if: ${{ ! inputs.cov && success()}}
+        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}
+
+      - name: pytest (cov)
+        if: inputs.cov && success()
+        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}
+      
       - name: Coverage summary and check cover
         if: inputs.cov && (success() || failure())
-        id: coverage
         run: |
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage report --fail-under=${{inputs.cov_thr}}
-        continue-on-error: true
 
       - name: Upload cov HTML report
         if: inputs.cov && failure()
@@ -95,12 +94,14 @@ jobs:
         with:
           name: ${{inputs.name}}-coverage-html-report
           path: htmlcov
+          if-no-files-found: error
 
       # test report
       - name: Test Report title
         if: success() || failure()
         run: |
           "## Test Report" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+
       - name: Test Report
         uses: dorny/test-reporter@main
         if: success() || failure()
