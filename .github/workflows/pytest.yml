@@ -23,10 +23,6 @@ on:
         description: The path that contains test files.
         default: ./tests
         type: string
-      pythonpath:
-        description: This input will set PYTHONPATH environment variable.
-        type: string
-        default: ""
       pixi_python_env:
         description: This input will pass to pixi -e parameter.
         type: string
@@ -52,8 +48,6 @@ permissions:
 jobs:
   pytest:
     runs-on: ${{inputs.machine}}
-    env:
-      PYTHONPATH: pythonpath
     steps:
       # setup
       - uses: actions/checkout@v4
