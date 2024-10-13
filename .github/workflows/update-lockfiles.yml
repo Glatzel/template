@@ -28,9 +28,6 @@ jobs:
         with:
           run-install: false
 
-      - name: Install pixi-diff-to-markdown
-        run: pixi global install pixi-diff-to-markdown
-
       - name: Update lockfiles(no-install)
         if: inputs.no-install
         run: pixi update --no-install --json | pixi exec pixi-diff-to-markdown >> diff.md
