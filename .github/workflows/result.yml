@@ -1,0 +1,10 @@
+name: result
+
+on:
+  workflow_call:
+
+jobs:
+  aggregate-result:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo "All success."
