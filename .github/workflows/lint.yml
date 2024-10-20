@@ -19,13 +19,5 @@ jobs:
 
       - name: lint
         run: |
-          ruff check --output-format=junit . >> lint.xml
+          ruff check --output-format=github .
 
-      - name: Lint Report
-        uses: dorny/test-reporter@main
-        if: success() || failure()
-        with:
-          name: Lint Report
-          path: lint.xml
-          reporter: java-junit
-          use-actions-summary: "true"
