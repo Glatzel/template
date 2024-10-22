@@ -19,6 +19,9 @@ on:
         description: "Clone specific submodule(s). example: -- Amodule Bmodule"
         type: string
         default: ""
+      pre_test_command:
+        type: string
+        default: ""
       test_path:
         description: The path that contains test files.
         default: ./tests
@@ -64,6 +67,10 @@ jobs:
           run-install: false
 
       # test
+      - name: pre-test
+        if: ${{inputs.pre_test_command != ''}}
+        run: ${{inputs.pre_test_command}}
+
       - name: pytest (no cov)
         if: ${{ ! inputs.cov && success()}}
         run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}
@@ -73,7 +80,8 @@ jobs:
         if: inputs.cov && success()
         run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report= ${{inputs.test_args}}
         continue-on-error: true
-      
+
+      # cov
       - name: Coverage summary and check cover
         if: inputs.cov
         run: |
