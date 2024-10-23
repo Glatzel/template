@@ -83,7 +83,7 @@ jobs:
 
       # cov
       - name: Coverage summary and check cover
-        if: ${{inputs.cov=='true'}}
+        if: inputs.cov
         run: |
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
