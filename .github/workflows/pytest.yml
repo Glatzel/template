@@ -64,9 +64,7 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          cache: true
-          cache-write: false
-          environments: ${{inputs.pixi_python_env}}
+          run-install: false
 
       # test
       - name: pre-test
@@ -85,7 +83,7 @@ jobs:
 
       # cov
       - name: Coverage summary and check cover
-        if: inputs.cov
+        if: ${{inputs.cov=='true'}}
         run: |
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
