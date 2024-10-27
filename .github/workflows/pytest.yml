@@ -48,7 +48,7 @@ on:
         default: false
     secrets:
       CODECOV_TOKEN:
-        required: false
+        required: true
 
 permissions:
   contents: read
@@ -95,40 +95,18 @@ jobs:
           "## Coverage Summary" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           pixi run -e ${{inputs.pixi_python_env}} coverage html --skip-covered --skip-empty
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-
-      - name: Upload cov HTML report
-        if: ${{env.UPLOAD_COV_REPORT=='true'}}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{inputs.name}}-coverage-html-report
-          path: htmlcov
-          if-no-files-found: error
-      
-      - name: Upload results to Codecov
-        if:  inputs.cov&&inputs.codecov
+    
+      - name: Upload cov results to Codecov
+        if:  !cancelled()
         uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-      
-      - name: Upload test results to Codecov
-        if: ${{ inputs.cov&&inputs.codecov &&!cancelled() }}
-        uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      # test report
-      - name: Test Report title
-        if: success() || failure()
-        run: |
-          "## Test Report" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
-
-      - name: Test Report
-        uses: dorny/test-reporter@main
-        if: success() || failure()
+      
+      - name: Upload test results to Codecov
+        if: !cancelled()
+        uses: codecov/test-results-action@v1
         with:
-          name: Pytest Report (${{inputs.name}})
-          path: results/pytest.xml
-          reporter: java-junit
-          use-actions-summary: "true"
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./results
