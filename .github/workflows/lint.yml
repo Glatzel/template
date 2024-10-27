@@ -27,7 +27,8 @@ jobs:
 
       - name: lint
         run: |
-          ruff check --output-format=github .
+          # ruff check --output-format=github .
+            ruff check --output-format=junit . > junit.xml
       
       - name: Upload test results to Codecov
         if: ${{inputs.codecov&&!cancelled()}}
