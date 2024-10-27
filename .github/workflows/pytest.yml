@@ -89,6 +89,8 @@ jobs:
         continue-on-error: true
 
       # cov
+      - name: install coverage
+        run: pixi global install coverage
       - name: Coverage summary and check cover
         if: inputs.cov
         run: |
