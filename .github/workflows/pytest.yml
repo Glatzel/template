@@ -37,7 +37,7 @@ on:
       codecov:
         description: Whether to use codecov.
         type: boolean
-        default: false
+        default: true
 
     secrets:
       CODECOV_TOKEN:
