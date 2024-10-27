@@ -80,12 +80,12 @@ jobs:
 
       - name: pytest (no cov)
         if: ${{ ! inputs.cov && success()}}
-        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml ${{inputs.test_args}}
+        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml ${{inputs.test_args}}
         continue-on-error: true
 
       - name: pytest (cov)
         if: inputs.cov && success()
-        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml --cov --cov-report=xml ${{inputs.test_args}}
+        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junit-xml results/pytest.xml --cov --cov-report=xml ${{inputs.test_args}}
         continue-on-error: true
 
       # cov
@@ -109,3 +109,4 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./results
