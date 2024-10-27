@@ -1,11 +1,10 @@
 name: lint
 on:
   workflow_call:
-    inputs: 
-      codecov:
-        description: Whether to use codecov.
-        type: boolean
-        default: false
+    secrets:
+      CODECOV_TOKEN:
+        required: true
+
 
 jobs:
   ruff-lint:
@@ -27,7 +26,7 @@ jobs:
           ruff check --output-format=junit . >ruff.xml
 
       - name: Upload test results to Codecov
-        if: !cancelled()
+        if: ${{!cancelled()}}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

@@ -97,7 +97,7 @@ jobs:
           pixi run -e ${{inputs.pixi_python_env}} coverage report --skip-covered --skip-empty --format=markdown | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
     
       - name: Upload cov results to Codecov
-        if:  !cancelled()
+        if:  ${{ !cancelled() }}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -105,7 +105,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
       - name: Upload test results to Codecov
-        if: !cancelled()
+        if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
