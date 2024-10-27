@@ -28,9 +28,3 @@ jobs:
       - name: lint
         run: |
           ruff check --output-format=github .
-      
-      - name: Upload test results to Codecov
-        if: ${{inputs.codecov&&!cancelled()}}
-        uses: codecov/test-results-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
