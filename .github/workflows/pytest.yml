@@ -34,14 +34,10 @@ on:
         description: Additional Pytest args.
         type: string
         default: ""
-      codecov:
-        description: Whether to use codecov.
-        type: boolean
-        default: true
 
     secrets:
       CODECOV_TOKEN:
-        required: false
+        required: true
 
 permissions:
   contents: read
@@ -71,17 +67,12 @@ jobs:
         if: ${{inputs.pre_test_command != ''}}
         run: ${{inputs.pre_test_command}}
 
-      - name: pytest (no cov)
-        if: ${{ ! inputs.codecov && success()}}
-        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junitxml=junit.xml ${{inputs.test_args}}
-
-
       - name: pytest (cov)
-        if: inputs.codecov && success()
+        if: success()
         run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junitxml=junit.xml --cov --cov-report=xml ${{inputs.test_args}}
     
       - name: Upload cov results to Codecov
-        if:  ${{inputs.codecov&&!cancelled()}}
+        if:  ${{!cancelled()}}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -89,7 +80,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
-        if: ${{inputs.codecov&&!cancelled()}}
+        if: ${{!cancelled()}}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

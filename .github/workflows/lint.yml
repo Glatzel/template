@@ -1,14 +1,6 @@
 name: lint
 on:
   workflow_call:
-    inputs:
-      codecov:
-        description: Whether to use codecov.
-        type: boolean
-        default: false
-    secrets:
-      CODECOV_TOKEN:
-        required: false
     
 jobs:
   ruff-lint:
