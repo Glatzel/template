@@ -42,6 +42,10 @@ on:
         description: Coverage threshold.
         type: number
         default: 100
+      codecov:
+        description: Whether to use codecov.
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -98,6 +102,12 @@ jobs:
           name: ${{inputs.name}}-coverage-html-report
           path: htmlcov
           if-no-files-found: error
+      
+      - name: Upload results to Codecov
+        if: inputs.codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       # test report
       - name: Test Report title
