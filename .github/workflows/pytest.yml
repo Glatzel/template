@@ -57,8 +57,6 @@ permissions:
 
 jobs:
   pytest:
-    env:
-      UPLOAD_COV_REPORT:
     runs-on: ${{inputs.machine}}
     steps:
       # setup
