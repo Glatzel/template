@@ -34,14 +34,10 @@ on:
         description: Additional Pytest args.
         type: string
         default: ""
-      cov:
-        description: Whether to enable coverage test. pytest-cov is required in pixi.toml or pyproject.toml file.
+      codecov:
+        description: Whether to use codecov.
         type: boolean
         default: false
-      cov_thr:
-        description: Coverage threshold.
-        type: number
-        default: 100
 
     secrets:
       CODECOV_TOKEN:
@@ -76,17 +72,16 @@ jobs:
         run: ${{inputs.pre_test_command}}
 
       - name: pytest (no cov)
-        if: ${{ ! inputs.cov && success()}}
+        if: ${{ ! inputs.codecov && success()}}
         run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junitxml=junit.xml ${{inputs.test_args}}
-        continue-on-error: true
+
 
       - name: pytest (cov)
-        if: inputs.cov && success()
+        if: inputs.codecov && success()
         run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junitxml=junit.xml --cov --cov-report=xml ${{inputs.test_args}}
-        continue-on-error: true
     
       - name: Upload cov results to Codecov
-        if:  inputs.cov
+        if:  ${{inputs.codecov&&!cancelled()}}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -94,7 +89,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
-        if: inputs.cov
+        if: ${{inputs.codecov&&!cancelled()}}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
