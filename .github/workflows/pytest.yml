@@ -39,11 +39,6 @@ on:
       CODECOV_TOKEN:
         required: true
 
-permissions:
-  contents: read
-  actions: read
-  checks: write
-
 jobs:
   pytest:
     env:
