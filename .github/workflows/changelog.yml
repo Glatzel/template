@@ -19,12 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: add tag
-        run: |
-          git tag ${{inputs.tag}}
-          git push origin --tags
-        continue-on-error: true
-      
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
@@ -33,7 +27,7 @@ jobs:
       - name: Generate a changelog
         run: |
           pixi global install git-cliff
-          git-cliff --tag ${{inputs.tag}} > ${{inputs.output_name}}.md
+          git-cliff -unreleased --tag ${{inputs.tag}} --strip header > ${{inputs.output_name}}.md
 
       - uses: actions/upload-artifact@v4
         with:
