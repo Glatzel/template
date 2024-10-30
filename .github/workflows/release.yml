@@ -18,6 +18,9 @@ on:
       draft: 
         type: boolean
         default: true
+      call_back_workflow:
+        type: string
+        default: ""
 
 env: 
   RELEASE_CHANGELOG: release_changelog.md
@@ -49,6 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: gh release delete ${{inputs.tag}} --cleanup-tag -y
+        continue-on-error: true
 
   release-body:
     needs: clear-tag-and-release
@@ -76,8 +80,12 @@ jobs:
           path: ${{env.RELEASE_CHANGELOG}}
           if-no-files-found: error
 
+  call-back:
+    if: ${{inputs.call_back_workflow !=''}}
+    uses: ${{inputs.call_back_workflow}}
+
   create-release:
-    needs: [check-tag,release-body]
+    needs: [check-tag,release-body,call-back]
     if: ${{!failure()}}
     runs-on: ubuntu-latest
     steps:
