@@ -15,6 +15,9 @@ on:
       assets:
         type: string
         default: ""
+      draft: 
+        type: boolean
+        default: true
 
 env: 
   RELEASE_CHANGELOG: release_changelog.md
@@ -72,7 +75,8 @@ jobs:
           if-no-files-found: error
 
   create-release:
-    needs: check-tag
+    needs: [check-tag,release-body]
+    if: ${{!failure()}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -96,5 +100,5 @@ jobs:
           body_path: ${{inputs.have_changelog && null || env.RELEASE_CHANGELOG}}
           files: ${{inputs.assets=='' && null || './release_asset/**'}}
           tag_name: ${{inputs.tag}}
-          draft: true
+          draft: ${{inputs.draft}}
           prerelease: ${{needs.check-tag.outputs.is_pre_release}}
