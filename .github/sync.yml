@@ -1,6 +1,6 @@
 group:
   - files:
-    - source: python/universal/
+    - source: python/static/
       dest: ./
     repos: |
       Glatzel/dxf2kml
