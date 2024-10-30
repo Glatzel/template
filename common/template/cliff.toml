@@ -64,7 +64,7 @@ footer = """
 trim = true
 # postprocessors
 postprocessors = [
-  # { pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" }, # replace repository URL
+    # { pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" }, # replace repository URL
 ]
 # render body even when there are no releases to process
 # render_always = true
@@ -85,21 +85,21 @@ commit_preprocessors = [
 ]
 # regex for parsing and grouping commits
 commit_parsers = [
-  { message = "^.*: add", group = "Added" },
-  { message = "^.*: support", group = "Added" },
-  { message = "^.*: remove", group = "Removed" },
-  { message = "^.*: delete", group = "Removed" },
-  { message = "^fix", group = "Fixed" },
-  { message = "^docs", group = "Documentation" },
-  { message = "^style", skip = true },
-  { message = "^refactor", group = "Refactor" },
-  { message = "^perf", group = "Performance" },
-  { message = "^test", group = "Testing" },
-  { message = "^build", skip = true },
-  { message = "^ci", skip = true },
-  { message = "^chore", skip = true },
-  { message = "^revert", group = "Revert" },
-  { message = "^.*", group = "Changed" },
+    { message = "^fix", group = "Fixed" },
+    { message = "^docs", group = "Documentation" },
+    { message = "^style", skip = true },
+    { message = "^refactor", group = "Refactor" },
+    { message = "^perf", group = "Performance" },
+    { message = "^test", group = "Testing" },
+    { message = "^revert", group = "Revert" },
+    { message = "^.*: add", group = "Added" },
+    { message = "^.*: support", group = "Added" },
+    { message = "^.*: remove", group = "Removed" },
+    { message = "^.*: delete", group = "Removed" },
+    { message = "^build", skip = true },
+    { message = "^ci", skip = true },
+    { message = "^chore", skip = true },
+    { message = "^.*", group = "Changed" },
 ]
 # filter out the commits that are not matched by commit parsers
 filter_commits = false
@@ -108,7 +108,7 @@ topo_order = false
 # sort the commits inside sections by oldest/newest order
 sort_commits = "oldest"
 # A regular expression for matching the git tags.
-tag_pattern='^v\d+\.\d+\.\d+\S*'
+tag_pattern = '^v\d+\.\d+\.\d+\S*'
 # A regex for ignore processing the matched tags.
 # ignore_tags include ignored commits into the next tag.
 ignore_tags = '^v\d+\.\d+\.\d+\S+'
