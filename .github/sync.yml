@@ -14,3 +14,11 @@ group:
       Glatzel/watch-media
       Glatzel/xm-metro-qr
       Glatzel/zygs
+  - files:
+    - source: common/static/cliff.toml
+      dest: ./
+    repos: |
+      Glatzel/hippo
+      Glatzel/mason
+      Glatzel/py-glatzel
+      Glatzel/vinaya
