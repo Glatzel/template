@@ -44,6 +44,8 @@ jobs:
     needs: check-tag
     if: ${{inputs.override}}
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
       - run: gh release delete ${{inputs.tag}} --cleanup-tag -y
