@@ -6,9 +6,6 @@ on:
       tag:
         type: string
         required: true
-      is_pre_release:
-        type: boolean
-        required: true
       output_file:
         type: string
         default: current_changelog.md
@@ -22,26 +19,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate a changelog (release)
-        if: ${{inputs.is_pre_release == 'false'}}
+      - name: Generate a changelog
         uses: orhun/git-cliff-action@v3
         with:
           config: cliff.toml
-          args: --verbose
+          args: --verbose --tag ${{inputs.tag}} --strip header
         env:
           OUTPUT: ${{inputs.output_file}}
           GITHUB_REPO: ${{ github.repository }}
-      
-      - name: Generate a changelog (pre-release)
-        if: ${{inputs.is_pre_release == 'true'}}
-        uses: orhun/git-cliff-action@v3
-        with:
-          config: cliff.toml
-          args: --verbose --unreleased --tag ${{inputs.tag}} --strip header
-        env:
-          OUTPUT: release_body.md
-          GITHUB_REPO: ${{ github.repository }}
-        
+
       - uses: actions/upload-artifact@v4
         with:
           name: release-body
