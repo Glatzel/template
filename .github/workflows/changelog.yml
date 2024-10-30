@@ -6,46 +6,44 @@ on:
       tag:
         type: string
         required: true
+      is_pre_release:
+        type: boolean
+        required: true
       output_file:
         type: string
         default: current_changelog.md
 
 jobs:
-  add-tag:
-    env:
-      IS_PRE_RELEASE:
-    runs-on: windows-latest
+  release-body:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
-      - name: is-pre-release
-        run: |
-          if("${{inputs.tag}}" -match '^v\d+\.\d+\.\d$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_ENV"}
-          elseif("${{inputs.tag}}" -match '^v\d+\.\d+\.\d-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_ENV"}
-          else{throw "Unknown version: '${{inputs.tag}}'"}
 
-      - name: add tag
-        run: |
-          git tag ${{inputs.tag}}
-          git push origin --tags
-        continue-on-error: true
-
-      - name: Set up pixi
-        uses: prefix-dev/setup-pixi@v0.8.1
+      - name: Generate a changelog (release)
+        if: ${{inputs.is_pre_release == 'false'}}
+        uses: orhun/git-cliff-action@v3
         with:
-          run-install: false
-
-      - name: release-body
-        run: |
-          pixi global install git-cliff
-          git-cliff --unreleased --tag ${{inputs.tag}} --strip header
-          if($env:IS_PRE_RELEASE -eq "true"){git-cliff --unreleased --tag ${{inputs.tag}} --strip header > release_body.md}
-          else{git-cliff --tag ${{inputs.tag}} --strip header > release_body.md}
-
+          config: cliff.toml
+          args: --verbose
+        env:
+          OUTPUT: ${{inputs.output_file}}
+          GITHUB_REPO: ${{ github.repository }}
+      
+      - name: Generate a changelog (pre-release)
+        if: ${{inputs.is_pre_release == 'true'}}
+        uses: orhun/git-cliff-action@v3
+        with:
+          config: cliff.toml
+          args: --verbose --unreleased --tag ${{inputs.tag}} --strip header
+        env:
+          OUTPUT: release_body.md
+          GITHUB_REPO: ${{ github.repository }}
+        
       - uses: actions/upload-artifact@v4
         with:
           name: release-body
-          path: ./${{inputs.output_file}}
+          path: ${{inputs.output_file}}
           if-no-files-found: error
