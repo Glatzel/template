@@ -27,7 +27,7 @@ jobs:
       - name: Generate a changelog
         run: |
           pixi global install git-cliff
-          git-cliff -unreleased --tag ${{inputs.tag}} --strip header > ${{inputs.output_name}}.md
+          git-cliff --unreleased --tag ${{inputs.tag}} --strip header > ${{inputs.output_name}}.md
 
       - uses: actions/upload-artifact@v4
         with:
