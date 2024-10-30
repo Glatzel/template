@@ -18,9 +18,6 @@ on:
       draft: 
         type: boolean
         default: true
-      call_back_workflow:
-        type: string
-        default: ""
 
 env: 
   RELEASE_CHANGELOG: release_changelog.md
@@ -80,12 +77,9 @@ jobs:
           path: ${{env.RELEASE_CHANGELOG}}
           if-no-files-found: error
 
-  call-back:
-    if: ${{inputs.call_back_workflow !=''}}
-    uses: ${{inputs.call_back_workflow}}
 
   create-release:
-    needs: [check-tag,release-body,call-back]
+    needs: [check-tag,release-body]
     if: ${{!failure()}}
     runs-on: ubuntu-latest
     steps:
