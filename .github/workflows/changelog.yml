@@ -1,4 +1,4 @@
-name: changelog
+name: release changelog
 
 on:
   workflow_call:
@@ -6,9 +6,9 @@ on:
       tag:
         type: string
         required: true
-      output_file:
+      output_name:
         type: string
-        default: current_changelog.md
+        default: changelog
 
 jobs:
   release-body:
@@ -33,10 +33,10 @@ jobs:
       - name: Generate a changelog
         run: |
           pixi global install git-cliff
-          git-cliff --tag ${{inputs.tag}} > ${{inputs.output_file}}
+          git-cliff --tag ${{inputs.tag}} > ${{inputs.output_name}}.md
 
       - uses: actions/upload-artifact@v4
         with:
-          name: release-body
-          path: ${{inputs.output_file}}
+          name: changelog
+          path: ${{inputs.output_name}}.md
           if-no-files-found: error
