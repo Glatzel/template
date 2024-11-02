@@ -11,6 +11,10 @@ on:
         description: The machine that this workflow will run on.
         required: true
         type: string
+      cache_write:
+        description: Whether to write pixi cache
+        type: boolean
+        required: true
       update_submodule:
         description: Whether to clone submodule.
         type: boolean
@@ -55,7 +59,9 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          run-install: false
+          cache: true
+          cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+
 
       # test
       - name: pre-test
