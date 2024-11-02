@@ -14,7 +14,7 @@ on:
       cache_write:
         description: Whether to write pixi cache
         type: boolean
-        required: true
+        default: false
       update_submodule:
         description: Whether to clone submodule.
         type: boolean
@@ -59,6 +59,7 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
+          environments: ${{inputs.pixi_python_env}}
           cache: true
           cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
