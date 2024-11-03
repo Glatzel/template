@@ -15,11 +15,11 @@ on:
       assets:
         type: string
         default: ""
-      draft: 
+      draft:
         type: boolean
         default: true
 
-env: 
+env:
   RELEASE_CHANGELOG: release_changelog.md
 
 permissions:
