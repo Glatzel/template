@@ -89,4 +89,5 @@ jobs:
       - name: Upload test results to Codecov
         uses: codecov/test-results-action@v1
         with:
+          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
