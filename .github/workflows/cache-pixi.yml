@@ -23,18 +23,9 @@ jobs:
       - name: create cache
         run: ${{inputs.install_cmd}}
 
-      - name: Save pixi cache (win)
+      - name: Save pixi cache
         if: ${{runner.os == 'windows'}}
         uses: actions/cache/save@v4
         with:
-          path: '~\AppData\Local\rattler'
-          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
-
-      - name: Save pixi cache (linux)
-        if: ${{runner.os == 'linux'}}
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            $XDG_CACHE_HOME/rattler
-            $HOME/.cache/rattler
+          path: .pixi
           key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}

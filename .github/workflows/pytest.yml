@@ -54,8 +54,8 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: '~\AppData\Local\rattler'
-          key: pixi-${{ runner.os }}-
-          restore-keys: pixi-${{ runner.os }}-
+          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+          restore-keys: pixi-${{ runner.os }}
       
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
