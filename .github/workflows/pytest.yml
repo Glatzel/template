@@ -42,13 +42,12 @@ on:
     secrets:
       CODECOV_TOKEN:
         required: true
-env:
-  PIXI_FROZEN: true
+
 
 jobs:
   pytest:
     env:
-      UPLOAD_COV_REPORT:
+      PIXI_FROZEN: true
     runs-on: ${{inputs.machine}}
     steps:
       # setup
