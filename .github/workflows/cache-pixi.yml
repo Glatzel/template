@@ -5,9 +5,9 @@ on:
       machine:
         type: string
         required: true
-      envs:
+      install_cmd:
         type: string
-        required: true
+        default: pixi install --all
 
 jobs:
   cache-pixi:
@@ -18,4 +18,23 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          environments: ${{inputs.envs}}
+          run-install: false
+
+      - name: create cache
+        run: ${{inputs.install_cmd}}
+
+      - name: Save pixi cache (win)
+        if: ${{runner.os == 'windows'}}
+        uses: actions/cache/save@v4
+        with:
+          path: '~\AppData\Local\rattler'
+          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+
+      - name: Save pixi cache (linux)
+        if: ${{runner.os == 'linux'}}
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            $XDG_CACHE_HOME/rattler
+            $HOME/.cache/rattler
+          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
