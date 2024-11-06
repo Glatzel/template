@@ -42,7 +42,8 @@ on:
     secrets:
       CODECOV_TOKEN:
         required: true
-
+env:
+  PIXI_FROZEN: true
 jobs:
   pytest:
     env:
