@@ -11,10 +11,6 @@ on:
         description: The machine that this workflow will run on.
         required: true
         type: string
-      cache_write:
-        description: Whether to write pixi cache
-        type: boolean
-        default: false
       update_submodule:
         description: Whether to clone submodule.
         type: boolean
@@ -38,7 +34,6 @@ on:
         description: Additional Pytest args.
         type: string
         default: ""
-
     secrets:
       CODECOV_TOKEN:
         required: true
@@ -59,10 +54,7 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          environments: ${{inputs.pixi_python_env}}
-          cache: true
-          cache-write: ${{ inputs.cache_write }}
-
+          run-install: false
 
       # test
       - name: pre-test
