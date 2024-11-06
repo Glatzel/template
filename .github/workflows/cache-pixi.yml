@@ -9,9 +9,6 @@ on:
         type: string
         default: pixi install --all
 
-env:
-  PIXI_FROZEN: true
-
 jobs:
   cache-pixi:
     runs-on: ${{inputs.machine}}
