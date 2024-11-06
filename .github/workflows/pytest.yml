@@ -56,12 +56,19 @@ jobs:
         if: ${{ inputs.update_submodule }}
         run: git submodule update --init --recursive ${{ inputs.submodule_path }}
 
+      - name: restore pixi cache
+        id: restore-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.nuget/packages
+          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+          restore-keys: |
+            pixi-${{ runner.os }}-
+
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          environments: ${{inputs.pixi_python_env}}
-          cache: true
-          cache-write: false
+          run-install: false
 
       # test
       - name: pre-test
