@@ -14,6 +14,11 @@ jobs:
     runs-on: ${{inputs.machine}}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          run-install: false
     
       - name: cache pixi(win)
         if: ${{runner.os == 'windows'}}
@@ -32,11 +37,6 @@ jobs:
             $HOME/.cache/rattler
           key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
           restore-keys: pixi-${{ runner.os }}-
-
-      - name: Set up pixi
-        uses: prefix-dev/setup-pixi@v0.8.1
-        with:
-          run-install: false
 
       - name: create cache
         run: ${{inputs.install_cmd}}
