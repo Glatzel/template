@@ -44,6 +44,7 @@ on:
         required: true
 env:
   PIXI_FROZEN: true
+
 jobs:
   pytest:
     env:
@@ -53,6 +54,15 @@ jobs:
       # setup
       - uses: actions/checkout@v4
 
+      - name: restore pixi cache
+        id: restore-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.nuget/packages
+          key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+          restore-keys: |
+            pixi-${{ runner.os }}-
+
       - name: Update Submodule
         if: ${{ inputs.update_submodule }}
         run: git submodule update --init --recursive ${{ inputs.submodule_path }}
@@ -60,9 +70,7 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          environments: ${{inputs.pixi_python_env}}
-          cache: true
-          cache-write: ${{ inputs.cache_write }}
+          run-install: false
 
       # test
       - name: pre-test
