@@ -43,11 +43,14 @@ on:
       CODECOV_TOKEN:
         required: true
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pytest:
     env:
-      PIXI_FROZEN: true
+      UPLOAD_COV_REPORT:
     runs-on: ${{inputs.machine}}
     steps:
       # setup
@@ -60,10 +63,10 @@ jobs:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          frozen: true
           environments: ${{inputs.pixi_python_env}}
           cache: true
-          cache-write: false
+          cache-write: ${{ inputs.cache_write }}
+
 
       # test
       - name: pre-test
