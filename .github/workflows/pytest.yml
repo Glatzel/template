@@ -53,7 +53,7 @@ jobs:
 
       - uses: actions/cache/restore@v4
         with:
-          path: '~\AppData\Local\rattler'
+          path: .pixi
           key: pixi-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
           restore-keys: pixi-${{ runner.os }}
       
