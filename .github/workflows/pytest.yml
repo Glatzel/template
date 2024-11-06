@@ -51,6 +51,12 @@ jobs:
         if: ${{ inputs.update_submodule }}
         run: git submodule update --init --recursive ${{ inputs.submodule_path }}
 
+      - uses: actions/cache/restore@v4
+        with:
+          path: path/to/dependencies
+          key: pixi-${{ runner.os }}-
+          restore-keys: pixi-${{ runner.os }}-
+      
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
