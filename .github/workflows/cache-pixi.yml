@@ -5,6 +5,9 @@ on:
       machine:
         type: string
         required: true
+      install_cmd:
+        type: string
+        default: pixi install --all
 
 jobs:
   cache-pixi:
@@ -36,4 +39,4 @@ jobs:
           run-install: false
 
       - name: create cache
-        run: pixi install --all
+        run: ${{inputs.install_cmd}}
