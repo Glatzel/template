@@ -11,3 +11,14 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "ci"
+
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      all:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "build"
