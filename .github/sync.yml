@@ -14,3 +14,9 @@ group:
       Glatzel/watch-media
       Glatzel/xm-metro-qr
       Glatzel/zygs
+  - files:
+    - source: dotnet/static/
+      dest: ./
+    repos: |
+      Glatzel/mason
+      Glatzel/cs-glatzel
