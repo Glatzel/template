@@ -30,9 +30,12 @@ on:
         description: This input will pass to pixi -e parameter.
         type: string
         default: default
+      frozen:
+        type: boolean
+        default: false
       locked:
         type: boolean
-        default: true
+        default: false
       test_args:
         description: Additional Pytest args.
         type: string
@@ -41,6 +44,7 @@ on:
       CODECOV_TOKEN:
         required: true
 env:
+  PIXI_FROZEN: ${{inputs.frozen}}
   PIXI_LOCKED: ${{inputs.locked}}
 jobs:
   pytest:
