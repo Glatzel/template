@@ -1,4 +1,4 @@
-name: Update pixi.lock
+name: Pixi Upgrade
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ on:
         default: always-true
 
 jobs:
-  pixi-update:
+  pixi-upgrade:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
