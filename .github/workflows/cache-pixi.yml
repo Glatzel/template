@@ -31,7 +31,7 @@ jobs:
 
       - name: pixi install
         if: ${{! steps.check-cache.outputs.cache-hit}}
-        run: ${{inputs.install_cmd}}
+        run: pixi install -e ${{inputs.pixi_env}}
 
       - name: Save pixi cache
         if: ${{! steps.check-cache.outputs.cache-hit}}
