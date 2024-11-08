@@ -5,12 +5,9 @@ on:
       machine:
         type: string
         required: true
-      install_cmd:
+      pixi_env:
         type: string
-        default: pixi install --all
-      prefix:
-        type: string
-        default: pixi
+        required: true
 
 jobs:
   cache-pixi:
@@ -23,7 +20,7 @@ jobs:
         id: check-cache
         with:
           path: .pixi
-          key: ${{inputs.prefix}}-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+          key: pixi-${{inputs.pixi_env}}-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
           lookup-only: true
 
       - name: Set up pixi
