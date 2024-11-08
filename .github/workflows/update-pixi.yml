@@ -1,0 +1,54 @@
+name: Update pixi.lock
+
+permissions:
+  contents: write
+  pull-requests: write
+
+on:
+  workflow_call:
+    inputs:
+      no-install:
+        type: boolean
+        default: false
+      base:
+        type: string
+        default: main
+      draft:
+        type: string
+        default: always-true
+
+jobs:
+  pixi-update:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          run-install: false
+
+      - name: Upgrade pixi.toml
+        if: inputs.no-install
+        run: pixi upgrade ${{ inputs.no-install && '--no-install' || null}}  --json | pixi exec pixi-diff-to-markdown >> diff.md
+
+      - name: Update pixi.lock
+        if: inputs.no-install
+        run: pixi update ${{ inputs.no-install && '--no-install' || null}}  --json | pixi exec pixi-diff-to-markdown >> diff.md
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "build: Update pixi lockfile"
+          title: "build: update pixi lockfile"
+          body-path: diff.md
+          branch: update-pixi
+          base: ${{inputs.base}}
+          labels: action
+          delete-branch: true
+          add-paths: |
+            pixi.toml
+            pixi.lock
+          assignees: Glatzel
+          draft: ${{inputs.draft}}
