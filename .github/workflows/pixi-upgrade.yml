@@ -7,6 +7,9 @@ permissions:
 on:
   workflow_call:
     inputs:
+      args:
+        type: string
+        default: 
       no-install:
         type: boolean
         default: false
@@ -28,13 +31,9 @@ jobs:
         with:
           run-install: false
 
-      - name: Upgrade pixi.toml
+      - name: pixi upgrade
         if: inputs.no-install
-        run: pixi upgrade ${{ inputs.no-install && '--no-install' || null}}  --json | pixi exec pixi-diff-to-markdown >> diff.md
-
-      - name: Update pixi.lock
-        if: inputs.no-install
-        run: pixi update ${{ inputs.no-install && '--no-install' || null}}  --json | pixi exec pixi-diff-to-markdown >> diff.md
+        run: pixi upgrade ${{inputs.args}} ${{ inputs.no-install && '--no-install' || null}}  --json | pixi exec pixi-diff-to-markdown >> diff.md
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
