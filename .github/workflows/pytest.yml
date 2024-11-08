@@ -30,6 +30,9 @@ on:
         description: This input will pass to pixi -e parameter.
         type: string
         default: default
+      frozen:
+        type: boolean
+        default: true
       test_args:
         description: Additional Pytest args.
         type: string
@@ -37,11 +40,10 @@ on:
     secrets:
       CODECOV_TOKEN:
         required: true
-
+env:
+  PIXI_FROZEN: ${{inputs.frozen}}
 jobs:
   pytest:
-    env:
-      UPLOAD_COV_REPORT:
     runs-on: ${{inputs.machine}}
     steps:
       # setup
