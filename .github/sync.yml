@@ -1,22 +1,23 @@
 group:
   - files:
-    - source: python/static/
-      dest: ./
+      - source: python/static/
+        dest: ./
     repos: |
-      Glatzel/dxf2kml
       Glatzel/hippo
       Glatzel/jxws
       Glatzel/knitting
       Glatzel/ms-redeem
       Glatzel/py-bench
+      Glatzel/py-cli-dxf2kml
+      Glatzel/py-cli-stack
       Glatzel/py-glatzel
       Glatzel/vinaya
       Glatzel/watch-media
       Glatzel/xm-metro-qr
       Glatzel/zygs
   - files:
-    - source: dotnet/static/
-      dest: ./
+      - source: dotnet/static/
+        dest: ./
     repos: |
       Glatzel/mason
       Glatzel/cs-glatzel
