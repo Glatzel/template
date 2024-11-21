@@ -72,7 +72,7 @@ jobs:
 
       - name: pytest
         if: success()
-        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --junitxml=junit.xml --cov --cov-report=xml ${{inputs.test_args}}
+        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --durations=0 --junitxml=junit.xml --cov --cov-report=xml ${{inputs.test_args}}
         continue-on-error: true
 
       - name: Upload cov results to Codecov
