@@ -25,13 +25,13 @@ jobs:
           lookup-only: true
 
       - name: Set up pixi
-        if: ${{! steps.check-cache.outputs.cache-hit}}
+        if: ${{steps.check-cache.outputs.cache-matched-key==''}}
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           run-install: false
 
       - name: pixi install
-        if: ${{! steps.check-cache.outputs.cache-hit}}
+        if: ${{steps.check-cache.outputs.cache-matched-key==''}}
         run: pixi install -e ${{inputs.pixi_env}}
 
       - name: Save pixi cache
