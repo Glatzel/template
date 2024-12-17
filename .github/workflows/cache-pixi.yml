@@ -21,6 +21,7 @@ jobs:
         with:
           path: .pixi
           key: pixi-${{inputs.pixi_env}}-${{ runner.os }}-${{ hashFiles('**/pixi.lock') }}
+          restore-keys: ${{ github.ref_name == 'main' && null ||  format('pixi-{0}-{1}-',runner.os,inputs.pixi_env) }}
           lookup-only: true
 
       - name: Set up pixi
@@ -34,7 +35,7 @@ jobs:
         run: pixi install -e ${{inputs.pixi_env}}
 
       - name: Save pixi cache
-        if: ${{! steps.check-cache.outputs.cache-hit}}
+        if: ${{steps.check-cache.outputs.cache-matched-key==''}}
         uses: actions/cache/save@v4
         with:
           path: .pixi
