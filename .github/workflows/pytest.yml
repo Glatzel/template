@@ -72,10 +72,16 @@ jobs:
 
       - name: pytest
         if: success()
-        run: pixi run -e ${{inputs.pixi_python_env}} pytest "${{inputs.test_path}}" --durations=0 --junitxml=junit.xml --cov --cov-report=xml ${{inputs.test_args}}
-        continue-on-error: true
+        run: |
+          pixi run -e ${{inputs.pixi_python_env}} pytest `
+          "${{inputs.test_path}}" `
+          --durations=0 `
+          --junitxml=junit.xml -o junit_family=legacy `
+          --cov --cov-report=xml `
+          ${{inputs.test_args}}
 
       - name: Upload cov results to Codecov
+        if: ${{ !cancelled() }}
         uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
@@ -84,6 +90,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
           fail_ci_if_error: true
