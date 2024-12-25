@@ -4,15 +4,11 @@ group:
         dest: ./
     repos: |
       Glatzel/hippo
-      Glatzel/jxws
-      Glatzel/knitting
       Glatzel/ms-redeem
       Glatzel/py-bench
       Glatzel/py-glatzel
       Glatzel/vinaya
       Glatzel/watch-media
-      Glatzel/xm-metro-qr
-      Glatzel/zygs
   - files:
       - source: dotnet/static/
         dest: ./
