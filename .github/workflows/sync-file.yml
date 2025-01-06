@@ -1,8 +1,8 @@
 name: Sync Files
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 0 * * 1
+  # schedule:
+  #   - cron: 0 0 * * 1
 jobs:
   sync:
     runs-on: ubuntu-latest
