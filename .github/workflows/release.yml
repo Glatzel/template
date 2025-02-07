@@ -9,12 +9,12 @@ on:
       tag:
         type: string
         required: true
-      have_changelog:
+      have-changelog:
         type: boolean
         required: true
       assets:
-        type: string
-        default: ""
+        type: boolean
+        required: true
       draft:
         type: boolean
         default: true
@@ -51,15 +51,21 @@ jobs:
       - run: gh release delete ${{inputs.tag}} --cleanup-tag -y
         continue-on-error: true
 
-  release-body:
-    needs: clear-tag-and-release
-    if: ${{inputs.have_changelog && !failure()}}
+  create-release:
+    needs: [check-tag,clear-tag-and-release]
+    if: ${{!failure()}}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: download asset
+        if: ${{inputs.assets =='true'}}
+        uses: actions/download-artifact@v4
+        with:
+          path: ./release_asset
+          merge-multiple: true
 
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
@@ -71,37 +77,10 @@ jobs:
           pixi global install git-cliff
           git-cliff --unreleased --tag ${{inputs.tag}} --strip header > ${{env.RELEASE_CHANGELOG}}
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: changelog
-          path: ${{env.RELEASE_CHANGELOG}}
-          if-no-files-found: error
-
-
-  create-release:
-    needs: [check-tag,release-body]
-    if: ${{!failure()}}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: download asset
-        if: ${{inputs.assets !=''}}
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{inputs.assets}}
-          path: ./release_asset
-
-      - name: download changelog
-        if: ${{inputs.have_changelog}}
-        uses: actions/download-artifact@v4
-        with:
-          name: changelog
-
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          body_path: ${{inputs.have_changelog && null || env.RELEASE_CHANGELOG}}
+          body_path: ${{inputs.have-changelog && null || env.RELEASE_CHANGELOG}}
           files: ${{inputs.assets=='' && null || './release_asset/**'}}
           tag_name: ${{inputs.tag}}
           draft: ${{inputs.draft}}
