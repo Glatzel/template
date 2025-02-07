@@ -54,6 +54,7 @@ jobs:
           }
           catch{}
         shell: pwsh
+        continue-on-error: true
 
   create-release:
     needs: [check-tag,clear-tag-and-release]
