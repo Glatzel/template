@@ -49,11 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          try{
             gh release delete ${{inputs.tag}} --cleanup-tag -y
-          }
-          catch{}
-        shell: pwsh
         continue-on-error: true
 
   create-release:
