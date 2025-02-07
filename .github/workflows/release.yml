@@ -61,7 +61,7 @@ jobs:
           fetch-depth: 0
 
       - name: download asset
-        if: ${{inputs.assets =='true'}}
+        if: inputs.assets
         uses: actions/download-artifact@v4
         with:
           path: ./release_asset
