@@ -52,8 +52,7 @@ jobs:
           try{
             gh release delete ${{inputs.tag}} --cleanup-tag -y
           }
-          catch
-        continue-on-error: true
+          catch{}
         shell: pwsh
 
   create-release:
