@@ -48,8 +48,13 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - run: gh release delete ${{inputs.tag}} --cleanup-tag -y
+      - run: |
+          try{
+            gh release delete ${{inputs.tag}} --cleanup-tag -y
+          }
+          catch
         continue-on-error: true
+        shell: pwsh
 
   create-release:
     needs: [check-tag,clear-tag-and-release]
