@@ -20,7 +20,7 @@ on:
         default: true
 
 env:
-  RELEASE_CHANGELOG: release_changelog.md
+  RELEASE_BODY_FILE: release_changelog.md
 
 permissions:
   pull-requests: read
@@ -80,12 +80,12 @@ jobs:
       - name: Generate a changelog
         run: |
           pixi global install git-cliff
-          git-cliff --unreleased --tag ${{inputs.tag}} --strip header > ${{env.RELEASE_CHANGELOG}}
+          git-cliff --unreleased --tag ${{inputs.tag}} --strip header > ${{env.RELEASE_BODY_FILE}}
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          body_path: ${{inputs.have-changelog && null || env.RELEASE_CHANGELOG}}
+          body_path: ${{inputs.have-changelog && null || env.RELEASE_BODY_FILE}}
           files: ${{inputs.assets=='' && null || './release_asset/**'}}
           tag_name: ${{inputs.tag}}
           draft: ${{inputs.draft}}
