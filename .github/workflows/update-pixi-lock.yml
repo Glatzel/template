@@ -7,9 +7,6 @@ permissions:
 on:
   workflow_call:
     inputs:
-      no-install:
-        type: boolean
-        default: false
       base:
         type: string
         default: main
@@ -28,13 +25,9 @@ jobs:
         with:
           run-install: false
 
-      - name: Update lockfiles(no-install)
+      - name: Update lockfiles
         if: inputs.no-install
         run: pixi update --no-install --json | pixi exec pixi-diff-to-markdown >> diff.md
-
-      - name: Update lockfiles(install)
-        if: ${{! inputs.no-install}}
-        run: pixi update --json | pixi exec pixi-diff-to-markdown >> diff.md
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
