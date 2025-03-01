@@ -61,7 +61,7 @@ jobs:
             pixi-${{inputs.pixi_python_env}}-${{ runner.os }}
 
       - name: Set up pixi
-        uses: prefix-dev/setup-pixi@v0.8.1
+        uses: prefix-dev/setup-pixi@v0.8.3
         with:
           run-install: false
 
