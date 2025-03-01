@@ -26,7 +26,7 @@ jobs:
 
       - name: Set up pixi
         if: ${{steps.check-cache.outputs.cache-matched-key==''}}
-        uses: prefix-dev/setup-pixi@v0.8.1
+        uses: prefix-dev/setup-pixi@v0.8.3
         with:
           run-install: false
 
