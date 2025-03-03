@@ -36,8 +36,8 @@ jobs:
         run: |
           $tag="${{inputs.tag}}"
           Write-Output "tag: $tag"
-          if("$tag" -match '^v\d+\.\d+\.\d$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
-          elseif("$tag" -match '^v\d+\.\d+\.\d-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
+          if("$tag" -match '^v\d+\.\d+\.\d+$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
+          elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
 
   clear-tag-and-release:
