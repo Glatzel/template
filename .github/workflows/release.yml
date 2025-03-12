@@ -36,8 +36,8 @@ jobs:
         run: |
           $tag="${{inputs.tag}}"
           Write-Output "tag: $tag"
-          if("$tag" -match '^v\d+\.\d+\.\d$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
-          elseif("$tag" -match '^v\d+\.\d+\.\d-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
+          if("$tag" -match '^v\d+\.\d+\.\d+$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
+          elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
 
   clear-tag-and-release:
@@ -69,7 +69,7 @@ jobs:
           merge-multiple: true
 
       - name: Set up pixi
-        uses: prefix-dev/setup-pixi@v0.8.1
+        uses: prefix-dev/setup-pixi@v0.8.3
         with:
           run-install: false
 
