@@ -23,7 +23,6 @@ env:
   RELEASE_BODY_FILE: release_changelog.md
 
 permissions:
-  pull-requests: read
   contents: write
 
 jobs:
