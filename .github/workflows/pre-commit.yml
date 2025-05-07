@@ -32,13 +32,16 @@ jobs:
         with:
           path: ./pre-commit/.pixi
           key: pre-commit-${{ hashFiles('./pre-commit/*','.pre-commit-config.yaml')}}
-      - run: |
-          pixi config set --global change-ps1 false
-          pixi install --manifest-path ./pre-commit/pixi.toml
+
+      
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@main
         with:
           run-install: false
+
+      - run: |
+          pixi config set --global change-ps1 false
+          pixi install --manifest-path ./pre-commit/pixi.toml
 
       - name: pre-commit
         run: pixi run --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
