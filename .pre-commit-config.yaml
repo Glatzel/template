@@ -93,7 +93,6 @@ repos:
         name: Ruff lint
         entry: pixi run ruff-check
         language: system
-        types_or: [python, pyi]
         stages: [pre-commit, manual]
 
       #numpydoc
@@ -101,7 +100,6 @@ repos:
         name: Ruff lint
         entry: pixi run numpydoc-check
         language: system
-        types_or: [python, pyi]
         stages: [pre-commit, manual]
 
   # other
