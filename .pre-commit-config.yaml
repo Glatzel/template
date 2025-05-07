@@ -90,14 +90,14 @@ repos:
 
       # ruff
       - id: ruff-check
-        name: Ruff lint
+        name: ruff-check
         entry: pixi run ruff-check
         language: system
         stages: [pre-commit, manual]
 
       #numpydoc
       - id: numpydoc-check
-        name: Ruff lint
+        name: numpydoc-check
         entry: pixi run numpydoc-check
         language: system
         stages: [pre-commit, manual]
