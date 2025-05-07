@@ -91,17 +91,33 @@ repos:
       # ruff
       - id: ruff-check
         name: ruff-check
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-check
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
         language: system
-        files: '.*/ruff.ps1'
+        files: ".*/ruff.ps1"
         stages: [pre-commit, manual]
 
       #numpydoc
       - id: numpydoc-check
         name: numpydoc-check
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml numpydoc-check
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
         language: system
-        files: '.*/numpydoc.ps1'
+        files: ".*/numpydoc.ps1"
+        stages: [pre-commit, manual]
+
+      # Rust
+      - id: cargo-fmt
+        name: cargo-fmt
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
+        language: system
+        files: ".*/cargo-fmt.ps1"
+        stages: [pre-commit, manual]
+
+      #numpydoc
+      - id: cargo-clippy
+        name: cargo-clippy
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
+        language: system
+        files: ".*/cargo-clippy.ps1"
         stages: [pre-commit, manual]
 
   # other

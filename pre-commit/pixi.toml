@@ -3,12 +3,9 @@ channels = ["conda-forge"]
 platforms = ["linux-64"]
 
 [tasks]
-cargo-clippy = "pwsh -f run-check.ps1"
-cargo-fmt = "pwsh -f run-check.ps1"
+run-check = "pwsh -f run-check.ps1"
 format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
-numpydoc-check = "pwsh -f run-check.ps1 'numpydoc'"
 pre-commit-run = "pre-commit run --all-files"
-ruff-check = "pwsh -f run-check.ps1"
 toml-format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
 
 [dependencies]
