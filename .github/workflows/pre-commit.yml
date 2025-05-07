@@ -20,9 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: rustfmt
+
 
       - if: ${{github.repository != 'Glatzel/template'}}
         run: |
@@ -37,7 +35,7 @@ jobs:
           path: ./pre-commit/.pixi
           key: pre-commit-${{ hashFiles('./pre-commit/*','.pre-commit-config.yaml')}}
 
-      
+
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@main
         with:
