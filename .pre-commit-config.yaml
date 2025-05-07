@@ -108,7 +108,7 @@ repos:
       - id: cargo-fmt
         name: cargo-fmt
         entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
-        language: system
+        language: fail
         files: ".*/cargo-fmt.ps1"
         stages: [pre-commit, manual]
 
