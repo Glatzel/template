@@ -91,17 +91,9 @@ repos:
       # ruff
       - id: ruff-check
         name: ruff-check
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-check
         language: system
-        files: ".*/ruff.ps1"
-        stages: [pre-commit, manual]
-
-      #numpydoc
-      - id: numpydoc-check
-        name: numpydoc-check
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
-        language: system
-        files: ".*/numpydoc.ps1"
+        types: [python, pyi]
         stages: [pre-commit, manual]
 
   # other
