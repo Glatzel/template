@@ -38,6 +38,9 @@ jobs:
         with:
           run-install: false
 
+      - name: pixi install
+        run: pixi install --manifest-path ./pre-commit/pixi.toml
+
       - name: pre-commit
         run: pixi run --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
 
