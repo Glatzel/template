@@ -88,6 +88,23 @@ repos:
         types: [file, toml]
         stages: [pre-commit, manual]
 
+       # ruff
+      - id: ruff
+        name: Ruff lint
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-lint
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+        stages: [pre-commit, manual]
+
+      - id: ruff-format
+        name: Ruff format
+        entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-format
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+        stages: [pre-commit, manual]
+
   # other
   # - repo: https://github.com/renovatebot/pre-commit-hooks
     # rev: 40.7.1
