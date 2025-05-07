@@ -10,7 +10,7 @@ jobs:
       - run: |
           New-Item ./pre-commit -ItemType Directory
           curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/clerk/main//pre-commit/.pre-commit-config.yaml
-          curl -L -o pixi.toml  https://raw.githubusercontent.com/Glatzel/clerk/main//pre-commit/pixi.toml
+          curl -L -o ./pre-commit/pixi.toml  https://raw.githubusercontent.com/Glatzel/clerk/main//pre-commit/pixi.toml
         shell: pwsh
 
       - name: Set up pixi
