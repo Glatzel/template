@@ -5,5 +5,5 @@ if ($env:CI) {
     cargo clippy --all-targets --all-features
 }
 else {
-    cargo clippy --fix --all-targets --all-features 
+    cargo clippy --fix --all-targets --all-features
 }
