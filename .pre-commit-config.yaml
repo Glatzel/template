@@ -93,6 +93,7 @@ repos:
         name: ruff-check
         entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-check
         language: system
+        files: '.*/ruff.ps1'
         stages: [pre-commit, manual]
 
       #numpydoc
@@ -100,6 +101,7 @@ repos:
         name: numpydoc-check
         entry: pixi run --manifest-path ./pre-commit/pixi.toml numpydoc-check
         language: system
+        files: '.*/numpydoc.ps1'
         stages: [pre-commit, manual]
 
   # other
