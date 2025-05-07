@@ -104,24 +104,8 @@ repos:
         files: ".*/numpydoc.ps1"
         stages: [pre-commit, manual]
 
-      # Rust
-      - id: cargo-fmt
-        name: cargo-fmt
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
-        language: system
-        files: ".*/cargo-fmt.ps1"
-        stages: [pre-commit, manual]
-
-      #numpydoc
-      - id: cargo-clippy
-        name: cargo-clippy
-        entry: pixi run --manifest-path ./pre-commit/pixi.toml run-check
-        language: system
-        files: ".*/cargo-clippy.ps1"
-        stages: [pre-commit, manual]
-
   # other
-  # - repo: https://github.com/renovatebot/pre-commit-hooks
-  #   rev: 40.7.1
-  #   hooks:
-  #     - id: renovate-config-validator
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 40.7.1
+    hooks:
+      - id: renovate-config-validator
