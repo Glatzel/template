@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   pre-commit:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
