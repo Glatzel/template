@@ -9,7 +9,7 @@ jobs:
 
       - run: |
           New-Item ./pre-commit -ItemType Directory
-          curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/.pre-commit-config.yaml
+          curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/template/main//.pre-commit-config.yaml
           curl -L -o ./pre-commit/pixi.toml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pixi.toml
         shell: pwsh
 
