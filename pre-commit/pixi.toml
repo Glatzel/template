@@ -1,9 +1,6 @@
 [workspace]
-authors = ["Glatzel"]
 channels = ["conda-forge"]
-name = "pre-commit"
 platforms = ["linux-64"]
-version = "0.1.0"
 
 [tasks]
 pre-commit-run = "pre-commit run --all-files"
