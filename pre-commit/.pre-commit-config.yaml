@@ -30,11 +30,11 @@ repos:
     hooks:
       - id: numpydoc-validation
 
-  # rust
-  - repo: https://github.com/est31/cargo-udeps
-    rev: v0.1.47
+  # other
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
     hooks:
-    - id: udeps
+      - id: actionlint
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
     rev: 39.248.1

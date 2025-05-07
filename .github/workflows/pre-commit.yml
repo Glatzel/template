@@ -1,0 +1,21 @@
+name: pre-commit
+on:
+    
+    workflow_call:
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/clerk/main//pre-commit/.pre-commit-config.yaml
+          curl -L -o pre-commit.pixi  https://raw.githubusercontent.com/Glatzel/clerk/main//pre-commit/pre-commit.pixi
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@main
+        with:
+          run-install: false
+
+      - name: pre-commit
+        run: pixi run --manifest-path pre-commit.pixi.toml pre-commit-run --color=always --show-diff-on-failure
