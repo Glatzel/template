@@ -5,16 +5,17 @@ platforms = ["linux-64"]
 [tasks]
 cargo-clippy = "pwsh -f run-check.ps1 'cargo-clippy'"
 cargo-fmt = "pwsh -f run-check.ps1 'cargo-fmt'"
+format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
+numpydoc-check = "pwsh -f run-check.ps1 'numpydoc'"
 pre-commit-run = "pre-commit run --all-files"
 ruff-check = "pwsh -f run-check.ps1 'ruff'"
 toml-format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
-format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
-numpydoc-check = "pwsh -f run-check.ps1 'numpydoc'"
 
 [dependencies]
 actionlint = "==1.7.4"
 numpydoc = "==1.8.0"
 pre-commit = "==4.2.0"
 pre-commit-hooks = "==4.6.0"
+python = "3.11.*"
 ruff = "==0.11.7"
 taplo = "==0.9.1"
