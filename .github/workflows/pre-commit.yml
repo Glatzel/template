@@ -20,6 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rustfmt
+
       - if: ${{github.repository != 'Glatzel/template'}}
         run: |
           New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
