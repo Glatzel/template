@@ -1,4 +1,4 @@
 Set-Location $PSScriptRoot
 Set-Location ..
-pixi run ruff format
-pixi run ruff check --fix
+ruff format
+ruff check --fix --show-fixes --exit-non-zero-on-fix

@@ -9,22 +9,29 @@ on:
     paths-ignore:
       - "*.md"
   workflow_call:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - run: |
+      - if: ${{github.event_name == 'workflow_call'}}
+        run: |
           New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
           curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/template/main//.pre-commit-config.yaml
           curl -L -o ./pre-commit/pixi.toml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pixi.toml
+          curl -L -o ./pre-commit/run-check.ps1  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/run-check.ps1
         shell: pwsh
 
       - uses: actions/cache@v4
         with:
           path: ./pre-commit/.pixi
-          key: pre-commit-${{ hashFiles('./pre-commit/pixi.toml','.pre-commit-config.yaml')}}
+          key: pre-commit-${{ hashFiles('./pre-commit/*','.pre-commit-config.yaml')}}
 
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@main
