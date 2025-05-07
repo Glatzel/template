@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - if: ${{github.repository != 'Glatzel/template'}}
+      - if: ${{github.event_name == 'workflow_call'}}
         run: |
           New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
           curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/template/main//.pre-commit-config.yaml
