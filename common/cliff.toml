@@ -5,8 +5,8 @@
 # Configuration options are organized into tables and keys.
 # See documentation for more information on available options.
 [remote.github]
-owner = ""
-repo = ""
+owner = "Glatzel"
+repo = "pyxis"
 
 [changelog]
 # template for the changelog header
@@ -33,14 +33,27 @@ body = """
 {% endif -%}
 
 {% for group, commits in commits | group_by(attribute="group") %}
-    ### {{ group | upper_first }}{{"\n"}}
+    ### {{ group | upper_first }}{{"\n"}}{{"\n"}}
     {%- for commit in commits %}
-        - {{ commit.message | split(pat="\n") | first | upper_first | trim }}\
+        {%- if commit.scope -%}
+        {% else -%}
+            - {{ commit.message | split(pat="\n") | first | upper_first | trim }}\
             {% if commit.remote.username %} by @{{ commit.remote.username }}{%- endif -%}
             {% if commit.remote.pr_number %} in \
             [#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }}) \
             {%- endif -%}
+        {%- endif -%}
     {% endfor %}
+    {% for group, commits in commits | group_by(attribute="scope") %}
+        #### {{ group | upper_first }}
+        {% for commit in commits %}
+            - {{ commit.message | split(pat="\n") | first | upper_first | trim }}\
+            {% if commit.remote.username %} by @{{ commit.remote.username }}{%- endif -%}
+            {% if commit.remote.pr_number %} in \
+            [#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }}) \
+            {%- endif -%}
+        {% endfor %}
+    {% endfor %}\
 {% endfor %}\n
 """
 # template for the changelog footer
@@ -95,6 +108,7 @@ commit_parsers = [
     { message = "^revert", group = "Revert" },
     { message = "^.*: add", group = "Added" },
     { message = "^.*: support", group = "Added" },
+    { message = "^.*: initial", group = "Added" },
     { message = "^.*: remove", group = "Removed" },
     { message = "^.*: delete", group = "Removed" },
     { message = "^build", skip = true },
@@ -109,7 +123,7 @@ topo_order = false
 # sort the commits inside sections by oldest/newest order
 sort_commits = "oldest"
 # A regular expression for matching the git tags.
-tag_pattern = '^v\d+\.\d+\.\d+\S*$'
+tag_pattern = '^v\d+\.\d+\.\d+$'
 # A regex for ignore processing the matched tags.
 # ignore_tags include ignored commits into the next tag.
-ignore_tags = '^v\d+\.\d+\.\d+\S+$'
+# ignore_tags = '^v\d+\.\d+\.\d+-\S+$'
