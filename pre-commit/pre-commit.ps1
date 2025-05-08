@@ -6,7 +6,6 @@ Set-Location $PSScriptRoot/..
 New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
 if ($update) {
     for ($i = 0; $i -lt 2; $i++) {
-        curl -L -o ./pre-commit/clippy.toml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/clippy.toml
         curl -L -o ./pre-commit/pixi.lock  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pixi.lock
         curl -L -o ./pre-commit/pixi.toml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pixi.toml
         curl -L -o ./pre-commit/pre-commit.ps1  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pre-commit.ps1
