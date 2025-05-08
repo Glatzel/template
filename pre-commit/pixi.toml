@@ -9,7 +9,7 @@ ruff-format = "cd ..;ruff format --force-exclude"
 ruff-lint = "cd ..;ruff check --fix --show-fixes --exit-non-zero-on-fix --force-exclude"
 
 [dependencies]
-actionlint = "==1.7.4"
+actionlint = "==1.7.7"
 numpydoc = "==1.8.0"
 pre-commit = "==4.2.0"
 pre-commit-hooks = "==4.6.0"
