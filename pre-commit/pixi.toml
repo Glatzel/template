@@ -7,7 +7,7 @@ pre-commit-run = "pre-commit run --all-files"
 toml-format = { cmd = "taplo fmt", env = { RUST_LOG = "warn" } }
 ruff-format = "cd ..;ruff format --force-exclude"
 ruff-lint = "cd ..;ruff check --fix --show-fixes --exit-non-zero-on-fix --force-exclude"
-numpydoc-check = "numpydoc lint"
+numpydoc-check = "cd ..;numpydoc lint"
 
 [dependencies]
 actionlint = "==1.7.7"
