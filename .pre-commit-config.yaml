@@ -89,7 +89,7 @@ repos:
         stages: [pre-commit, manual]
 
        # ruff
-      - id: ruff
+      - id: ruff-lint
         name: Ruff lint
         entry: pixi run --manifest-path ./pre-commit/pixi.toml ruff-lint
         language: system
