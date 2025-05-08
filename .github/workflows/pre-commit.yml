@@ -27,7 +27,6 @@ jobs:
           New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
           curl -L -o .pre-commit-config.yaml  https://raw.githubusercontent.com/Glatzel/template/main//.pre-commit-config.yaml
           curl -L -o ./pre-commit/pixi.toml  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/pixi.toml
-          curl -L -o ./pre-commit/run-check.ps1  https://raw.githubusercontent.com/Glatzel/template/main//pre-commit/run-check.ps1
         shell: pwsh
 
       - uses: actions/cache@v4
