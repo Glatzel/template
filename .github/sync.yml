@@ -30,14 +30,14 @@ Glatzel/clerk:
   - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
-      repo: "clerk"
+      repo: clerk
 Glatzel/pyxis:
   - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
-      repo: "pyxis"
+      repo: pyxis
 Glatzel/fornax:
   - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
-      repo: "fornax"
+      repo: fornax
