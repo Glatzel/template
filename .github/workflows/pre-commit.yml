@@ -32,7 +32,12 @@ jobs:
         uses: prefix-dev/setup-pixi@main
         with:
           run-install: false
-      - run: pixi install --manifest-path ./pre-commit/pixi.toml
+      - run: |
+          New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
+          aria2c -c -x16 -s16 -Z -d ./pre-commit `
+              "https://raw.githubusercontent.com/Glatzel/template/main/pre-commit/pixi.toml" `
+              "https://raw.githubusercontent.com/Glatzel/template/main/pre-commit/pixi.lock"
+          pixi install --manifest-path ./pre-commit/pixi.toml
         shell: pwsh
 
       # rust setup
