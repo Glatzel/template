@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/Glatzel/template
-    rev: 30e4541565d09d2ec7077068f52aa3f4647030f9
+    rev: 00b9673a2d750d1647f73f4f72e1a72752ba35b6
     hooks:
       # # pre-commit-hooks
       # - id: check-added-large-files
