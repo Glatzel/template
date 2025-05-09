@@ -77,7 +77,7 @@
   files: ^\.github/workflows/
   stages: [pre-commit, manual]
 
-# TOML format
+# TOML
 - id: taplo-format
   name: TOML format
   entry: pixi run --manifest-path ./pre-commit/pixi.toml toml-format
