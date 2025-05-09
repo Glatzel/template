@@ -2,32 +2,32 @@ repos:
   - repo: https://github.com/Glatzel/template
     rev: 00b9673a2d750d1647f73f4f72e1a72752ba35b6
     hooks:
-      # # pre-commit-hooks
-      # - id: check-added-large-files
-      # - id: check-ast
-      # - id: check-json
-      # - id: check-toml
-      # - id: check-xml
-      # - id: check-yaml
-      # - id: detect-private-key
-      # - id: end-of-file-fixer
-      # - id: mixed-line-ending
-      # - id: trailing-whitespace
-      # #rust
-      # - id: cargo-clippy
-      # - id: cargo-fmt
-      # # csharp
-      # - id: csharpier
-      # # python
-      # - id: ruff-lint
-      # - id: ruff-format
-      # - id: numpydoc
-      # # misc
-      # - id: taplo-format
-      # - id: actionlint
+      # pre-commit-hooks
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+      #rust
+      - id: cargo-clippy
+      - id: cargo-fmt
+      # csharp
+      - id: csharpier
+      # python
+      - id: ruff-lint
+      - id: ruff-format
+      - id: numpydoc
+      # misc
+      - id: taplo-format
+      - id: actionlint
       - id: typos
 
-  # - repo: https://github.com/renovatebot/pre-commit-hooks
-  #   rev: 40.10.4
-  #   hooks:
-  #     - id: renovate-config-validator
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 40.10.4
+    hooks:
+      - id: renovate-config-validator
