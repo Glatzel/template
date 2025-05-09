@@ -68,23 +68,6 @@
   types: [text]
   stages: [pre-commit, manual]
 
-# GitHub Actions
-- id: actionlint
-  name: Lint GitHub Actions workflow files
-  language: system
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml actionlint
-  types: [yaml]
-  files: ^\.github/workflows/
-  stages: [pre-commit, manual]
-
-# TOML
-- id: taplo-format
-  name: TOML format
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml toml-format
-  language: system
-  types: [file, toml]
-  stages: [pre-commit, manual]
-
 #rust
 - id: cargo-clippy
   name: cargo-clippy
@@ -101,3 +84,53 @@
   files: ".*/cargo-fmt.ps1"
   require_serial: true
   stages: [pre-commit, manual]
+
+# csharp
+- id: csharpier
+  name: csharpier
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-csharpier
+  files: ".*/cargo-clippy.ps1"
+  language: system
+  pass_filenames: false
+  require_serial: true
+  stages: [pre-commit, manual]
+
+# python
+- id: ruff-lint
+  name: Ruff lint
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-lint
+  language: system
+  types_or: [python, pyi]
+  require_serial: true
+  stages: [pre-commit, manual]
+
+- id: ruff-format
+  name: Ruff format
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-format
+  language: system
+  types_or: [python, pyi]
+  require_serial: true
+  stages: [pre-commit, manual]
+
+- id: numpydoc
+  name: numpydoc
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-numpydoc
+  language: system
+  types_or: [python]
+  stages: [pre-commit, manual]
+
+# misc
+- id: taplo-format
+  name: TOML format
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-taplo
+  language: system
+  types: [file, toml]
+  stages: [pre-commit, manual]
+- id: actionlint
+  name: Lint GitHub Actions workflow files
+  language: system
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml actionlint
+  types: [yaml]
+  files: ^\.github/workflows/
+  stages: [pre-commit, manual]
+
