@@ -35,7 +35,7 @@ jobs:
       - run: |
           New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
           aria2c -c -x16 -s16 -d -Z ./pre-commit `
-              "https://raw.githubusercontent.com/Glatzel/template/main/pre-commit/pixi.toml"  
+              "https://raw.githubusercontent.com/Glatzel/template/main/pre-commit/pixi.toml" `
               "https://raw.githubusercontent.com/Glatzel/template/main/pre-commit/pixi.lock"
           pixi install --manifest-path ./pre-commit/pixi.toml
         shell: pwsh
