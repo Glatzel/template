@@ -6,7 +6,7 @@
 # See documentation for more information on available options.
 [remote.github]
 owner = "Glatzel"
-repo = "pyxis"
+repo = "{{ repo }}"
 
 [changelog]
 # template for the changelog header
