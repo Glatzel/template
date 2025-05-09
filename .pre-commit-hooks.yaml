@@ -1,10 +1,10 @@
-# TOML format
-- id: taplo-format
-  name: TOML format
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml toml-format
-  language: system
-  types: [file, toml]
-  stages: [pre-commit, manual]
+
+# - id: taplo-format
+#   name: TOML format
+#   entry: pixi run --manifest-path ./pre-commit/pixi.toml toml-format
+#   language: system
+#   types: [file, toml]
+#   stages: [pre-commit, manual]
 
 #rust
 - id: cargo-clippy
