@@ -27,17 +27,17 @@ group:
 
 # cliff
 Glatzel/clerk:
-  - sources: ./common/cliff.toml
+  - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
       repo: "clerk"
 Glatzel/pyxis:
-  - sources: ./common/cliff.toml
+  - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
       repo: "pyxis"
 Glatzel/fornax:
-  - sources: ./common/cliff.toml
+  - source: ./common/cliff.toml
     dest: ./cliff.toml
     template:
       repo: "fornax"
