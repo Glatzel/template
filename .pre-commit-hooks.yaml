@@ -1,79 +1,69 @@
 # region pre-commit
 - id: check-added-large-files
   name: check-added-large-files
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-added-large-files
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-added-large-files
   language: system
   stages: [pre-commit, manual]
 
 - id: check-ast
   name: check-ast
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-added-large-files
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-added-large-files
   language: system
   types: [python]
   stages: [pre-commit, manual]
 
 - id: check-json
   name: check-json
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-json
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-json
   language: system
   types: [json]
   stages: [pre-commit, manual]
 
 - id: check-toml
   name: check-toml
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-toml
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-toml
   language: system
   types: [toml]
   stages: [pre-commit, manual]
 
 - id: check-yaml
   name: check-yaml
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-yaml
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-yaml
   language: system
   types: [yaml]
   stages: [pre-commit, manual]
 
 - id: check-xml
   name: check-xml
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml check-xml
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-xml
   language: system
   types: [xml]
   stages: [pre-commit, manual]
 
 - id: detect-private-key
   name: detect-private-key
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml detect-private-key
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml detect-private-key
   language: system
   types: [text]
   stages: [pre-commit, manual]
 
 - id: end-of-file-fixer
   name: end-of-file-fixer
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml end-of-file-fixer
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml end-of-file-fixer
   language: system
   types: [text]
   stages: [pre-commit, manual]
 
 - id: mixed-line-ending
   name: mixed-line-ending
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml mixed-line-ending
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml mixed-line-ending
   language: system
   types: [text]
   stages: [pre-commit, manual]
 
 - id: trailing-whitespace
   name: trailing-whitespace
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml trailing-whitespace-fixer
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml trailing-whitespace-fixer
   language: system
   types: [text]
   stages: [pre-commit, manual]
@@ -81,8 +71,7 @@
 # region rust
 - id: cargo-clippy
   name: cargo-clippy
-  entry: >
-    pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
+  entry: pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
   language: system
   files: ".*/cargo-clippy.ps1"
   require_serial: true
@@ -90,8 +79,7 @@
 
 - id: cargo-fmt
   name: cargo-fmt
-  entry: >
-    pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
+  entry: pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
   language: system
   files: ".*/cargo-fmt.ps1"
   require_serial: true
@@ -102,8 +90,7 @@
 #  csharpier format .; csharpier check .
 - id: csharpier
   name: csharpier
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-csharpier
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-csharpier
   files: ".*/cargo-clippy.ps1"
   language: system
   pass_filenames: false
@@ -113,8 +100,7 @@
 # region python
 - id: ruff-lint
   name: Ruff lint
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-lint
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-lint
   language: system
   types_or: [python, pyi]
   require_serial: true
@@ -122,8 +108,7 @@
 
 - id: ruff-format
   name: Ruff format
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-format
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-format
   language: system
   types_or: [python, pyi]
   require_serial: true
@@ -131,8 +116,7 @@
 
 - id: numpydoc
   name: numpydoc
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-numpydoc
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-numpydoc
   language: system
   types_or: [python]
   stages: [pre-commit, manual]
@@ -140,9 +124,7 @@
 # region misc
 - id: taplo
   name: TOML format
-  entry: >
-    RUST_LOG = "warn"
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-taplo
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-taplo
   language: system
   types: [file, toml]
   stages: [pre-commit, manual]
@@ -150,16 +132,14 @@
 - id: actionlint
   name: Lint GitHub Actions workflow files
   language: system
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml actionlint
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml actionlint
   types: [yaml]
   files: ^\.github/workflows/
   stages: [pre-commit, manual]
 
 - id: typos
   name: typos
-  entry: >
-    pixi run --manifest-path ./pre-commit/pixi.toml hook-typos
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-typos
   language: system
   types: [text]
   stages: [pre-commit, manual]
