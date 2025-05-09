@@ -136,3 +136,6 @@
 - id: typos
   name: typos
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-typos
+  language: system 
+  types: [text]
+  stages: [pre-commit, manual]
