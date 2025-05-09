@@ -19,27 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly
+      - uses: actions/setup-python@v3
         with:
-          components: rustfmt
-      - uses: Swatinem/rust-cache@v2
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ./pre-commit/.pixi
-            ~/.cache/pre-commit
-          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml','./pre-commit/*')}}
-          restore-keys:
-            pre-commit-
-
-      - name: Set up pixi
-        uses: prefix-dev/setup-pixi@main
-        with:
-          run-install: false
-      - run: pixi install --manifest-path ./pre-commit/pixi.toml
-
-      - name: pre-commit
-        run: pixi run --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
-
+          python-version: 3.11
+      - uses: pre-commit/action@v3.0.1
       - uses: pre-commit-ci/lite-action@v1.1.0
         if: always()
