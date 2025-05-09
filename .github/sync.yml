@@ -1,4 +1,3 @@
-
 group:
   - files:
       - source: ./python/ruff.toml
@@ -19,20 +18,23 @@ group:
       Glatzel/fornax
 
   - files:
-    - source: ./rust/rustfmt.toml
-      dest: ./rust/rustfmt.toml
+      - source: ./rust/rustfmt.toml
+        dest: ./rust/rustfmt.toml
     repos: |
       Glatzel/clerk
+
+  - files:
+      - source: ./rust/rustfmt.toml
+        dest: ./rustfmt.toml
+    repos: |
+      Glatzel/fornax
       Glatzel/pyxis
 
   - files:
-    - source: ./rust/rustfmt.toml
-      dest: ./rustfmt.toml
+      - source: ./pre-commit/
+        dest: ./pre-commit/
     repos: |
-      Glatzel/fornax
-
-  - files:
-    - source: ./pre-commit/
-      dest: ./pre-commit/
-    repos: |
+      Glatzel/clerk
+      Glatzel/demon-forge
+      Glatzel/pyxis
       Glatzel/fornax
