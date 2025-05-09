@@ -4,8 +4,9 @@ platforms = ["linux-64", "win-64"]
 
 [tasks]
 pre-commit-run = "pre-commit run --all-files"
+
 hook-csharpier = "cd ..; csharpier .; csharpier . --check"
-# >=1.0.0
+# csharpier >=1.0.0
 # hook-csharpier = "cd ..; csharpier format .; csharpier check ."
 hook-numpydoc = "cd ..; bash -c 'numpydoc lint \"$@\" --ignore ES01 EX01 GL08 PR04 RT03 SA01 SA04' -- "
 hook-ruff-format = "cd ..;ruff format --force-exclude --exit-non-zero-on-format"

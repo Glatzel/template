@@ -1,4 +1,4 @@
-# pre-commit-hooks
+# region pre-commit
 - id: check-added-large-files
   name: check-added-large-files
   entry: pixi run --manifest-path ./pre-commit/pixi.toml check-added-large-files
@@ -68,7 +68,7 @@
   types: [text]
   stages: [pre-commit, manual]
 
-#rust
+# region rust
 - id: cargo-clippy
   name: cargo-clippy
   entry: pwsh -NoProfile -Command "$ErrorActionPreference ='Stop';$PSNativeCommandUseErrorActionPreference = $true;foreach ($f in $args) { &$f}"
@@ -85,7 +85,7 @@
   require_serial: true
   stages: [pre-commit, manual]
 
-# csharp
+# region csharp
 - id: csharpier
   name: csharpier
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-csharpier
@@ -95,12 +95,11 @@
   require_serial: true
   stages: [pre-commit, manual]
 
-# python
+# region python
 - id: ruff-lint
   name: Ruff lint
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-lint
   language: system
-  pass_filenames: false
   types_or: [python, pyi]
   require_serial: true
   stages: [pre-commit, manual]
@@ -109,7 +108,6 @@
   name: Ruff format
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-ruff-format
   language: system
-  pass_filenames: false
   types_or: [python, pyi]
   require_serial: true
   stages: [pre-commit, manual]
@@ -121,7 +119,7 @@
   types_or: [python]
   stages: [pre-commit, manual]
 
-# misc
+# region misc
 - id: taplo-format
   name: TOML format
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-taplo
