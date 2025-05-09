@@ -2,13 +2,8 @@ group:
   - files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
-    repos: |
-      Glatzel/clerk
-      Glatzel/demon-forge
-      Glatzel/pyxis
-      Glatzel/fornax
-
-  - files:
+      - source: ./pre-commit/
+        dest: ./pre-commit/
       - source: ./common/taplo.toml
         dest: ./taplo.toml
     repos: |
@@ -29,12 +24,3 @@ group:
     repos: |
       Glatzel/fornax
       Glatzel/pyxis
-
-  - files:
-      - source: ./pre-commit/
-        dest: ./pre-commit/
-    repos: |
-      Glatzel/clerk
-      Glatzel/demon-forge
-      Glatzel/pyxis
-      Glatzel/fornax
