@@ -28,13 +28,13 @@ repos:
 
   # rust
   - repo: https://github.com/bnjbvr/cargo-machete
-    rev: v0.8.0
+    rev: main
     hooks:
       - id: cargo-machete
 
   # other
   - repo: https://github.com/rhysd/actionlint
-    rev: 0.8.1
+    rev: b50f60b
     hooks:
       - id: actionlint
 

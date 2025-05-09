@@ -10,7 +10,7 @@
 - id: cargo-clippy
   name: cargo-clippy
   entry: pwsh -NoProfile -Command "$ErrorActionPreference ='Stop';$PSNativeCommandUseErrorActionPreference = $true;foreach ($f in $args) { &$f}"
-  language: system
+  language: rust
   files: ".*/cargo-clippy.ps1"
   require_serial: true
   stages: [pre-commit, manual]
@@ -18,7 +18,8 @@
 - id: cargo-fmt
   name: cargo-fmt
   entry: pwsh -NoProfile -Command "$ErrorActionPreference ='Stop';$PSNativeCommandUseErrorActionPreference = $true;foreach ($f in $args) { &$f}"
-  language: system
+  language: rust
+  language_version: nightly
   files: ".*/cargo-fmt.ps1"
   require_serial: true
   stages: [pre-commit, manual]
