@@ -24,7 +24,7 @@ jobs:
         with:
           run-install: false
 
-      - run: pixi global install git-cliff
+      - run: pixi global install git-cliff > changelog.md
 
       - run: git-cliff
 
