@@ -25,8 +25,9 @@ jobs:
           path: |
             ./pre-commit/.pixi
             ~/.cache/pre-commit
-          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml')}}
-
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml','./pre-commit/*')}}
+          restore-keys: |
+            pre-commit
       #  pixi setup
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@main
