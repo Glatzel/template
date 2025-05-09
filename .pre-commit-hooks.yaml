@@ -133,4 +133,6 @@
   types: [yaml]
   files: ^\.github/workflows/
   stages: [pre-commit, manual]
-
+- id: typos
+  name: typos
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-typos
