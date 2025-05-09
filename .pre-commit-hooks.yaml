@@ -12,27 +12,6 @@
   types: [python]
   stages: [pre-commit, manual]
 
-- id: check-yaml
-  name: check-yaml
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-yaml
-  language: system
-  types: [yaml]
-  stages: [pre-commit, manual]
-
-- id: end-of-file
-  name: end-of-file
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml end-of-file-fixer
-  language: system
-  types: [text]
-  stages: [pre-commit, manual]
-
-- id: trailing-whitespace
-  name: trailing-whitespace
-  entry: pixi run --manifest-path ./pre-commit/pixi.toml trailing-whitespace-fixer
-  language: system
-  types: [text]
-  stages: [pre-commit, manual]
-
 - id: check-json
   name: check-json
   entry: pixi run --manifest-path ./pre-commit/pixi.toml check-json
@@ -45,6 +24,13 @@
   entry: pixi run --manifest-path ./pre-commit/pixi.toml check-toml
   language: system
   types: [toml]
+  stages: [pre-commit, manual]
+
+- id: check-yaml
+  name: check-yaml
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml check-yaml
+  language: system
+  types: [yaml]
   stages: [pre-commit, manual]
 
 - id: check-xml
@@ -61,9 +47,23 @@
   types: [text]
   stages: [pre-commit, manual]
 
+- id: end-of-file-fixer
+  name: end-of-file-fixer
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml end-of-file-fixer
+  language: system
+  types: [text]
+  stages: [pre-commit, manual]
+
 - id: mixed-line-ending
   name: mixed-line-ending
   entry: pixi run --manifest-path ./pre-commit/pixi.toml mixed-line-ending
+  language: system
+  types: [text]
+  stages: [pre-commit, manual]
+
+- id: trailing-whitespace
+  name: trailing-whitespace
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml trailing-whitespace-fixer
   language: system
   types: [text]
   stages: [pre-commit, manual]
