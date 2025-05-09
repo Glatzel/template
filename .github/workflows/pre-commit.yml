@@ -32,9 +32,7 @@ jobs:
         uses: prefix-dev/setup-pixi@main
         with:
           run-install: false
-      - run: |
-          New-Item ./pre-commit -ItemType Directory -ErrorAction SilentlyContinue
-          pixi install --manifest-path ./pre-commit/pixi.toml
+      - run: pixi install --manifest-path ./pre-commit/pixi.toml
         shell: pwsh
 
       # rust setup
