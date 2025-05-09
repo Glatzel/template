@@ -1,4 +1,4 @@
-name: post-release
+name: update-changelog
 
 on:
   workflow_call:
