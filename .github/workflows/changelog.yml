@@ -23,7 +23,7 @@ jobs:
 
       - run: pixi global install git-cliff
 
-      - run: git-cliff --github-repo ${{github.repository}}  > changelog.md
+      - run: git-cliff --github-repo ${{github.repository}}
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
