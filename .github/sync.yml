@@ -19,15 +19,6 @@ group:
       Glatzel/fornax
 
   - files:
-      - source: ./rust/taplo.toml
-        dest: ./taplo.toml
-    repos: |
-      Glatzel/clerk
-      Glatzel/demon-forge
-      Glatzel/pyxis
-      Glatzel/fornax
-
-  - files:
     - source: ./rust/rustfmt.toml
       dest: ./rust/rustfmt.toml
     repos: |
@@ -39,6 +30,7 @@ group:
       dest: ./rustfmt.toml
     repos: |
       Glatzel/fornax
+
   - files:
     - source: ./pre-commit/
       dest: ./pre-commit/
