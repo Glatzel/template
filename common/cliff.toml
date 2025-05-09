@@ -4,10 +4,6 @@
 # Lines starting with "#" are comments.
 # Configuration options are organized into tables and keys.
 # See documentation for more information on available options.
-[remote.github]
-owner = "Glatzel"
-repo = "{{ repo }}"
-
 [changelog]
 # template for the changelog header
 header = """

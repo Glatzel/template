@@ -12,9 +12,10 @@ group:
       Glatzel/pyxis
       Glatzel/fornax
 
+  # rustfmt.toml
   - files:
-      - source: ./rust/rustfmt.toml
-        dest: ./rust/rustfmt.toml
+    - source: ./rust/rustfmt.toml
+      dest: ./rust/rustfmt.toml
     repos: |
       Glatzel/clerk
 
@@ -25,19 +26,12 @@ group:
       Glatzel/fornax
       Glatzel/pyxis
 
-# cliff
-Glatzel/clerk:
-  - source: ./common/cliff.toml
-    dest: ./cliff.toml
-    template:
-      repo: clerk
-Glatzel/pyxis:
-  - source: ./common/cliff.toml
-    dest: ./cliff.toml
-    template:
-      repo: pyxis
-Glatzel/fornax:
-  - source: ./common/cliff.toml
-    dest: ./cliff.toml
-    template:
-      repo: fornax
+  # cliff.toml
+  - files:
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    repos: |
+      Glatzel/clerk
+      Glatzel/pyxis
+      Glatzel/fornax
+
