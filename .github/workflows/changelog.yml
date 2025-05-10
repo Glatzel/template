@@ -26,7 +26,7 @@ jobs:
 
       - run: pixi global install git-cliff
 
-      - run: git-cliff > changelog.md
+      - run: git-cliff > CHANGELOG.md
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
@@ -37,6 +37,6 @@ jobs:
           branch: update-changelog
           base: main
           delete-branch: true
-          add-paths: changelog.md
+          add-paths: CHANGELOG.md
           assignees: Glatzel
           draft: false
