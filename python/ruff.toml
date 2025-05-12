@@ -32,6 +32,7 @@ select = [
   "TRY",    # tryceratops
   "UP",     # pyupgrade
   "W",      # pycodestyle
+
 ]
 
 [lint.pydocstyle]
