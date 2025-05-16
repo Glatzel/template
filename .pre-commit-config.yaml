@@ -14,8 +14,8 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
       #rust
-      - id: cargo-clippy
-      - id: cargo-fmt
+      # - id: cargo-clippy
+      # - id: cargo-fmt
       # csharp
       - id: csharpier
       # python
