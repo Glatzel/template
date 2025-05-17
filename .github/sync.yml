@@ -6,6 +6,7 @@ group:
         dest: ./taplo.toml
     repos: |
       Glatzel/cetus
+
   - files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
