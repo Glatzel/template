@@ -1,44 +1,55 @@
 group:
-  - files:
+  - repos: Glatzel/cetus
+    files:
       - source: ./pre-commit/
         dest: ./pre-commit/
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-    repos: |
-      Glatzel/cetus
 
-  - files:
+  - repos: Glatzel/clerk
+    files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./pre-commit/
         dest: ./pre-commit/
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-    repos: |
-      Glatzel/clerk
-      Glatzel/demon-forge
-      Glatzel/pyxis
-      Glatzel/fornax
+      - source: ./rust/rustfmt.toml
+        dest: ./rust/rustfmt.toml
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
 
-  # rustfmt.toml
-  - files:
-    - source: ./rust/rustfmt.toml
-      dest: ./rust/rustfmt.toml
-    repos: |
-      Glatzel/clerk
+  - repos: Glatzel/demon-forge
+    files:
+      - source: ./python/ruff.toml
+        dest: ./ruff.toml
+      - source: ./pre-commit/
+        dest: ./pre-commit/
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
 
-  - files:
+  - repos: Glatzel/fornax
+    files:
+      - source: ./python/ruff.toml
+        dest: ./ruff.toml
+      - source: ./pre-commit/
+        dest: ./pre-commit/
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
       - source: ./rust/rustfmt.toml
         dest: ./rustfmt.toml
-    repos: |
-      Glatzel/fornax
-      Glatzel/pyxis
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
 
-  # cliff.toml
-  - files:
-    - source: ./common/cliff.toml
-      dest: ./cliff.toml
-    repos: |
-      Glatzel/clerk
-      Glatzel/pyxis
-      Glatzel/fornax
+  - repos: Glatzel/pyxis
+    files:
+      - source: ./python/ruff.toml
+        dest: ./ruff.toml
+      - source: ./pre-commit/
+        dest: ./pre-commit/
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
+      - source: ./rust/rustfmt.toml
+        dest: ./rustfmt.toml
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
