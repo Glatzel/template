@@ -1,5 +1,12 @@
 group:
   - files:
+      - source: ./pre-commit/
+        dest: ./pre-commit/
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
+    repos: |
+      Glatzel/cetus
+  - files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./pre-commit/
