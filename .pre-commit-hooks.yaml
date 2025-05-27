@@ -150,3 +150,4 @@
   language: system
   types: [markdown]
   stages: [pre-commit, manual]
+  pass_filenames: false
