@@ -143,3 +143,10 @@
   language: system
   types: [text]
   stages: [pre-commit, manual]
+
+- id: markdown
+  name: markdown
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-markdown
+  language: system
+  types: [markdown]
+  stages: [pre-commit, manual]
