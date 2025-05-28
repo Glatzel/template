@@ -71,7 +71,7 @@
 # region rust
 - id: cargo-clippy
   name: cargo-clippy
-  entry: pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
+  entry: pwsh -NoProfile -c " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { write-error $f;&$f} "
   language: system
   files: ".*/cargo-clippy.ps1"
   require_serial: true
