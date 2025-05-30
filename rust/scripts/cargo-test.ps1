@@ -8,7 +8,7 @@ if (Test-Path $PSScriptRoot/.pixi.toml) {
     pixi install
 }
 Write-Output "::group::nextest"
-cargo +nightly llvm-cov nextest --no-report --all --branch --no-fail-fast --no-tests pass
+cargo +nightly llvm-cov nextest --no-report --all --branch --no-fail-fast
 $code = $LASTEXITCODE
 Write-Output "::endgroup::"
 
