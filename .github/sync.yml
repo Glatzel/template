@@ -20,6 +20,8 @@ group:
         dest: ./cliff.toml
       - source: ./rust/scripts/cargo-clippy.ps1
         dest: ./rust/scripts/cargo-clippy.ps1
+      - source: ./rust/scripts/cargo-fmt.ps1
+        dest: ./rust/scripts/cargo-fmt.ps1
 
   - repos: Glatzel/demon-forge
     files:
@@ -44,6 +46,8 @@ group:
         dest: ./cliff.toml
       - source: ./rust/scripts/cargo-clippy.ps1
         dest: ./scripts/cargo-clippy.ps1
+      - source: ./rust/scripts/cargo-fmt.ps1
+        dest: ./rust/scripts/cargo-fmt.ps1
 
   - repos: Glatzel/pyxis
     files:
@@ -53,13 +57,26 @@ group:
         dest: ./pre-commit/
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./rust/rustfmt.toml
-        dest: ./rustfmt.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
+
+      - source: ./rust/rustfmt.toml
+        dest: ./python/rustfmt.toml
+      - source: ./rust/rustfmt.toml
+        dest: ./rust/rustfmt.toml
+      - source: ./rust/rustfmt.toml
+        dest: ./rust-cuda/rustfmt.toml
+
       - source: ./rust/scripts/cargo-clippy.ps1
         dest: ./rust/scripts/cargo-clippy.ps1
       - source: ./rust/scripts/cargo-clippy.ps1
         dest: ./rust-cuda/scripts/cargo-clippy.ps1
       - source: ./rust/scripts/cargo-clippy.ps1
         dest: ./python/scripts/cargo-clippy.ps1
+
+      - source: ./rust/scripts/cargo-fmt.ps1
+        dest: ./rust/scripts/cargo-fmt.ps1
+      - source: ./rust/scripts/cargo-fmt.ps1
+        dest: ./rust-cuda/scripts/cargo-fmt.ps1
+      - source: ./rust/scripts/cargo-fmt.ps1
+        dest: ./python/scripts/cargo-fmt.ps1

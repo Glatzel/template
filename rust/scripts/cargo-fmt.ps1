@@ -1,9 +1,7 @@
-Set-Location $PSScriptRoot
-Set-Location ..
-
-if ($env:CI) {
-    cargo +nightly fmt --all -- --check
+if (Test-Path $PSScriptRoot/setup.ps1) {
+    &$PSScriptRoot/setup.ps1
 }
-else {
-    cargo +nightly fmt --all
-}
+$ROOT = git rev-parse --show-toplevel
+Set-Location $PSScriptRoot/..
+cargo +nightly fmt --all
+Set-Location $ROOT
