@@ -13,7 +13,7 @@ $code = $LASTEXITCODE
 Write-Output "::endgroup::"
 
 Write-Output "::group::doctest"
-cargo +nightly llvm-cov --no-report --all $package --branch --no-fail-fast --doc
+cargo +nightly llvm-cov --no-report --all --branch --no-fail-fast --doc
 $code = $code + $LASTEXITCODE
 Write-Output "::endgroup::"
 
