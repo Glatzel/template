@@ -18,6 +18,8 @@ group:
         dest: ./rust/rustfmt.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
+      - source: ./rust/scripts/cargo-clippy.ps1
+        dest: ./rust/scripts/cargo-clippy.ps1
 
   - repos: Glatzel/demon-forge
     files:
@@ -40,6 +42,8 @@ group:
         dest: ./rustfmt.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
+      - source: ./rust/scripts/cargo-clippy.ps1
+        dest: ./scripts/cargo-clippy.ps1
 
   - repos: Glatzel/pyxis
     files:
@@ -53,3 +57,9 @@ group:
         dest: ./rustfmt.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
+      - source: ./rust/scripts/cargo-clippy.ps1
+        dest: ./rust/scripts/cargo-clippy.ps1
+      - source: ./rust/scripts/cargo-clippy.ps1
+        dest: ./rust-cuda/scripts/cargo-clippy.ps1
+      - source: ./rust/scripts/cargo-clippy.ps1
+        dest: ./python/scripts/cargo-clippy.ps1
