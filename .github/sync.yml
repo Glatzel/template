@@ -6,7 +6,7 @@ group:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
 
-  - repos: Glatzel/clerk
+  - repos: Glatzel/toolbox
     files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
