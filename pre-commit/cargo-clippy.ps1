@@ -9,5 +9,5 @@ foreach ($f in Get-ChildItem "Cargo.lock" -Recurse) {
     }
     cargo +stable clippy --fix
     cargo +stable clippy -- -Dwarnings
-    Set-Location $ROOT
 }
+Set-Location $ROOT
