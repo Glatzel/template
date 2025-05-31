@@ -71,19 +71,21 @@
 # region rust
 - id: cargo-clippy
   name: cargo-clippy
-  entry: pwsh -NoProfile -CommandWithArgs " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-cargo-clippy
   language: system
-  files: ".*/cargo-clippy.ps1"
+  files: ".*/Cargo.toml"
   require_serial: true
   stages: [pre-commit, manual]
+  pass_filenames: false
 
 - id: cargo-fmt
   name: cargo-fmt
-  entry: pwsh -NoProfile -CommandWithArgs " $ErrorActionPreference ='Stop'; $PSNativeCommandUseErrorActionPreference = $true; foreach ($f in $args) { &$f} "
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-cargo-fmt
   language: system
-  files: ".*/cargo-fmt.ps1"
+  files: ".*/Cargo.toml"
   require_serial: true
   stages: [pre-commit, manual]
+  pass_filenames: false
 
 # region csharp
 # csharpier >=1.0.0
