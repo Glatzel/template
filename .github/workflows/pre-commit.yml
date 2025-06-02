@@ -37,9 +37,6 @@ jobs:
         shell: pwsh
 
       # rust setup
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: rustfmt
       - uses: Swatinem/rust-cache@v2
 
       # pre-commit

@@ -93,7 +93,7 @@
 - id: csharpier
   name: csharpier
   entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-csharpier
-  files: ".*/cargo-clippy.ps1"
+  types: [csproj]
   language: system
   pass_filenames: false
   require_serial: true
