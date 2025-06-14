@@ -1,3 +1,5 @@
+# This File is automatically syncronized from https://github.com/Glatzel/template
+
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
 $ROOT = git rev-parse --show-toplevel

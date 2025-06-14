@@ -1,3 +1,5 @@
+# This File is automatically syncronized from https://github.com/Glatzel/template
+
 exclude = [".pixi"]
 line-length = 120
 
