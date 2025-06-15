@@ -1,4 +1,4 @@
-# This File is automatically syncronized from https://github.com/Glatzel/template
+# This File is automatically synchronized from https://github.com/Glatzel/template
 
 $ROOT = git rev-parse --show-toplevel
 Set-Location $PSScriptRoot/..
