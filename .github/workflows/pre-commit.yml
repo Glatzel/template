@@ -43,10 +43,10 @@ jobs:
       # pre-commit
       - run: ls
       - name: update
-        run: pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit autoupdate
+        run: pixi run --no-progress --manifest-path pre-commit/pixi.toml pre-commit autoupdate
 
       - name: pre-commit
-        run: pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
+        run: pixi run --no-progress --manifest-path pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
 
       - uses: pre-commit-ci/lite-action@v1.1.0
         if: always()
