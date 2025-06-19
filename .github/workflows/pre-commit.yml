@@ -28,6 +28,7 @@ jobs:
           key: pre-commit-${{ hashFiles('.pre-commit-config.yaml','./pre-commit/*')}}
           restore-keys: |
             pre-commit
+
       #  pixi setup
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@main
@@ -40,9 +41,11 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       # pre-commit
+      - name: update
+        run: pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit autoupdate
+
       - name: pre-commit
-        run: |
-          pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit autoupdate
-          pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
+        run: pixi run --no-progress --manifest-path ./pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
+
       - uses: pre-commit-ci/lite-action@v1.1.0
         if: always()
