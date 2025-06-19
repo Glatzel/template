@@ -45,6 +45,7 @@ jobs:
         run: |
           ./pre-commit/pre-commit.ps1 -update
           ./pre-commit/pre-commit.ps1
+        shell: pwsh
 
       - uses: pre-commit-ci/lite-action@v1.1.0
         if: always()
