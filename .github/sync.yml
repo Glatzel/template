@@ -13,7 +13,7 @@ group:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
       - source: ./rust
-        dest: ./rust
+        dest: ./
 
   - repos: Glatzel/toolbox
     files:
