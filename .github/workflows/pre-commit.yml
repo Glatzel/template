@@ -41,12 +41,10 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       # pre-commit
-      - run: ls
-      - name: update
-        run: pixi run --no-progress --manifest-path pre-commit/pixi.toml pre-commit autoupdate
-
       - name: pre-commit
-        run: pixi run --no-progress --manifest-path pre-commit/pixi.toml pre-commit-run --color=always --show-diff-on-failure
+        run: |
+          ./pre-commit/pre-commit.ps1 -update
+          ./pre-commit/pre-commit.ps1 -update
 
       - uses: pre-commit-ci/lite-action@v1.1.0
         if: always()
