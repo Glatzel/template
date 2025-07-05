@@ -12,6 +12,6 @@ foreach ($f in Get-ChildItem "Cargo.lock" -Recurse) {
         Set-Location $f.Directory.ToString()
     }
     cargo +stable clippy --fix -- --all-features
-    cargo +stable clippy -- -Dwarnings -- --all-features
+    cargo +stable clippy -- -Dwarnings --all-features
     Set-Location $ROOT
 }
