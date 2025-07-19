@@ -87,6 +87,15 @@
   stages: [pre-commit, manual]
   pass_filenames: false
 
+- id: cargo-machete
+  name: cargo-machete
+  entry: pixi run --manifest-path ./pre-commit/pixi.toml hook-cargo-machete
+  language: system
+  files: ".*/Cargo.toml"
+  require_serial: true
+  stages: [pre-commit, manual]
+  pass_filenames: false
+
 # region csharp
 # csharpier >=1.0.0
 #  csharpier format .; csharpier check .
