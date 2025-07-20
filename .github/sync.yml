@@ -14,6 +14,8 @@ group:
         dest: ./taplo.toml
       - source: ./rust
         dest: ./
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
 
   - repos: Glatzel/toolbox
     files:
