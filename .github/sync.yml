@@ -6,17 +6,6 @@ group:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
 
-  - repos: Glatzel/blocke
-    files:
-      - source: ./pre-commit/
-        dest: ./pre-commit/
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./rust
-        dest: ./
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-
   - repos: Glatzel/toolbox
     files:
       - source: ./python/ruff.toml
