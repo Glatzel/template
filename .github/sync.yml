@@ -11,8 +11,8 @@ group:
       - source: ./rust/rustfmt.toml
         dest: ./rustfmt.toml
 
-      - source: ./rust/scripts.toml
-        dest: ./esp32-c3/scripts
+      - source: ./rust/scripts/
+        dest: ./esp32-c3/scripts/
 
   - repos: Glatzel/cetus
     files:
