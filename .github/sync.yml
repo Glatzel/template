@@ -1,4 +1,19 @@
 group:
+  - repos: Glatzel/blocke
+    files:
+      - source: ./pre-commit/
+        dest: ./pre-commit/
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
+
+      - source: ./rust/rustfmt.toml
+        dest: ./rustfmt.toml
+
+      - source: ./rust/scripts.toml
+        dest: ./esp32-c3/scripts
+
   - repos: Glatzel/cetus
     files:
       - source: ./pre-commit/
