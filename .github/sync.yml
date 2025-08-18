@@ -5,8 +5,6 @@ group:
         dest: ./pre-commit/
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
 
       - source: ./rust/rustfmt.toml
         dest: ./rustfmt.toml
