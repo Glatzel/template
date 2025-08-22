@@ -45,10 +45,10 @@ pre-commit:
             file_types:
               - text
             run: pixi {run} end-of-file-fixer
-          - name: trailing-whitespace
+          - name: trailing-whitespace-fixer
             file_types:
               - text
-            run: pixi {run} trailing-whitespace
+            run: pixi {run} trailing-whitespace-fixer
 
     - name: csharpier
       stage_fixed: true
