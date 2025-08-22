@@ -13,7 +13,7 @@ output:
   - empty_summary # Print summary heading when there are no steps to run
   # - success # Print successful steps
   # - failure # Print failed steps printing
-  - execution # Print any execution logs
+  # - execution # Print any execution logs
   # - execution_out # Print execution output
   # - execution_info # Print `EXECUTE > ...` logging
   - skips # Print "skip" (i.e. no files matched)
@@ -35,13 +35,13 @@ pre-commit:
         piped: true
         jobs:
           - name: ruff lint
-            run: pixi {run} hook-ruff-lint {staged_files}
+            run: pixi {run} hook-ruff-lint {all_files}
           - name: ruff format
-            run: pixi {run} hook-ruff-format {staged_files}
+            run: pixi {run} hook-ruff-format {all_files}
 
     - name: numpydoc
       glob: "*.{py,pyi}"
-      run: pixi {run} hook-numpydoc {staged_files}
+      run: pixi {run} hook-numpydoc {all_files}
 
     # rust
     - name: cargo-clippy
@@ -62,7 +62,7 @@ pre-commit:
     - name: taplo
       stage_fixed: true
       glob: "*.toml"
-      run: pixi {run} hook-taplo {staged_files}
+      run: pixi {run} hook-taplo {all_files}
 
     - name: typos
       run: pixi {run} actionlint
@@ -77,4 +77,4 @@ pre-commit:
         - changelog.md
         - CHANGELOG.md
       glob: "*.md"
-      run: pixi {run} hook-markdown {staged_files}
+      run: pixi {run} hook-markdown {all_files}
