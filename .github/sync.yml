@@ -1,15 +1,13 @@
 group:
   - repos: Glatzel/blocke
     files:
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-
       - source: ./rust/rustfmt.toml
         dest: ./rustfmt.toml
 
@@ -18,8 +16,6 @@ group:
 
   - repos: Glatzel/cetus
     files:
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
@@ -29,8 +25,6 @@ group:
 
   - repos: Glatzel/toolbox
     files:
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./lefthook/
@@ -46,8 +40,6 @@ group:
 
   - repos: Glatzel/demon-forge
     files:
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./lefthook/
@@ -59,8 +51,6 @@ group:
 
   - repos: Glatzel/fornax
     files:
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./lefthook/
@@ -80,8 +70,6 @@ group:
     files:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
-      - source: .github/workflow/ci-lefthook.yml
-        dest: .github/workflow/ci-lefthook.yml
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
