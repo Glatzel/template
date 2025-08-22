@@ -35,28 +35,32 @@ pre-commit:
         piped: true
         jobs:
           - name: ruff lint
-            run: pixi {run} hook-ruff-lint {all_files}
+            run: pixi {run} hook-ruff-lint {staged_files}
           - name: ruff format
-            run: pixi {run} hook-ruff-format {all_files}
+            run: pixi {run} hook-ruff-format {staged_files}
 
     - name: numpydoc
       glob: "*.{py,pyi}"
-      run: pixi {run} hook-numpydoc {all_files}
+      run: pixi {run} hook-numpydoc {staged_files}
 
     # rust
-    - name: cargo-clippy
+    - name: rust
       stage_fixed: true
-      glob: "*.rs"
-      run: pixi {run} hook-cargo-clippy
+      exclude:
+        - "**/target/**"
+        - "**/crates/**"
+      glob: "**/Cargo.toml"
+      group:
+        piped: true
+        jobs:
+          - name: cargo-clippy
+            run: pixi {run} hook-cargo-clippy {staged_files}
 
-    - name: cargo-fmt
-      stage_fixed: true
-      glob: "*.rs"
-      run: pixi {run} hook-cargo-fmt
+          - name: cargo-fmt
+            run: pixi {run} hook-cargo-fmt {staged_files}
 
-    - name: cargo-machete
-      glob: "*.rs"
-      run: pixi {run} cargo-machete
+          - name: cargo-machete
+            run: pixi {run} cargo-machete {staged_files}
 
     # region misc
     - name: taplo

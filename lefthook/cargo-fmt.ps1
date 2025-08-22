@@ -1,5 +1,6 @@
 # This File is automatically synchronized from https://github.com/Glatzel/template
 
+param($files)
 if ($env:CI) {
     rustup toolchain install nightly --profile=minimal
     rustup component add rustfmt --toolchain nightly
@@ -7,11 +8,8 @@ if ($env:CI) {
 
 $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
-foreach ($f in Get-ChildItem "Cargo.lock" -Recurse) {
-    # skip target and package folder
-    if ($f -contains "target") { continue }
-    if ($f -contains "crate") { continue }
-
+foreach ($file in files) {
+    $file=Resolve-Path $file
     Set-Location $f.Directory.ToString()
     Write-Output "Cargo fmt in: $pwd"
     cargo +nightly fmt --all

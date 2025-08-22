@@ -1,14 +1,12 @@
 # This File is automatically synchronized from https://github.com/Glatzel/template
 
+param($files)
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
 $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
-foreach ($f in Get-ChildItem "Cargo.lock" -Recurse) {
-    # skip target and package folder
-    if ($f -contains "target") { continue }
-    if ($f -contains "crate") { continue }
-
+foreach ($file in files) {
+    $file=Resolve-Path $file
     Set-Location $f.Directory.ToString()
     Write-Output "Cargo fmt in: $pwd"
     if (Test-Path ./scripts/setup.ps1) {
