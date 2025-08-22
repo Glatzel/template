@@ -46,7 +46,7 @@ pre-commit:
     # rust
     - name: rust
       stage_fixed: true
-      glob: "**/Cargo.toml"
+      glob: "**Cargo.toml"
       group:
         piped: true
         jobs:
