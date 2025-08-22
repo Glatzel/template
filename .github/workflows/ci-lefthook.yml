@@ -44,5 +44,3 @@ jobs:
         run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
         shell: pwsh
 
-      - uses: pre-commit-ci/lite-action@v1.1.0
-        if: always()
