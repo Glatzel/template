@@ -5,8 +5,9 @@ $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
 $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
+Write-Debug $files
 foreach ($file in $files) {
-    $file=Resolve-Path $file
+    $file = Resolve-Path $file
     Set-Location $file.Directory.ToString()
     Write-Output "Cargo fmt in: $pwd"
     if (Test-Path ./scripts/setup.ps1) {
