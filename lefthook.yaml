@@ -46,6 +46,9 @@ pre-commit:
     # rust
     - name: rust
       stage_fixed: true
+      exclude:
+        - "**/target**/Cargo.toml"
+        - "**/crates**/Cargo.toml"
       glob: "**Cargo.toml"
       group:
         piped: true
