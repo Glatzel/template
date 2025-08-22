@@ -1,7 +1,6 @@
 group:
   - repos: Glatzel/blocke
     files:
-
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
