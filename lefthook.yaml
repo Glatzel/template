@@ -41,8 +41,6 @@ pre-commit:
 
     - name: numpydoc
       glob: "*.{py,pyi}"
-      exclude:
-        - '**/.pixi/**'
       run: pixi {run} hook-numpydoc {staged_files}
 
     # rust
