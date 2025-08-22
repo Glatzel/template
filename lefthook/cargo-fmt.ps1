@@ -1,7 +1,6 @@
 # This File is automatically synchronized from https://github.com/Glatzel/template
 
 param($files)
-if(!files){exit 0}
 if ($env:CI) {
     rustup toolchain install nightly --profile=minimal
     rustup component add rustfmt --toolchain nightly
