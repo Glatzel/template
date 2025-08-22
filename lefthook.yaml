@@ -3,7 +3,7 @@
 lefthook: pixi run --no-progress --manifest-path ./lefthook/pixi.toml lefthook
 
 templates:
-  run: run --quiet --no-progress --manifest-path ./lefthook/pixi.toml
+  run: run --no-progress --manifest-path ./lefthook/pixi.toml
 
 colors: true
 
