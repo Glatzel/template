@@ -7,7 +7,7 @@ $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
 foreach ($file in $files) {
     $file=Resolve-Path $file
-    Set-Location $f.Directory.ToString()
+    Set-Location $file.Directory.ToString()
     Write-Output "Cargo machete in: $pwd"
     cargo machete
 }
