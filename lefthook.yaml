@@ -25,7 +25,7 @@ pre-commit:
     - name: csharpier
       stage_fixed: true
       glob: "*.csproj"
-      run: pixi {run} hook-csharpier
+      run: pixi {run} hook-csharpier {staged_files}
 
     # region python
     - name: ruff
