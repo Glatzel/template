@@ -33,8 +33,6 @@ jobs:
         uses: prefix-dev/setup-pixi@main
         with:
           run-install: false
-      - run: pixi global install lefthook
-        shell: pwsh
 
       # rust setup
       - uses: Swatinem/rust-cache@v2
