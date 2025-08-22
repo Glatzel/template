@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
 $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
-foreach ($file in files) {
+foreach ($file in $files) {
     $file=Resolve-Path $file
     Set-Location $f.Directory.ToString()
     Write-Output "Cargo fmt in: $pwd"

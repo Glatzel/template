@@ -19,7 +19,7 @@ output:
   - skips # Print "skip" (i.e. no files matched)
 
 pre-commit:
-  # parallel: true
+  parallel: true
   jobs:
     # region csharp
     - name: csharpier
@@ -53,14 +53,14 @@ pre-commit:
       group:
         piped: true
         jobs:
+          - name: cargo-machete
+            run: pixi {run} cargo-machete {staged_files}
+
           - name: cargo-clippy
             run: pixi {run} hook-cargo-clippy {staged_files}
 
           - name: cargo-fmt
             run: pixi {run} hook-cargo-fmt {staged_files}
-
-          - name: cargo-machete
-            run: pixi {run} cargo-machete {staged_files}
 
     # region misc
     - name: taplo
