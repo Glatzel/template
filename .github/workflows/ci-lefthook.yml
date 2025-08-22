@@ -1,0 +1,49 @@
+name: lefthook
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - ready_for_review
+    paths-ignore:
+      - "*.md"
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: pre-commit-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ./lefthook/.pixi
+          key: lefthook-${{ hashFiles('.pre-commit-config.yaml','./pre-commit/*')}}
+          restore-keys: |
+            lefthook
+
+      #  pixi setup
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@main
+        with:
+          run-install: false
+      - run: pixi global install lefthook
+        shell: pwsh
+
+      # rust setup
+      - uses: Swatinem/rust-cache@v2
+
+      # pre-commit
+      - name: lefthook
+        run: |
+          pixi run lefthook run pre-commit --all-files --force
+        shell: pwsh
+
+      - uses: pre-commit-ci/lite-action@v1.1.0
+        if: always()
