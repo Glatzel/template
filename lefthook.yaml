@@ -73,5 +73,8 @@ pre-commit:
 
     - name: markdown
       stage_fixed: true
+      exclude:
+        - changelog.md
+        - CHANGELOG.md
       glob: "*.md"
       run: pixi {run} hook-markdown {staged_files}
