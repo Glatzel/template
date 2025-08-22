@@ -1,0 +1,36 @@
+lefthook: pixi run --no-progress --manifest-path ./lefthook/pixi.toml lefthook
+
+templates:
+  run: run --quiet --no-progress --manifest-path ./lefthook/pixi.toml
+
+colors: true
+
+output:
+  - meta # Print lefthook version
+  - summary # Print summary block (successful and failed steps)
+  - empty_summary # Print summary heading when there are no steps to run
+  # - success # Print successful steps
+  # - failure # Print failed steps printing
+  # - execution # Print any execution logs
+  # - execution_out # Print execution output
+  # - execution_info # Print `EXECUTE > ...` logging
+  - skips # Print "skip" (i.e. no files matched)
+
+pre-commit:
+  parallel: true
+  jobs:
+    # region csharp
+    - name: csharpier
+      glob: "*.csproj"
+      run: pixi {run} hook-csharpier
+    # region misc
+    - name: typos
+      run: pixi {run} actionlint
+
+    - name: actionlint
+      run: pixi {run} hook-typos
+
+    - name: markdown
+      run: pixi {run} hook-markdown
+
+    
