@@ -41,8 +41,7 @@ jobs:
 
       # pre-commit
       - name: lefthook
-        run: |
-          pixi run lefthook run pre-commit --all-files --force
+        run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
         shell: pwsh
 
       - uses: pre-commit-ci/lite-action@v1.1.0
