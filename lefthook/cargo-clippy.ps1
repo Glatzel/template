@@ -9,7 +9,7 @@ foreach ($file in $args) {
     Write-Output "Cargo fmt in: $pwd"
     if (Test-Path ./scripts/setup.ps1) {
         &./scripts/setup.ps1
-        Set-Location $file.Directory.ToString()
+        Set-Location (Split-Path (Resolve-Path $file) -Parent)
     }
     cargo +stable clippy --fix --all-features
     cargo +stable clippy --all-features -- -Dwarnings
