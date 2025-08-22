@@ -6,8 +6,7 @@ $PSNativeCommandUseErrorActionPreference = $true
 $ROOT = git rev-parse --show-toplevel
 Set-Location $ROOT
 foreach ($file in $files) {
-    $file=Resolve-Path $file
-    Set-Location $file.Directory.ToString()
+    Set-Location (Split-Path (Resolve-Path file) -Parent)
     Write-Output "Cargo machete in: $pwd"
     cargo machete
 }
