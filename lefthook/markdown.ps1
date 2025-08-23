@@ -3,4 +3,4 @@
 if (-not $args) { exit 0 }
 &$PSScriptRoot/setup.ps1
 Set-Location ..
-markdownlint-cli2 --fix $args 
+markdownlint-cli2 --fix $args
