@@ -2,4 +2,5 @@
 
 if (-not $args) { exit 0 }
 &$PSScriptRoot/setup.ps1
-pixi run --no-progress --manifest-path ./lefthook/pixi.toml typos --force-exclude $args
+Set-Location ..
+markdownlint-cli2 --fix $args 
