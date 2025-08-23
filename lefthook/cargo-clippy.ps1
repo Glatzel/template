@@ -13,7 +13,7 @@ foreach ($file in $args) {
         &./scripts/setup.ps1
         Set-Location $dir
     }
-    cargo +stable clippy --fix --all-features
-    cargo +stable clippy --all-features -- -Dwarnings
+    cargo +stable clippy --fix --all-features --quiet
+    cargo +stable clippy --all-features --quiet -- -Dwarnings
     Set-Location $ROOT
 }

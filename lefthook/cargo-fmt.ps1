@@ -10,6 +10,6 @@ Set-Location $ROOT
 foreach ($file in $args) {
     Set-Location (Split-Path (Resolve-Path $file) -Parent)
     Write-Output "Cargo fmt in: $pwd"
-    cargo +nightly fmt --all
+    cargo +nightly fmt --all --quiet
 }
 Set-Location $ROOT
