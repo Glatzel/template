@@ -22,6 +22,8 @@ pre-commit:
   piped: true
   jobs:
     - name: pre-commit-hook
+      exclude:
+        - "**external/**"
       stage_fixed: true
       group:
         jobs:
@@ -57,6 +59,8 @@ pre-commit:
 
     - name: python
       glob: "*.{py,pyi}"
+      exclude:
+        - "**external/**"
       stage_fixed: true
       group:
         jobs:
@@ -72,6 +76,7 @@ pre-commit:
       exclude:
         - "**target**/Cargo.toml"
         - "**crates**/Cargo.toml"
+        - "**external/**"
       glob: "**Cargo.toml"
       group:
         jobs:
@@ -86,6 +91,8 @@ pre-commit:
 
     - name: misc
       stage_fixed: true
+      exclude:
+        - "**external/**"
       group:
         jobs:
           - name: taplo
