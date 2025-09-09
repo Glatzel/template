@@ -26,24 +26,17 @@ permissions:
   contents: write
 
 jobs:
-  check-tag:
-    runs-on: windows-latest
-    outputs:
-      is_pre_release: ${{ steps.main.outputs.is_pre_release }}
+  create-release:
+    if: ${{!failure()}}
+    runs-on: ubuntu-latest
     steps:
-      - id: main
+      - id: check-tag
         run: |
           $tag="${{inputs.tag}}"
           Write-Output "tag: $tag"
           if("$tag" -match '^v\d+\.\d+\.\d+$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
           elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
-
-  create-release:
-    needs: [check-tag]
-    if: ${{!failure()}}
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -79,4 +72,4 @@ jobs:
           files: ${{inputs.assets=='' && null || './release_asset/**'}}
           tag_name: ${{inputs.tag}}
           draft: ${{inputs.draft}}
-          prerelease: ${{needs.check-tag.outputs.is_pre_release}}
+          prerelease: ${{steps.check-tag.outputs.is_pre_release}}
