@@ -39,26 +39,21 @@ jobs:
           elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
 
-  clear-tag-and-release:
-    needs: check-tag
-    if: ${{inputs.override}}
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.token }}
-    steps:
-      - uses: actions/checkout@v5
-      - run: |
-            gh release delete ${{inputs.tag}} --cleanup-tag -y
-        continue-on-error: true
-
   create-release:
-    needs: [check-tag,clear-tag-and-release]
+    needs: [check-tag]
     if: ${{!failure()}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: clear-tag-and-release
+        run: gh release delete ${{inputs.tag}} --cleanup-tag -y
+        if: ${{inputs.override}}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: download asset
         if: inputs.assets
