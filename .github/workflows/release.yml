@@ -37,6 +37,8 @@ jobs:
           if("$tag" -match '^v\d+\.\d+\.\d+$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
           elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
+        shell: pwsh
+
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
