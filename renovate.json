@@ -9,6 +9,7 @@
   "enabledManagers": [
     "github-actions",
     "pixi",
+    "cargo",
     "nuget",
     "pre-commit",
     "dockerfile",
@@ -46,6 +47,12 @@
         "python"
       ],
       "enabled": false
+    },
+    {
+      "groupName": "Cargo",
+      "matchManagers": [
+        "cargo"
+      ]
     },
     {
       "groupName": "Dotnet",
