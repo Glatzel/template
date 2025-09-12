@@ -70,7 +70,6 @@ pre-commit:
             glob: "*.md"
             run: pixi {run} hook-markdown {all_files}
 
-
     - name: csharp
       stage_fixed: true
       exclude:
