@@ -112,3 +112,17 @@ group:
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+
+  - repos: Glatzel/dxf2kml
+    files:
+      - source: ./lefthook/
+        dest: ./lefthook/
+      - source: ./lefthook.yaml
+        dest: ./lefthook.yaml
+      - source: ./common/taplo.toml
+        dest: ./taplo.toml
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
+
+      - source: ./python/ruff.toml
+        dest: ./ruff.toml
