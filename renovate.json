@@ -20,6 +20,9 @@
   "pre-commit": {
     "enabled": true
   },
+  "git-submodules": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "groupName": "GitHub Actions",
