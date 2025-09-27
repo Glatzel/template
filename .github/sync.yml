@@ -124,3 +124,10 @@ group:
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+
+  - repos: Glatzel/bruno-playground
+    files:
+      - source: ./lefthook/
+        dest: ./lefthook/
+      - source: ./lefthook.yaml
+        dest: ./lefthook.yaml
