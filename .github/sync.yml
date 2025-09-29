@@ -83,7 +83,7 @@ group:
       - source: ./rust
         dest: ./rust
       - source: ./rust
-        dest: ./rust-cuda
+        dest: ./ffi
 
   - repos: Glatzel/mason
     files:
