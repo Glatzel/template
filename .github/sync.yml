@@ -7,11 +7,11 @@ group:
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./rust/rustfmt.toml
-        dest: ./rustfmt.toml
 
       - source: ./rust/
         dest: ./esp32-c3
+      - source: ./rust/
+        dest: ./dux
 
   - repos: Glatzel/cetus
     files:
