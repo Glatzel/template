@@ -11,7 +11,7 @@ group:
       - source: ./rust/
         dest: ./esp32-c3
       - source: ./rust/
-        dest: ./dux
+        dest: ./driver
 
   - repos: Glatzel/cetus
     files:
