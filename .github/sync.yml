@@ -7,11 +7,12 @@ group:
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-
       - source: ./rust/
         dest: ./esp32-c3
       - source: ./rust/
         dest: ./driver
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/cetus
     files:
@@ -21,6 +22,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/toolbox
     files:
@@ -36,6 +39,12 @@ group:
         dest: ./cliff.toml
       - source: ./rust
         dest: ./rust
+      - source: ./.github/workflows/post-release
+        dest: ./.github/workflows/post-release
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/demon-forge
     files:
@@ -47,6 +56,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/fornax
     files:
@@ -64,6 +75,12 @@ group:
         dest: ./scripts/cargo-clippy.ps1
       - source: ./rust
         dest: ./
+      - source: ./.github/workflows/post-release
+        dest: ./.github/workflows/post-release
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/pyxis
     files:
@@ -77,13 +94,18 @@ group:
         dest: ./taplo.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-
       - source: ./rust
         dest: ./python
       - source: ./rust
         dest: ./rust
       - source: ./rust
         dest: ./ffi
+      - source: ./.github/workflows/post-release
+        dest: ./.github/workflows/post-release
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/mason
     files:
@@ -95,6 +117,12 @@ group:
         dest: ./taplo.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
+      - source: ./.github/workflows/post-release
+        dest: ./.github/workflows/post-release
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
 
   - repos: Glatzel/vinaya
     files:
@@ -106,10 +134,8 @@ group:
         dest: ./taplo.toml
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-
       - source: ./rust/rustfmt.toml
         dest: ./vinaya-cli/rustfmt.toml
-
       - source: ./python/ruff.toml
         dest: ./ruff.toml
 
@@ -121,6 +147,5 @@ group:
         dest: ./lefthook.yaml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-
       - source: ./python/ruff.toml
         dest: ./ruff.toml
