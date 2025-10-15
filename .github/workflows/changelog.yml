@@ -26,7 +26,9 @@ jobs:
 
       - run: pixi global install git-cliff
 
-      - run: git-cliff -o CHANGELOG.md
+      - run: |
+          git-cliff -o CHANGELOG.md
+          mv changelog.md CHANGELOG.md
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
