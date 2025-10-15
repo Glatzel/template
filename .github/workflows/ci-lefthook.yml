@@ -1,3 +1,5 @@
+# This File is automatically synchronized from https://github.com/Glatzel/template
+
 name: lefthook
 on:
   pull_request:
@@ -6,13 +8,10 @@ on:
       - edited
       - synchronize
       - ready_for_review
-    paths-ignore:
-      - "*.md"
   workflow_call:
-  workflow_dispatch:
 
 concurrency:
-  group: pre-commit-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
