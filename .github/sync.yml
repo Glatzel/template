@@ -1,151 +1,150 @@
-group:
-  - repos: Glatzel/blocke
-    files:
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./rust/
-        dest: ./esp32-c3
-      - source: ./rust/
-        dest: ./driver
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/blocke
+  files:
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./rust/
+      dest: ./esp32-c3
+    - source: ./rust/
+      dest: ./driver
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/cetus
-    files:
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/cetus
+  files:
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/toolbox
-    files:
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-      - source: ./rust
-        dest: ./rust
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
-      - source: ./.github/codecov.yml
-        dest: ./.github/codecov.yml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/demon-forge
+  files:
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/demon-forge
-    files:
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/dxf2kml
+  files:
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
 
-  - repos: Glatzel/fornax
-    files:
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-      - source: ./rust/scripts/cargo-clippy.ps1
-        dest: ./scripts/cargo-clippy.ps1
-      - source: ./rust
-        dest: ./
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
-      - source: ./.github/codecov.yml
-        dest: ./.github/codecov.yml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/fornax
+  files:
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    - source: ./rust/scripts/cargo-clippy.ps1
+      dest: ./scripts/cargo-clippy.ps1
+    - source: ./rust
+      dest: ./
+    - source: ./.github/workflows/post-release
+      dest: ./.github/workflows/post-release
+    - source: ./.github/codecov.yml
+      dest: ./.github/codecov.yml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/pyxis
-    files:
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yamlq
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-      - source: ./rust
-        dest: ./python
-      - source: ./rust
-        dest: ./rust
-      - source: ./rust
-        dest: ./ffi
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
-      - source: ./.github/codecov.yml
-        dest: ./.github/codecov.yml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/mason
+  files:
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    - source: ./.github/workflows/post-release
+      dest: ./.github/workflows/post-release
+    - source: ./.github/codecov.yml
+      dest: ./.github/codecov.yml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/mason
-    files:
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
-      - source: ./.github/codecov.yml
-        dest: ./.github/codecov.yml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
+- repos: Glatzel/pyxis
+  files:
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    - source: ./rust
+      dest: ./python
+    - source: ./rust
+      dest: ./rust
+    - source: ./rust
+      dest: ./ffi
+    - source: ./.github/workflows/post-release
+      dest: ./.github/workflows/post-release
+    - source: ./.github/codecov.yml
+      dest: ./.github/codecov.yml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/vinaya
-    files:
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/cliff.toml
-        dest: ./cliff.toml
-      - source: ./rust/rustfmt.toml
-        dest: ./vinaya-cli/rustfmt.toml
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
+- repos: Glatzel/toolbox
+  files:
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    - source: ./rust
+      dest: ./rust
+    - source: ./.github/workflows/post-release
+      dest: ./.github/workflows/post-release
+    - source: ./.github/codecov.yml
+      dest: ./.github/codecov.yml
+    - source: ./.github/semantic.yml
+      dest: ./.github/semantic.yml
 
-  - repos: Glatzel/dxf2kml
-    files:
-      - source: ./lefthook/
-        dest: ./lefthook/
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
+- repos: Glatzel/vinaya
+  files:
+    - source: ./lefthook/
+      dest: ./lefthook/
+    - source: ./lefthook.yaml
+      dest: ./lefthook.yaml
+    - source: ./common/taplo.toml
+      dest: ./taplo.toml
+    - source: ./common/cliff.toml
+      dest: ./cliff.toml
+    - source: ./rust/rustfmt.toml
+      dest: ./vinaya-cli/rustfmt.toml
+    - source: ./python/ruff.toml
+      dest: ./ruff.toml
