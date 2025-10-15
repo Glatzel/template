@@ -1,10 +1,5 @@
 name: "Upload Prefix Conda Packages"
 description: "Downloads and uploads Conda packages"
-inputs:
-  repository:
-    description: "The repository to download Conda packages from"
-    required: false
-    default: ${{ github.repository }}
 
 runs:
   using: "composite"
@@ -20,7 +15,7 @@ runs:
     - name: Download Conda Packages
       env:
         GH_TOKEN: ${{ github.token }}
-      run: gh release download -R ${{ inputs.repository }} -p "*.conda"
+      run: gh release download -R ${{ github.repository }} -p "*.conda"
       shell: pwsh
 
     - name: Upload Conda Packages
