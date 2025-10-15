@@ -102,8 +102,6 @@ group:
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./rust
-        dest: ./ffi
-      - source: ./rust
         dest: ./python
       - source: ./rust
         dest: ./rust
