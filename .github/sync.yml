@@ -87,12 +87,14 @@ group:
       - source: ./rust
         dest: ./
 
-      - source: ./.github/workflows/post-release.yml
-        dest: ./.github/workflows/post-release.yml
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/upload-prefix.yml
+        dest: ./.github/workflows/upload-prefix.yml
 
   - repos: Glatzel/mason
     files:
@@ -108,12 +110,14 @@ group:
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
-      - source: ./.github/workflows/post-release.yml
-        dest: ./.github/workflows/post-release.yml
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/upload-prefix.yml
+        dest: ./.github/workflows/upload-prefix.yml
 
   - repos: Glatzel/pyxis
     files:
@@ -137,12 +141,14 @@ group:
       - source: ./rust
         dest: ./rust
 
-      - source: ./.github/workflows/post-release.yml
-        dest: ./.github/workflows/post-release.yml
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/upload-prefix.yml
+        dest: ./.github/workflows/upload-prefix.yml
 
   - repos: Glatzel/toolbox
     files:
@@ -157,19 +163,21 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-    
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
 
       - source: ./rust
         dest: ./rust
 
-      - source: ./.github/workflows/post-release.yml
-        dest: ./.github/workflows/post-release.yml
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/upload-prefix.yml
+        dest: ./.github/workflows/upload-prefix.yml
 
   - repos: Glatzel/vinaya
     files:
