@@ -18,6 +18,8 @@ group:
 
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
 
   - repos: Glatzel/cetus
     files:
@@ -61,8 +63,6 @@ group:
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
-      - source: ./.github/workflows/ci-lefthook.yml
-        dest: ./.github/workflows/ci-lefthook.yml
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
@@ -190,8 +190,6 @@ group:
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
-      - source: ./.github/workflows/ci-lefthook.yml
-        dest: ./.github/workflows/ci-lefthook.yml
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
