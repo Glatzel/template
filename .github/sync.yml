@@ -3,14 +3,19 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./rust/
         dest: ./esp32-c3
       - source: ./rust/
         dest: ./driver
+
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
 
@@ -18,10 +23,14 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
 
@@ -29,12 +38,17 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
 
@@ -42,10 +56,14 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
 
@@ -55,18 +73,22 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
-      - source: ./rust/scripts/cargo-clippy.ps1
-        dest: ./scripts/cargo-clippy.ps1
+
       - source: ./rust
         dest: ./
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
+
+      - source: ./.github/workflows/post-release.yml
+        dest: ./.github/workflows/post-release.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
@@ -78,12 +100,16 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
+      - source: ./.github/workflows/post-release.yml
+        dest: ./.github/workflows/post-release.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
@@ -95,18 +121,24 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+
       - source: ./rust
         dest: ./python
       - source: ./rust
         dest: ./rust
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
+
+      - source: ./.github/workflows/post-release.yml
+        dest: ./.github/workflows/post-release.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
@@ -118,16 +150,22 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+    
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+
       - source: ./rust
         dest: ./rust
-      - source: ./.github/workflows/post-release
-        dest: ./.github/workflows/post-release
+
+      - source: ./.github/workflows/post-release.yml
+        dest: ./.github/workflows/post-release.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
@@ -139,10 +177,14 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+
       - source: ./lefthook/
         dest: ./lefthook/
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
       - source: ./python/ruff.toml
         dest: ./ruff.toml
       - source: ./rust/rustfmt.toml

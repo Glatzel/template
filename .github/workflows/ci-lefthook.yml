@@ -2,17 +2,20 @@
 
 name: lefthook
 on:
+  push:
+    branches: [main]
   pull_request:
     types:
       - opened
-      - edited
       - synchronize
       - ready_for_review
-  workflow_call:
+  workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions: read-all
 
 jobs:
   lefthook:
