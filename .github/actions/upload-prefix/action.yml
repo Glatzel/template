@@ -1,0 +1,33 @@
+name: "Upload Prefix Conda Packages"
+description: "Downloads and uploads Conda packages"
+inputs:
+  repository:
+    description: "The repository to download Conda packages from"
+    required: false
+    default: ${{ github.repository }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up pixi
+      uses: prefix-dev/setup-pixi@v0.9.1
+      with:
+        run-install: false
+
+    - run: pixi global install rattler-build
+      shell: pwsh
+
+    - name: Download Conda Packages
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release download -R ${{ inputs.repository }} -p "*.conda"
+      shell: pwsh
+
+    - name: Upload Conda Packages
+      shell: pwsh
+      run: |
+        foreach ($pkg_file in Get-ChildItem "./*.conda") {
+          Write-Output "::group::upload $pkg_file"
+          rattler-build upload prefix -c ${{ inputs.glatzel }} $pkg_file
+          Write-Output "::endgroup::"
+        }
