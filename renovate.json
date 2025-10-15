@@ -36,7 +36,6 @@
         "pixi"
       ],
       "registryUrls": [
-        "https://api.anaconda.org/package/conda-forge/",
         "https://prefix.dev/conda-forge/",
         "https://prefix.dev/glatzel/"
       ]
@@ -78,3 +77,4 @@
   ]
 
 }
+
