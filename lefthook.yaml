@@ -19,7 +19,7 @@ output:
   - skips # Print "skip" (i.e. no files matched)
 
 pre-commit:
-  piped: true
+  parallel: true
   jobs:
     - name: pre-commit-hook
       exclude:
