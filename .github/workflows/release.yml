@@ -52,7 +52,7 @@ jobs:
 
       - name: download asset
         if: inputs.assets
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           path: ./release_asset
           merge-multiple: true
