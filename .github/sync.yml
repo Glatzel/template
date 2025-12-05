@@ -25,8 +25,6 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./common/pixi-global.toml
-        dest: ./image/common/pixi-global.toml
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -42,15 +40,11 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./common/pixi-global.toml
-        dest: ./config/pixi-global.toml
 
   - repos: Glatzel/config-win
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./common/pixi-global.toml
-        dest: ./pixi/pixi-global.toml
 
   - repos: Glatzel/demon-forge
     files:
