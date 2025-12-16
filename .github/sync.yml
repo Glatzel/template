@@ -6,6 +6,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -28,6 +29,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -53,6 +55,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -71,6 +74,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
 
@@ -86,6 +90,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -115,6 +120,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -138,6 +144,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -169,6 +176,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
@@ -198,6 +206,7 @@ group:
 
       - source: ./lefthook/
         dest: ./lefthook/
+        deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
 
