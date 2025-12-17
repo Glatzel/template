@@ -109,6 +109,7 @@ pre-commit:
           - name: cargo-machete
             run: |
               pwsh -CommandWithArgs '''
+              $ErrorActionPreference = "Stop"
               $PSNativeCommandUseErrorActionPreference = $true;
               foreach ($file in $args) {
                   Set-Location (Split-Path (Resolve-Path $file) -Parent)
@@ -120,8 +121,8 @@ pre-commit:
           - name: cargo-clippy
             run: |
               pwsh -CommandWithArgs '''
+              $ErrorActionPreference = "Stop"
               $PSNativeCommandUseErrorActionPreference = $true;
-              $ROOT = git rev-parse --show-toplevel;
               if ($env:CI) {
                   rustup toolchain install stable --profile=minimal
                   rustup component add clippy --toolchain stable
@@ -143,8 +144,8 @@ pre-commit:
           - name: cargo-fmt
             run: |
               pwsh -CommandWithArgs '''
+              $ErrorActionPreference = "Stop"
               $PSNativeCommandUseErrorActionPreference = $true;
-              $ROOT = git rev-parse --show-toplevel;
               if ($env:CI) {
                   rustup toolchain install nightly --profile=minimal
                   rustup component add rustfmt --toolchain nightly
