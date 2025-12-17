@@ -1,4 +1,5 @@
-﻿root = true
+﻿# # This File is automatically synchronized from https://github.com/Glatzel/template
+root = true
 
 [*]
 charset = utf-8
