@@ -8,7 +8,27 @@ platforms = ["linux-64", "win-64"]
 lefthook-run = "lefthook run pre-commit --all-files --no-auto-install"
 
 hook-actionlint = "cd ..;actionlint"
-hook-cargo-clippy = "pwsh -f ./cargo-clippy.ps1"
+hook-cargo-clippy = """
+cd ..;
+pwsh -CommandWithArgs '''
+if ($env:CI) {
+    rustup toolchain install stable --profile=minimal
+    rustup component add clippy --toolchain stable
+}
+foreach ($file in $args) {
+    $dir = (Split-Path (Resolve-Path $file) -Parent)
+    Set-Location $dir
+    Write-Output "Cargo clippy in: $pwd"
+    if (Test-Path ./scripts/setup.ps1) {
+        &./scripts/setup.ps1
+        Set-Location $dir
+    }
+    cargo +stable clippy --fix --all-features --quiet
+    cargo +stable clippy --all-features --quiet -- -Dwarnings
+    Set-Location $ROOT
+}
+'''
+"""
 hook-cargo-fmt = "pwsh -f ./cargo-fmt.ps1"
 hook-cargo-machete = "pwsh -f ./cargo-machete.ps1"
 hook-csharpier = "cd ..; dotnet tool install -g csharpier; csharpier format .; csharpier check ."
