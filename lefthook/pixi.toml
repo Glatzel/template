@@ -7,66 +7,6 @@ platforms = ["linux-64", "win-64"]
 [tasks]
 lefthook-run = "lefthook run pre-commit --all-files --no-auto-install"
 
-hook-actionlint = "cd ..;actionlint"
-hook-cargo-clippy = """
-cd ..;
-pwsh -CommandWithArgs '''
-$PSNativeCommandUseErrorActionPreference = $true;
-$ROOT = git rev-parse --show-toplevel;
-if ($env:CI) {
-    rustup toolchain install stable --profile=minimal
-    rustup component add clippy --toolchain stable
-}
-foreach ($file in $args) {
-    $dir = (Split-Path (Resolve-Path $file) -Parent)
-    Set-Location $dir
-    Write-Output "Cargo clippy in: $pwd"
-    if (Test-Path ./scripts/setup.ps1) {
-        &./scripts/setup.ps1
-        Set-Location $dir
-    }
-    cargo +stable clippy --fix --all-features --quiet
-    cargo +stable clippy --all-features --quiet -- -Dwarnings
-    Set-Location $ROOT
-}
-'''
-"""
-hook-cargo-fmt = """
-cd ..;
-pwsh -CommandWithArgs '''
-$PSNativeCommandUseErrorActionPreference = $true;
-$ROOT = git rev-parse --show-toplevel;
-if ($env:CI) {
-    rustup toolchain install nightly --profile=minimal
-    rustup component add rustfmt --toolchain nightly
-}
-foreach ($file in $args) {
-    Set-Location (Split-Path (Resolve-Path $file) -Parent)
-    Write-Output "Cargo fmt in: $pwd"
-    cargo +nightly fmt --all --quiet
-    Set-Location $ROOT
-}
-'''
-"""
-hook-cargo-machete = """
-cd ..;
-pwsh -CommandWithArgs '''
-$PSNativeCommandUseErrorActionPreference = $true;
-foreach ($file in $args) {
-    Set-Location (Split-Path (Resolve-Path $file) -Parent)
-    Write-Output "Cargo machete in: $pwd"
-    cargo machete
-    Set-Location $ROOT
-}
-"""
-hook-csharpier = "cd ..; dotnet tool install -g csharpier; csharpier format .; csharpier check ."
-hook-markdown = "cd ..;markdownlint-cli2 --fix"
-hook-numpydoc = "cd ..; pwsh -CommandWithArgs 'numpydoc lint $args --ignore ES01 EX01 GL08 PR04 RT03 SA01 SA04'"
-hook-ruff-format = "cd ..;ruff format --force-exclude --exit-non-zero-on-format"
-hook-ruff-lint = "cd ..;ruff check --fix --show-fixes --exit-non-zero-on-fix --force-exclude"
-hook-taplo = { cmd = "cd ..;taplo format -o 'reorder_keys=true'", env = { RUST_LOG = "warn" } }
-hook-typos = "cd ..;typos --force-exclude"
-
 [dependencies]
 actionlint = "==1.7.9"
 cargo-machete = "==0.9.1"
