@@ -1,5 +1,7 @@
 # This File is automatically synchronized from https://github.com/Glatzel/template
 
+lefthook: pixi run --no-progress --manifest-path ./lefthook/pixi.toml lefthook
+
 templates:
   run: run --no-progress --manifest-path ./lefthook/pixi.toml
 
@@ -76,10 +78,10 @@ pre-commit:
       glob: "**/*.csproj"
       group:
         jobs:
-          - name: dotnet format
-            run: dotnet format
           - name: csharpier
             run: dotnet tool install -g csharpier; csharpier format .; csharpier check .
+          - name: dotnet format
+            run: dotnet format
 
     - name: python
       glob: "**/*.{py,pyi}"
