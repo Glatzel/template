@@ -122,6 +122,7 @@ pre-commit:
           - name: cargo-clippy
             run: |
               pwsh -CommandWithArgs '''
+              $ErrorActionPreference = \"Stop\"
               $PSNativeCommandUseErrorActionPreference = $true;
               $ROOT = git rev-parse --show-toplevel;
               if ($env:CI) {
@@ -145,6 +146,7 @@ pre-commit:
           - name: cargo-fmt
             run: |
               pwsh -CommandWithArgs '''
+              $ErrorActionPreference = \"Stop\"
               $PSNativeCommandUseErrorActionPreference = $true;
               $ROOT = git rev-parse --show-toplevel;
               if ($env:CI) {
