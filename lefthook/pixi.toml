@@ -11,6 +11,8 @@ hook-actionlint = "cd ..;actionlint"
 hook-cargo-clippy = """
 cd ..;
 pwsh -CommandWithArgs '''
+$PSNativeCommandUseErrorActionPreference = $true;
+$ROOT = git rev-parse --show-toplevel;
 if ($env:CI) {
     rustup toolchain install stable --profile=minimal
     rustup component add clippy --toolchain stable
@@ -29,8 +31,34 @@ foreach ($file in $args) {
 }
 '''
 """
-hook-cargo-fmt = "pwsh -f ./cargo-fmt.ps1"
-hook-cargo-machete = "pwsh -f ./cargo-machete.ps1"
+hook-cargo-fmt = """
+cd ..;
+pwsh -CommandWithArgs '''
+$PSNativeCommandUseErrorActionPreference = $true;
+$ROOT = git rev-parse --show-toplevel;
+if ($env:CI) {
+    rustup toolchain install nightly --profile=minimal
+    rustup component add rustfmt --toolchain nightly
+}
+foreach ($file in $args) {
+    Set-Location (Split-Path (Resolve-Path $file) -Parent)
+    Write-Output "Cargo fmt in: $pwd"
+    cargo +nightly fmt --all --quiet
+    Set-Location $ROOT
+}
+'''
+"""
+hook-cargo-machete = """
+cd ..;
+pwsh -CommandWithArgs '''
+$PSNativeCommandUseErrorActionPreference = $true;
+foreach ($file in $args) {
+    Set-Location (Split-Path (Resolve-Path $file) -Parent)
+    Write-Output "Cargo machete in: $pwd"
+    cargo machete
+    Set-Location $ROOT
+}
+"""
 hook-csharpier = "cd ..; dotnet tool install -g csharpier; csharpier format .; csharpier check ."
 hook-markdown = "cd ..;markdownlint-cli2 --fix"
 hook-numpydoc = "cd ..; pwsh -CommandWithArgs 'numpydoc lint $args --ignore ES01 EX01 GL08 PR04 RT03 SA01 SA04'"
