@@ -118,6 +118,9 @@ group:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
 
+      - source: ./dotnet/
+        dest: ./
+
       - source: ./lefthook/
         dest: ./lefthook/
         deleteOrphaned: true
