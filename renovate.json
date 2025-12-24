@@ -46,7 +46,8 @@
         "pixi"
       ],
       "matchPackageNames": [
-        "python"
+        "python",
+        "numpy"
       ],
       "enabled": false
     },
