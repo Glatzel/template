@@ -44,11 +44,15 @@ jobs:
           fetch-depth: 0
 
       - name: clear-tag-and-release
-        run: gh release delete ${{inputs.tag}} --cleanup-tag -y
+        run: |
+          if(-not $(gh release view ${{inputs.tag}}  -R ${{github.repository}}))
+          {
+              gh release delete ${{inputs.tag}} --cleanup-tag -y
+          }
         if: ${{inputs.override}}
-        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
+        shell: pwsh
 
       - name: download asset
         if: inputs.assets
