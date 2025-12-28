@@ -108,8 +108,8 @@ group:
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
-      - source: ./.github/workflows/upload-prefix.yml
-        dest: ./.github/workflows/upload-prefix.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
 
   - repos: Glatzel/mason
     files:
@@ -135,8 +135,8 @@ group:
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
-      - source: ./.github/workflows/upload-prefix.yml
-        dest: ./.github/workflows/upload-prefix.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
 
   - repos: Glatzel/pyxis
     files:
@@ -167,8 +167,8 @@ group:
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
-      - source: ./.github/workflows/upload-prefix.yml
-        dest: ./.github/workflows/upload-prefix.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
 
   - repos: Glatzel/toolbox
     files:
@@ -197,8 +197,8 @@ group:
         dest: ./.github/codecov.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
-      - source: ./.github/workflows/upload-prefix.yml
-        dest: ./.github/workflows/upload-prefix.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
 
   - repos: Glatzel/vinaya
     files:

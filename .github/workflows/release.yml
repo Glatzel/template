@@ -53,7 +53,7 @@ jobs:
               gh release delete ${{inputs.tag}} --cleanup-tag -y
           }
           else{
-              write-output "tag ${{inputs.tag}} do not exist."
+              write-output "tag ${{inputs.tag}} does not exist."
           }
         if: ${{inputs.override}}
         env:
