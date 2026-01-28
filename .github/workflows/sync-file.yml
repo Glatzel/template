@@ -2,7 +2,7 @@ name: Sync Files
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 0 1 * *
+    - cron: 0 0 * * 1
 jobs:
   sync:
     runs-on: ubuntu-slim
@@ -17,3 +17,4 @@ jobs:
           PR_LABELS: action
           ASSIGNEES: Glatzel
           COMMIT_PREFIX: "chore: update configuration files"
+
