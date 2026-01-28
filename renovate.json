@@ -4,7 +4,7 @@
     "config:recommended"
   ],
   "schedule": [
-    "* 0-4 10 * *"
+    "0 0 * * 1"
   ],
   "enabledManagers": [
     "github-actions",
@@ -78,3 +78,4 @@
   ]
 
 }
+
