@@ -17,4 +17,3 @@ jobs:
           PR_LABELS: action
           ASSIGNEES: Glatzel
           COMMIT_PREFIX: "chore: update configuration files"
-
