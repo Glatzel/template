@@ -145,7 +145,7 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-        - source: ./.github/workflows/check-point.yml
+      - source: ./.github/workflows/check-point.yml
         dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/pyxis
