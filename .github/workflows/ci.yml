@@ -9,4 +9,4 @@ concurrency:
 
 jobs:
   lefthook:
-    with: ./ci-lefthook.yml 
+    with: ./.github/workflows/ci-lefthook.yml 
