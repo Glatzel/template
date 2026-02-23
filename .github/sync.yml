@@ -199,7 +199,7 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-  
+
   - repos: Glatzel/vinaya
     files:
       - source: ./common/cliff.toml
@@ -217,4 +217,3 @@ group:
         dest: ./ruff.toml
       - source: ./rust/rustfmt.toml
         dest: ./vinaya-cli/rustfmt.toml
-
