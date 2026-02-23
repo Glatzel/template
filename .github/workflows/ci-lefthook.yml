@@ -10,7 +10,6 @@ on:
         type: boolean
         default: false
         required: false
-permissions: read-all
 jobs:
   lefthook:
     runs-on: ubuntu-latest
