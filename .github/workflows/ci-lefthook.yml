@@ -36,7 +36,7 @@ jobs:
         with:
           run-install: false
 
-      - if: ${{inputs.cache-rust}}
+      - if: inputs.cache-rust
         uses: Swatinem/rust-cache@v2
 
       # pre-commit
