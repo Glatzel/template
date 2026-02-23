@@ -17,6 +17,8 @@ group:
       - source: ./rust/
         dest: ./driver
 
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
       - source: ./.github/codecov.yml
@@ -37,6 +39,8 @@ group:
 
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/config-linux
     files:
@@ -66,6 +70,8 @@ group:
 
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/dxf2kml
     files:
@@ -110,6 +116,8 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/mason
     files:
@@ -137,6 +145,8 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
+        - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/pyxis
     files:
@@ -169,6 +179,8 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/toolbox
     files:
@@ -199,6 +211,8 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
+      - source: ./.github/workflows/check-point.yml
+        dest: ./.github/workflows/check-point.yml
 
   - repos: Glatzel/vinaya
     files:
