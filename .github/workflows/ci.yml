@@ -13,4 +13,4 @@ permissions:
 
 jobs:
   lefthook:
-    with: ./ci-lefthook.yml
+    with: ./ci-lefthook.yml 
