@@ -35,9 +35,9 @@
       "matchManagers": [
         "pixi"
       ],
-      "registryUrls": [
-        "https://prefix.dev/conda-forge/",
-        "https://prefix.dev/glatzel/"
+      "registryUrls": [ 
+        "https://prefix.dev/glatzel/",
+        "https://prefix.dev/conda-forge/"
       ]
     },
     {
@@ -78,3 +78,4 @@
   ]
 
 }
+
