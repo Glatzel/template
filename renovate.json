@@ -11,15 +11,11 @@
     "pixi",
     "cargo",
     "nuget",
-    "pre-commit",
     "dockerfile",
     "docker-compose",
     "devcontainer"
   ],
   "commitMessagePrefix": "build:",
-  "pre-commit": {
-    "enabled": true
-  },
   "git-submodules": {
     "enabled": true
   },
@@ -41,7 +37,7 @@
       ]
     },
     {
-      "description": "Disable update python",
+      "description": "Disable update python and numpy",
       "matchManagers": [
         "pixi"
       ],
@@ -50,6 +46,13 @@
         "numpy"
       ],
       "enabled": false
+    },
+    {
+      "description": "lefthook",
+      "matchManagers": [
+        "pixi"
+      ],
+      "matchFileNames": ["lefthook/**"]
     },
     {
       "groupName": "Cargo",
@@ -64,12 +67,6 @@
       ]
     },
     {
-      "groupName": "pre-commit",
-      "matchManagers": [
-        "pre-commit"
-      ]
-    },
-    {
       "groupName": "git-submodules",
       "matchManagers": [
         "git-submodules"
@@ -78,4 +75,5 @@
   ]
 
 }
+
 
