@@ -3,6 +3,8 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -43,6 +45,7 @@ group:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
 
+
   - repos: Glatzel/config-win
     files:
       - source: ./common/taplo.toml
@@ -52,6 +55,8 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -71,6 +76,8 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -87,6 +94,8 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -117,6 +126,8 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./dotnet/
         dest: ./
@@ -144,6 +155,8 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -176,6 +189,8 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
@@ -206,6 +221,8 @@ group:
         dest: ./cliff.toml
       - source: ./common/taplo.toml
         dest: ./taplo.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
