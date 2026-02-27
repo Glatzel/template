@@ -31,7 +31,7 @@
       "matchManagers": [
         "pixi"
       ],
-      "registryUrls": [ 
+      "registryUrls": [
         "https://prefix.dev/glatzel/",
         "https://prefix.dev/conda-forge/"
       ]
@@ -52,7 +52,9 @@
       "matchManagers": [
         "pixi"
       ],
-      "matchFileNames": ["lefthook/**"]
+      "matchFileNames": [
+        "lefthook/**"
+      ]
     },
     {
       "groupName": "Cargo",
@@ -74,5 +76,3 @@
     }
   ]
 }
-
-
