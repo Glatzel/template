@@ -40,5 +40,4 @@ else {
     Write-Host "Test succeeded." -ForegroundColor Green
 }
 Write-Output "::endgroup::"
-Set-Location $ROOT
 exit $code
