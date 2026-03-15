@@ -40,3 +40,4 @@ jobs:
           }
           cargo +stable clippy --fix ${{inputs.args}}
           cargo +stable clippy ${{inputs.args}} -- -Dwarnings
+        shell: pwsh
