@@ -13,8 +13,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./.github/workflows/rust.yml
-        dest: ./.github/workflows/rust.yml
+      - source: ./actons/rust
+        dest: ./.github/actions
 
       - source: ./rust/
         dest: ./esp32-c3
@@ -107,8 +107,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./.github/workflows/rust.yml
-        dest: ./.github/workflows/rust.yml
+      - source: ./actons/rust
+        dest: ./.github/actions
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
@@ -170,8 +170,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./.github/workflows/rust.yml
-        dest: ./.github/workflows/rust.yml
+      - source: ./actons/rust
+        dest: ./.github/actions
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
@@ -206,8 +206,8 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./.github/workflows/rust.yml
-        dest: ./.github/workflows/rust.yml
+      - source: ./actons/rust
+        dest: ./.github/actions
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
