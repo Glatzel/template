@@ -14,7 +14,8 @@ group:
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
       - source: ./actions/rust
-        dest: ./.github/actions
+        dest: ./.github/actions/rust
+        deleteOrphaned: true
 
       - source: ./rust/
         dest: ./esp32-c3
@@ -108,7 +109,8 @@ group:
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
       - source: ./actions/rust
-        dest: ./.github/actions
+        dest: ./.github/actions/rust
+        deleteOrphaned: true
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
@@ -171,7 +173,8 @@ group:
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
       - source: ./actions/rust
-        dest: ./.github/actions
+        dest: ./.github/actions/rust
+        deleteOrphaned: true
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
@@ -207,7 +210,8 @@ group:
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
       - source: ./actions/rust
-        dest: ./.github/actions
+        dest: ./.github/actions/rust
+        deleteOrphaned: true
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
