@@ -219,7 +219,7 @@ group:
       - source: ./rust
         dest: ./rust
       - source: ./rust
-        dest: ./tools
+        dest: ./tools/orc
 
       - source: ./.github/workflows/changelog.yml
         dest: ./.github/workflows/changelog.yml
