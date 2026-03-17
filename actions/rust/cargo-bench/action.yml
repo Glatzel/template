@@ -10,7 +10,7 @@ inputs:
   args:
     description: Additional arguments passed to cargo codspeed
     required: false
-    default: ""
+    default: --all-features -- -Dwarnings
 
 runs:
   using: composite
