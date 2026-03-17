@@ -10,7 +10,7 @@ inputs:
   args:
     description: Additional arguments passed to cargo llvm-cov
     required: false
-    default: ""
+    default: -- -Dwarnings
 
 runs:
   using: composite

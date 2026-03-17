@@ -10,7 +10,7 @@ inputs:
   args:
     description: Additional arguments passed to cargo doc
     required: false
-    default: --all-features --no-deps
+    default: --all-features --no-deps -- -Dwarnings
 
 runs:
   using: composite

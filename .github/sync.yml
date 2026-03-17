@@ -220,6 +220,8 @@ group:
         dest: ./rust
       - source: ./rust
         dest: ./tools/orc
+      - source: ./rust
+        dest: ./tools/vinaya
 
       - source: ./.github/workflows/changelog.yml
         dest: ./.github/workflows/changelog.yml
