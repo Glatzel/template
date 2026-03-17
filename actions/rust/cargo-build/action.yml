@@ -10,7 +10,7 @@ inputs:
   args:
     description: Additional arguments passed to cargo build
     required: false
-    default: --all-features -- -Dwarnings
+    default: --all-features
 
 runs:
   using: composite
@@ -25,3 +25,5 @@ runs:
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
         cargo +stable build ${{ inputs.args }}
+      env:
+        RUSTDOCFLAGS: "-D warnings"
