@@ -249,5 +249,3 @@ group:
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
-      - source: ./rust/rustfmt.toml
-        dest: ./vinaya-cli/rustfmt.toml
