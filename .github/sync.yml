@@ -31,8 +31,6 @@ group:
     files:
       - source: ./common/taplo.toml
         dest: ./taplo.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
 
       - source: ./lefthook/
         dest: ./lefthook/
