@@ -28,7 +28,6 @@ jobs:
         run: |
           Write-Output "tag: ${{inputs.tag}}"
           if("${{inputs.tag}}" -match '^v\d+\.\d+\.\d+$' ){}
-          elseif("${{inputs.tag}}" -match '^v\d+\.\d+\.\d+-.*$') {}
           else{throw "Unknown version: '${{inputs.tag}}'"}
         shell: pwsh
       - name: check-tag-pre-release
