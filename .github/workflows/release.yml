@@ -69,3 +69,5 @@ jobs:
 
       - name: Release
         run: gh release create ${{inputs.tag}} -F release_changelog.md --draft ${{inputs.latest && '--latest' || '--prerelease'}}
+        env:
+          GH_TOKEN: ${{ github.token }}
