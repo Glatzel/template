@@ -58,7 +58,7 @@ pre-commit:
 
           - name: zizmor
             glob: ".github/workflows/*.{yml,yaml}"
-            run: zizmor --min-severity=low .github/
+            run: zizmor --min-severity=low --fix .github/
 
           - name: typos
             run: typos --force-exclude {staged_files}
