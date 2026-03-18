@@ -1,21 +1,21 @@
 # This file is automatically synchronized from https://github.com/Glatzel/template
 
-name: cargo build
-description: Build Rust project using cargo
+name: cargo miri
+description: Run Rust tests under Miri
 
 inputs:
   working-directory:
     description: Working directory
     default: .
   args:
-    description: Additional arguments passed to cargo build
+    description: Additional arguments passed to cargo miri test
     required: false
-    default: --all-features
+    default: ""
 
 runs:
   using: composite
   steps:
-    - name: Build project
+    - name: Run Miri tests
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
       run: |
@@ -24,6 +24,7 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo +stable build ${{ inputs.args }}
+        cargo +nightly miri test $env:INPUTS_ARGS
       env:
         RUSTDOCFLAGS: "-D warnings"
+        INPUTS_ARGS: ${{ inputs.args }}

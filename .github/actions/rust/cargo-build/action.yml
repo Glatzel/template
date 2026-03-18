@@ -1,21 +1,21 @@
 # This file is automatically synchronized from https://github.com/Glatzel/template
 
-name: cargo clippy
-description: Run Rust lints using cargo clippy
+name: cargo build
+description: Build Rust project using cargo
 
 inputs:
   working-directory:
     description: Working directory
     default: .
   args:
-    description: Additional arguments passed to cargo clippy
+    description: Additional arguments passed to cargo build
     required: false
     default: --all-features
 
 runs:
   using: composite
   steps:
-    - name: Run clippy
+    - name: Build project
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
       run: |
@@ -24,6 +24,7 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo +stable clippy ${{ inputs.args }}
+        cargo +stable build $env:INPUTS_ARGS
       env:
         RUSTDOCFLAGS: "-D warnings"
+        INPUTS_ARGS: ${{ inputs.args }}

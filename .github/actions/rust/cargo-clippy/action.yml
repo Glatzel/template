@@ -1,21 +1,21 @@
 # This file is automatically synchronized from https://github.com/Glatzel/template
 
-name: cargo miri
-description: Run Rust tests under Miri
+name: cargo clippy
+description: Run Rust lints using cargo clippy
 
 inputs:
   working-directory:
     description: Working directory
     default: .
   args:
-    description: Additional arguments passed to cargo miri test
+    description: Additional arguments passed to cargo clippy
     required: false
-    default: ""
+    default: --all-features
 
 runs:
   using: composite
   steps:
-    - name: Run Miri tests
+    - name: Run clippy
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
       run: |
@@ -24,6 +24,7 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo +nightly miri test ${{ inputs.args }}
+        cargo +stable clippy $env:INPUTS_ARGS
       env:
         RUSTDOCFLAGS: "-D warnings"
+        INPUTS_ARGS: ${{ inputs.args }}

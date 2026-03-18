@@ -23,11 +23,12 @@ runs:
     - name: Build benchmark targets
       run: |
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
-        cargo codspeed build ${{ inputs.args }}
+        cargo codspeed build $env:INPUTS_ARGS
       working-directory: ${{ inputs.working-directory }}
       shell: pwsh
       env:
         RUSTDOCFLAGS: "-D warnings"
+        INPUTS_ARGS: ${{ inputs.args }}
 
     - name: Run benchmarks
       uses: CodSpeedHQ/action@281164b0f014a4e7badd2c02cecad9b595b70537 # v4.11.1
