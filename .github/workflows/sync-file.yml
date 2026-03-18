@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@main
+        with:
+          persist-credentials: false
 
       - name: Run GitHub File Sync
         uses: BetaHuhn/repo-file-sync-action@v1

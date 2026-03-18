@@ -23,6 +23,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
+          persist-credentials: false
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.9.4
         with:

@@ -20,29 +20,33 @@ jobs:
     steps:
       - id: check-tag
         run: |
-          $tag="${{inputs.tag}}"
+          $tag="$env:INPUTS_TAG"
           Write-Output "tag: $tag"
           if("$tag" -match '^v\d+\.\d+\.\d+$' ){"IS_PRE_RELEASE=false" >> "$env:GITHUB_OUTPUT"}
           elseif("$tag" -match '^v\d+\.\d+\.\d+-.*$') {"IS_PRE_RELEASE=true" >> "$env:GITHUB_OUTPUT"}
           else{throw "Unknown version: '$tag'"}
         shell: pwsh
+        env:
+          INPUTS_TAG: ${{inputs.tag}}
 
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: clear-tag-and-release
         run: |
-          if($(gh api /repos/${{github.repository}}/tags --jq '.[].name') -contains "${{inputs.tag}}")
+          if($(gh api /repos/${{github.repository}}/tags --jq '.[].name') -contains "$env:INPUTS_TAG")
           {
-              write-output "tag ${{inputs.tag}} exists."
-              gh release delete ${{inputs.tag}} --cleanup-tag -y
+              write-output "tag $env:INPUTS_TAG exists."
+              gh release delete $env:INPUTS_TAG --cleanup-tag -y
           }
           else{
-              write-output "tag ${{inputs.tag}} does not exist."
+              write-output "tag $env:INPUTS_TAG does not exist."
           }
         env:
           GH_TOKEN: ${{ github.token }}
+          INPUTS_TAG: ${{inputs.tag}}
         shell: pwsh
 
       - name: Set up pixi
@@ -53,7 +57,9 @@ jobs:
       - name: Generate a changelog
         run: |
           pixi global install git-cliff
-          git-cliff --unreleased --tag ${{inputs.tag}} --strip header > release_changelog.md
+          git-cliff --unreleased --tag ${INPUTS_TAG} --strip header > release_changelog.md
+        env:
+          INPUTS_TAG: ${{inputs.tag}}
 
       - name: Release
         uses: softprops/action-gh-release@v2
