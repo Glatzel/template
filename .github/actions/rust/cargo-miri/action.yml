@@ -24,7 +24,6 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo +nightly miri test $env:INPUTS_ARGS
+        cargo +nightly miri test ${{ inputs.args }}
       env:
         RUSTDOCFLAGS: "-D warnings"
-        INPUTS_ARGS: ${{ inputs.args }}

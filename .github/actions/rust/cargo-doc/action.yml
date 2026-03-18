@@ -24,7 +24,6 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo +stable doc $env:INPUTS_ARGS
+        cargo +stable doc ${{ inputs.args }}
       env:
         RUSTDOCFLAGS: "-D warnings"
-        INPUTS_ARGS: ${{ inputs.args }}
