@@ -6,7 +6,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
+permissions: read-all
 jobs:
   lefthook:
     uses: ./.github/workflows/ci-lefthook.yml
