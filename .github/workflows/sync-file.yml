@@ -3,7 +3,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 0 0 * * 1
-permissions: read-all
+permissions:
+  contents: read
 jobs:
   sync:
     runs-on: ubuntu-slim
