@@ -13,7 +13,7 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./github/actions/rust
+      - source: ./.github/actions/rust
         dest: ./.github/actions/rust
         deleteOrphaned: true
 
@@ -106,7 +106,7 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./github/actions/rust
+      - source: ./.github/actions/rust
         dest: ./.github/actions/rust
         deleteOrphaned: true
 
@@ -170,7 +170,7 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./github/actions/rust
+      - source: ./.github/actions/rust
         dest: ./.github/actions/rust
         deleteOrphaned: true
 
@@ -207,7 +207,7 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-      - source: ./github/actions/rust
+      - source: ./.github/actions/rust
         dest: ./.github/actions/rust
         deleteOrphaned: true
 
