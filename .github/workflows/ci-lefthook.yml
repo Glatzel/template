@@ -5,6 +5,7 @@ name: lefthook
 on:
   workflow_dispatch:
   workflow_call:
+permissions: read-all
 jobs:
   lefthook:
     runs-on: ubuntu-latest
