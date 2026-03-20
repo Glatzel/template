@@ -31,7 +31,22 @@ jobs:
       # pre-commit
       - name: lefthook
         run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
-        shell: pwsh
 
-      - uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
-        if: always()
+      - name: Auto commit fixes
+        if: startsWith(github.ref, 'refs/pull/') && github.actor != 'github-actions[bot]'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add -A
+
+          if (-not (git diff --cached --quiet)) {
+              git commit -m "chore: apply lefthook fixes"
+              git push "https://x-access-token:${env:GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
+          } else {
+              echo "No changes to commit"
+          }
+
