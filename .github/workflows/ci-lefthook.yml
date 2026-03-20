@@ -34,8 +34,6 @@ jobs:
 
       - name: Auto commit fixes
         if: ${{ !cancelled() && startsWith(github.ref, 'refs/pull/') && github.actor != 'github-actions[bot]' }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
           git config --global user.name "github-actions[bot]"
