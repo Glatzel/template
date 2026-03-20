@@ -45,7 +45,7 @@ jobs:
 
           if (-not (git diff --cached --quiet)) {
               git commit -m "apply lefthook fixes"
-              git push "https://x-access-token:${env:GITHUB_TOKEN}@github.com/${{ github.repository }}.git" 
+              git push "https://x-access-token:${env:GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
           } else {
               echo "No changes to commit"
           }
