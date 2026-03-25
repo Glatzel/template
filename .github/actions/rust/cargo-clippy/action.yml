@@ -10,7 +10,7 @@ inputs:
   args:
     description: Additional arguments passed to cargo clippy
     required: false
-    default: --all-features
+    default: --workspace --all-features --no-deps
 
 runs:
   using: composite
