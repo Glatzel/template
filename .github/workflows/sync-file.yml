@@ -20,4 +20,4 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           PR_LABELS: action
           ASSIGNEES: Glatzel
-          COMMIT_PREFIX: "chore: update configuration files"
+          COMMIT_PREFIX: "chore: update shared files"
