@@ -39,14 +39,15 @@ jobs:
           git add -A
           if (-not (git diff --cached --quiet)) {
               git commit -m "chore: update changelog.md"
-              git push -u origin update-changelog
+              git push -u origin update-changelog --force-with-lease
           } else {
               echo "No changes to commit"
+              exit 0
           }
-          # gh pr create `
-          #   --title "chore: update changelog.md" `
-          #   --body "" `
-          #   --base main `
-          #   --head update-changelog
+          gh pr create `
+            --title "chore: update changelog.md" `
+            --body "" `
+            --base main `
+            --head update-changelog
         env:
           GH_TOKEN: ${{ github.token }}
