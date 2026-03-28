@@ -29,12 +29,11 @@ jobs:
         with:
           run-install: false
 
-      - run: pixi global install git-cliff
-
       - name: Create pull request
         shell: pwsh
         run: |
           git checkout -b "update-changelog"
+          pixi global install git-cliff
           git-cliff -o CHANGELOG.md
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -45,10 +44,10 @@ jobs:
           } else {
               echo "No changes to commit"
           }
-          gh pr create `
-            --title "chore: update changelog.md" `
-            --body "" `
-            --base main `
-            --head update-changelog
+          # gh pr create `
+          #   --title "chore: update changelog.md" `
+          #   --body "" `
+          #   --base main `
+          #   --head update-changelog
         env:
           GH_TOKEN: ${{ github.token }}
