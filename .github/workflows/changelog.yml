@@ -41,7 +41,7 @@ jobs:
           git add -A
           if (-not (git diff --cached --quiet)) {
               git commit -m "chore: update changelog.md"
-              git push -u origin "update-changelog"
+              git push -u origin update-changelog
           } else {
               echo "No changes to commit"
           }
