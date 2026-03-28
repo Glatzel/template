@@ -50,3 +50,5 @@ jobs:
             --body "" `
             --base main `
             --head update-changelog
+      env:
+        GH_TOKEN: ${{ github.token }}
