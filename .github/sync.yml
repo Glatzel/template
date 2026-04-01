@@ -132,6 +132,9 @@ group:
       - source: ./.github/actions/common
         dest: ./.github/actions/common
         deleteOrphaned: true
+      - source: ./.github/actions/python
+        dest: ./.github/actions/python
+        deleteOrphaned: true
 
   - repos: Glatzel/mason
     files:
@@ -204,6 +207,9 @@ group:
       - source: ./.github/actions/common
         dest: ./.github/actions/common
         deleteOrphaned: true
+      - source: ./.github/actions/python
+        dest: ./.github/actions/python
+        deleteOrphaned: true
 
   - repos: Glatzel/toolbox
     files:
@@ -246,6 +252,9 @@ group:
         deleteOrphaned: true
       - source: ./.github/actions/common
         dest: ./.github/actions/common
+        deleteOrphaned: true
+      - source: ./.github/actions/python
+        dest: ./.github/actions/python
         deleteOrphaned: true
 
   - repos: Glatzel/vinaya
