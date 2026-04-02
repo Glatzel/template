@@ -14,7 +14,7 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
     runs-on: ubuntu-latest
     steps:
-      - name: comment if triggered by comment\
+      - name: comment if triggered by comment
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
         run: gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running."
       - name: Checkout PR branch
