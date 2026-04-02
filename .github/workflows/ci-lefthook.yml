@@ -26,8 +26,11 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: comment if triggered by comment
+        id: comment
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
-        run: gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running."
+        run: |
+          url=$(gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running.")
+          echo "comment_url=$url" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -50,7 +53,7 @@ jobs:
         run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
 
       - name: Auto commit fixes
-        if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook') }}
+        if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook') && !cancelled() }}
         shell: pwsh
         run: |
           git config --global user.name "github-actions[bot]"
@@ -59,20 +62,10 @@ jobs:
           if (-not (git diff --cached --quiet)) {
               git commit -m "apply lefthook fixes"
               git push
-              gh pr comment ${{ github.event.issue.number }} --body "Lefthook done. Fixes applied."
+              gh pr comment ${{ steps.comment.outputs.comment_url }} --body "Lefthook done. Fixes applied."
           } else {
               echo "No changes to commit"
-              gh pr comment ${{ github.event.issue.number }} --body "Lefthook done. No changes to commit."
+              gh pr comment ${{ steps.comment.outputs.comment_url }} --body "Lefthook done. No changes to commit."
           }
         env:
           GH_TOKEN: ${{ github.token }}
-
-
-
-
-  
-
-
-
-
-
