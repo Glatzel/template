@@ -9,7 +9,7 @@ on:
     types: [created]
 permissions:
   contents: write
-  issues: write
+  pull-requests: write
 jobs:
   lefthook:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
@@ -24,13 +24,13 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call'}}
         with:
           ref: ${{ github.head_ref }}
-          
+
       - name: comment if triggered by comment
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
         run: gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running."
         env:
           GH_TOKEN: ${{ github.token }}
-        
+
       - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: |
@@ -59,6 +59,10 @@ jobs:
           if (-not (git diff --cached --quiet)) {
               git commit -m "apply lefthook fixes"
               git push
+              gh pr comment ${{ github.event.issue.number }} --body "Lefthook done. Fixes applied."
           } else {
               echo "No changes to commit"
+              gh pr comment ${{ github.event.issue.number }} --body "Lefthook done. No changes to commit."
           }
+        env:
+          GH_TOKEN: ${{ github.token }}

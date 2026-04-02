@@ -10,5 +10,5 @@ jobs:
   lefthook:
     permissions:
       contents: write
-      issues: write
+      pull-requests: write
     uses: ./.github/workflows/ci-lefthook.yml
