@@ -32,7 +32,7 @@ jobs:
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
         run: |
           url=$(gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running.")
-          echo "comment_url=$url" >> $GITHUB_OUTPUT
+          echo "comment_url=${url}" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}
 
