@@ -62,10 +62,10 @@ jobs:
           if (-not (git diff --cached --quiet)) {
               git commit -m "apply lefthook fixes"
               git push
-              gh pr comment ${{ steps.comment.outputs.comment_url }} --body "Lefthook done. Fixes applied."
+              gh pr comment ${{ github.event.issue.number }} --edit-last --body "Lefthook done. Fixes applied."
           } else {
               echo "No changes to commit"
-              gh pr comment ${{ steps.comment.outputs.comment_url }} --body "Lefthook done. No changes to commit."
+              gh pr comment ${{ github.event.issue.number }} --edit-last --body "Lefthook done. No changes to commit."
           }
         env:
           GH_TOKEN: ${{ github.token }}
