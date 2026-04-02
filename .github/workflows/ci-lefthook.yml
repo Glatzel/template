@@ -11,10 +11,19 @@ permissions:
   contents: write
 jobs:
   lefthook:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
     runs-on: ubuntu-latest
     steps:
+      - name: comment if triggered by comment
+        if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
+        run: gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running."
+      - name: Checkout PR branch
+        if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: refs/pull/${{ github.event.issue.number }}/head
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call'}}
         with:
           ref: ${{ github.head_ref }}
       - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
