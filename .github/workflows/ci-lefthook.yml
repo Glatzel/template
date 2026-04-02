@@ -15,15 +15,17 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR branch
+      - id: get-branch
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
+        run: echo ::set-output name=branch::$(gh pr view $PR_NO --repo $REPO --json headRefName --jq '.headRefName')
+        env:
+          REPO: ${{ github.repository }}
+          PR_NO: ${{ github.event.issue.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout PR branch
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          ref: refs/pull/${{ github.event.issue.number }}/head
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call'}}
-        with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ (github.event_name == 'issue_comment' && github.event.issue.pull_request != null) && steps.get-branch.outputs.branch || github.head_ref }}
 
       - name: comment if triggered by comment
         id: comment
