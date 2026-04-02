@@ -27,6 +27,8 @@ jobs:
       - name: comment if triggered by comment
         if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
         run: gh pr comment ${{ github.event.issue.number }} --body "Lefthook is running."
+        env:
+          GH_TOKEN: ${{ github.token }}
         
       - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
