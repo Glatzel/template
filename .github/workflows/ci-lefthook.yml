@@ -66,18 +66,18 @@ jobs:
           if ! git diff --cached --quiet; then
             if git commit -m "apply lefthook fixes"; then
               if git push; then
-                COMMENT_BODY="**Lefthook finished**  
+                COMMENT_BODY="**Lefthook finished**
           ✅ Fixes applied and pushed successfully."
               else
-                COMMENT_BODY="**Lefthook finished**  
+                COMMENT_BODY="**Lefthook finished**
           ⚠️ Fixes committed locally, but **push failed**."
               fi
             else
-              COMMENT_BODY="**Lefthook finished**  
+              COMMENT_BODY="**Lefthook finished**
           ❌ Failed to commit fixes."
             fi
           else
-            COMMENT_BODY="**Lefthook finished**  
+            COMMENT_BODY="**Lefthook finished**
           ℹ️ No changes were required."
           fi
 
