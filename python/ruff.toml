@@ -39,3 +39,4 @@ select = [
 
 [lint.pydocstyle]
 convention = "numpy"
+ 
