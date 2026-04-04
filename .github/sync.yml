@@ -210,36 +210,6 @@ group:
       - source: ./.github/actions/python
         dest: ./.github/actions/python
         deleteOrphaned: true
-        
-  - repos: Glatzel/self-host-runner
-    files:
-      - source: ./common/taplo.toml
-        dest: ./taplo.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
-
-      - source: ./lefthook/
-        dest: ./lefthook/
-        deleteOrphaned: true
-      - source: ./lefthook.yaml
-        dest: ./lefthook.yaml
-      - source: ./.github/workflows/ci-lefthook.yml
-        dest: ./.github/workflows/ci-lefthook.yml
-
-
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-
-      - source: ./.github/codecov.yml
-        dest: ./.github/codecov.yml
-      - source: ./.github/semantic.yml
-        dest: ./.github/semantic.yml
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
-      - source: ./.github/actions/python
-        dest: ./.github/actions/python
-        deleteOrphaned: true
 
   - repos: Glatzel/toolbox
     files:
@@ -266,6 +236,8 @@ group:
         dest: ./rust
       - source: ./rust
         dest: ./tools/orc
+      - source: ./rust
+        dest: ./tools/shook
       - source: ./rust
         dest: ./tools/vinaya
 
