@@ -192,6 +192,10 @@ group:
         dest: ./python
       - source: ./rust
         dest: ./rust
+      - source: ./rust
+        dest: ./tools/gnss-receiver
+      - source: ./rust
+        dest: ./tools/pyxis-cli
 
       - source: ./.github/workflows/changelog.yml
         dest: ./.github/workflows/changelog.yml
@@ -227,7 +231,6 @@ group:
         dest: ./lefthook.yaml
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
-
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
