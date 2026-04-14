@@ -1,7 +1,7 @@
 group:
   - repos: Glatzel/blocke
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -32,7 +32,7 @@ group:
 
   - repos: Glatzel/cetus
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -50,17 +50,17 @@ group:
 
   - repos: Glatzel/config-linux
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
 
   - repos: Glatzel/config-win
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
 
   - repos: Glatzel/demon-forge
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -81,7 +81,7 @@ group:
 
   - repos: Glatzel/dxf2kml
     files:
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -99,7 +99,7 @@ group:
     files:
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -140,7 +140,7 @@ group:
     files:
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -172,7 +172,7 @@ group:
     files:
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -219,7 +219,7 @@ group:
     files:
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
@@ -266,7 +266,7 @@ group:
     files:
       - source: ./common/cliff.toml
         dest: ./cliff.toml
-      - source: ./common/tombi.toml
+      - source: ./tombi.toml
         dest: ./tombi.toml
       - source: ./common/renovate.json
         dest: ./renovate.json
