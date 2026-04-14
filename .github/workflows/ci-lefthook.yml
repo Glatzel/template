@@ -60,7 +60,7 @@ jobs:
             git --no-pager diff
             exit 1
           fi
-      - uses: pre-commit-ci/lite-action@v1.1.0
+      - uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
         if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook') && !cancelled() }}
 
       # - name: Auto commit fixes
