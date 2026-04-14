@@ -8,7 +8,4 @@ concurrency:
   cancel-in-progress: true
 jobs:
   lefthook:
-    permissions:
-      contents: write
-      pull-requests: write
     uses: ./.github/workflows/ci-lefthook.yml
