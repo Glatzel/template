@@ -76,7 +76,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/sphinxcontrib-qthelp-2.0.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/sphinxcontrib-serializinghtml-1.1.10-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h366c992_103.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/tombi-0.9.19-hb17b654_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/tombi-0.9.20-hb17b654_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tomli-2.4.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/typos-1.45.1-hb17b654_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2025c-hc9c84f9_1.conda
@@ -851,17 +851,17 @@ packages:
   license_family: BSD
   size: 3301196
   timestamp: 1769460227866
-- conda: https://conda.anaconda.org/conda-forge/linux-64/tombi-0.9.19-hb17b654_0.conda
-  sha256: 50bfc95532528111e869889f1d10276ccd5594303939c3d8a115ff82262cc7a0
-  md5: 90d20ed1add5d609728f66f96bb65f05
+- conda: https://conda.anaconda.org/conda-forge/linux-64/tombi-0.9.20-hb17b654_0.conda
+  sha256: 06d771893afab968ccca5edc290ba6d5651213e8827565d60fdbcda05c9b2c16
+  md5: a10b7dc979a20633e2ca71c82ad6fb5a
   depends:
-  - libgcc >=14
   - __glibc >=2.17,<3.0.a0
+  - libgcc >=14
   constrains:
   - __glibc >=2.17
   license: MIT
-  size: 6813069
-  timestamp: 1776617329218
+  size: 6843499
+  timestamp: 1776646381107
 - conda: https://conda.anaconda.org/conda-forge/noarch/tomli-2.4.1-pyhcf101f3_0.conda
   sha256: 91cafdb64268e43e0e10d30bd1bef5af392e69f00edd34dfaf909f69ab2da6bd
   md5: b5325cf06a000c5b14970462ff5e4d58
