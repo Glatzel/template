@@ -242,6 +242,8 @@ group:
       - source: ./rust
         dest: ./tools/shook
       - source: ./rust
+        dest: ./tools/ttyw
+      - source: ./rust
         dest: ./tools/vinaya
 
       - source: ./.github/workflows/changelog.yml
