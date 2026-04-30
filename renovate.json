@@ -11,6 +11,7 @@
     "pixi",
     "cargo",
     "nuget",
+    "npm",
     "docker-compose",
     "devcontainer"
   ],
@@ -71,6 +72,12 @@
       "groupName": "git-submodules",
       "matchManagers": [
         "git-submodules"
+      ]
+    },
+    {
+      "groupName": "npm",
+      "matchManagers": [
+        "npm"
       ]
     }
   ]
