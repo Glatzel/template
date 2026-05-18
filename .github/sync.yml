@@ -278,6 +278,8 @@ group:
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
