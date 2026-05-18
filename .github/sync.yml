@@ -281,3 +281,24 @@ group:
 
       - source: ./python/ruff.toml
         dest: ./ruff.toml
+      
+      - source: ./rust
+        dest: ./vinaya-src
+
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
+      - source: ./.github/actions/rust
+        dest: ./.github/actions/rust
+        deleteOrphaned: true
+      - source: ./.github/actions/common
+        dest: ./.github/actions/common
+        deleteOrphaned: true
+      - source: ./.github/actions/python
+        dest: ./.github/actions/python
+        deleteOrphaned: true
