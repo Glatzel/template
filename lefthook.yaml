@@ -51,9 +51,7 @@ pre-commit:
         jobs:
           - name: tombi
             glob: "**/*.toml"
-            env:
-              RUST_LOG: warn
-            run: tombi format
+            run: tombi format {staged_files}
 
           - name: actionlint
             glob: ".github/workflows/*.{yml,yaml}"
