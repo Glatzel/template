@@ -61,7 +61,8 @@
       "groupName": "Cargo",
       "matchManagers": [
         "cargo"
-      ]
+      ],
+      "rangeStrategy": "bump"
     },
     {
       "groupName": "Dotnet",
