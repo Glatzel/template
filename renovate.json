@@ -5,7 +5,7 @@
     ":maintainLockFilesMonthly"
   ],
   "schedule": [
-    "* * * * 1"
+    "* * 1 * *"
   ],
   "enabledManagers": [
     "github-actions",
