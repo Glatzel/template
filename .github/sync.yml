@@ -286,7 +286,7 @@ group:
 
       - source: ./rust
         dest: ./native/rust
-      
+
       - source: ./clang
         dest: ./native
 
