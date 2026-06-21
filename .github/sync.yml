@@ -136,6 +136,38 @@ group:
         dest: ./.github/actions/python
         deleteOrphaned: true
 
+  - repos: Glatzel/hippo
+    files:
+      - source: ./common/cliff.toml
+        dest: ./cliff.toml
+      - source: ./tombi.toml
+        dest: ./tombi.toml
+      - source: ./common/renovate.json
+        dest: ./renovate.json
+
+      - source: ./dotnet/
+        dest: ./src
+
+      - source: ./lefthook/
+        dest: ./lefthook/
+        deleteOrphaned: true
+      - source: ./lefthook.yaml
+        dest: ./lefthook.yaml
+      - source: ./.github/workflows/ci-lefthook.yml
+        dest: ./.github/workflows/ci-lefthook.yml
+
+      - source: ./.github/workflows/changelog.yml
+        dest: ./.github/workflows/changelog.yml
+      - source: ./.github/codecov.yml
+        dest: ./.github/codecov.yml
+      - source: ./.github/semantic.yml
+        dest: ./.github/semantic.yml
+      - source: ./.github/workflows/release.yml
+        dest: ./.github/workflows/release.yml
+      - source: ./.github/actions/common
+        dest: ./.github/actions/common
+        deleteOrphaned: true
+
   - repos: Glatzel/mason
     files:
       - source: ./common/cliff.toml
