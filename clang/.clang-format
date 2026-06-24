@@ -23,3 +23,4 @@ IndentWidth: 4
 PenaltyBreakBeforeFirstCallParameter: 0
 PointerAlignment: Left
 SpaceBeforeParens: ControlStatements
+ 
