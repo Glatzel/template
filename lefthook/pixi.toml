@@ -10,7 +10,6 @@ lefthook-run = "lefthook run pre-commit --all-files --no-auto-install"
 [dependencies]
 actionlint = "==1.7.12"
 cargo-shear = "==1.13.1"
-clang-format = "==22.1.6"
 lefthook = "==2.1.9"
 markdownlint-cli2 = "==0.22.1"
 numpydoc = "==1.10.0"
