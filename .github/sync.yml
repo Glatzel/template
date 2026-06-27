@@ -322,7 +322,7 @@ group:
         dest: ./native/rust
 
       - source: ./clang
-        dest: ./native
+        dest: ./
 
       - source: ./.github/workflows/changelog.yml
         dest: ./.github/workflows/changelog.yml
