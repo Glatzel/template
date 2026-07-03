@@ -148,7 +148,7 @@ group:
         dest: ./renovate.json
 
       - source: ./dotnet/
-        dest: ./
+        dest: ./src
 
       - source: ./lefthook/
         dest: ./lefthook/
