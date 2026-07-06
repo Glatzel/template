@@ -274,8 +274,6 @@ group:
       - source: ./rust
         dest: ./tools/orc
       - source: ./rust
-        dest: ./tools/shook
-      - source: ./rust
         dest: ./tools/ttyw
       - source: ./rust
         dest: ./tools/vinaya
