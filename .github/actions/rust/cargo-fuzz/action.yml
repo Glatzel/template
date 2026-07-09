@@ -1,25 +1,30 @@
 # This file is automatically synchronized from https://github.com/Glatzel/template
 
-name: cargo clippy
-description: Run Rust lints using cargo clippy
+name: cargo fuzz
+description: Run Rust fuzz test
 
 inputs:
   working-directory:
     description: Working directory
     default: .
+  target:
+    description: fuzz target name
+    required: true
+  time:
+    description: max fuzz test time
+    required: false
+    defualt: 300
   options:
-    description: Options passed to cargo clippy
+    description: Options passed to cargo fuzz test
     required: false
-    default: --workspace --all-features
   args:
-    description: Additional arguments passed to cargo clippy
+    description: Additional arguments pass
     required: false
-    default: -D warnings
 
 runs:
   using: composite
   steps:
-    - name: Run clippy
+    - name: Run fuzz tests
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
       run: |
@@ -28,6 +33,4 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo clippy ${{ inputs.options }} --no-deps -- ${{ inputs.args }}
-      env:
-        RUSTFLAGS: "-D warnings"
+        cargo +nightly fuzz run ${{ inputs.options }} ${{ inputs.target }} -- -max_total_time=${{ input.time }} ${{inputs.args}}
