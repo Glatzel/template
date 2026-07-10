@@ -2,6 +2,10 @@
 
 name: codecov
 description: Upload coverage and test results to Codecov
+inputs:
+  flags:
+    description: Flags to pass to Codecov
+    required: false
 runs:
   using: composite
   steps:
@@ -17,3 +21,4 @@ runs:
         report_type: test_results
         fail_ci_if_error: true
         verbose: true
+        flags: ${{ inputs.flags }}
