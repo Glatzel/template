@@ -21,7 +21,5 @@ runs:
       run: |
         $ErrorActionPreference = "Stop"
         $PSNativeCommandUseErrorActionPreference = $true
-
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
-
         cargo build ${{ inputs.options }}
