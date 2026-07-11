@@ -6,8 +6,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -37,8 +37,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -65,8 +65,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -86,8 +86,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -106,8 +106,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -150,8 +150,8 @@ group:
       - source: ./dotnet/
         dest: ./src
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -182,8 +182,8 @@ group:
       - source: ./dotnet/
         dest: ./
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -211,8 +211,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -258,8 +258,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
@@ -305,8 +305,8 @@ group:
       - source: ./common/renovate.json
         dest: ./renovate.json
 
-      - source: ./lefthook/
-        dest: ./lefthook/
+      - source: ./.github/actions/lefthook/
+        dest: ./.github/actions/lefthook/
         deleteOrphaned: true
       - source: ./lefthook.yaml
         dest: ./lefthook.yaml
