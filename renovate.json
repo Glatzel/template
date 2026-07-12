@@ -23,6 +23,10 @@
     "enabled": true
   },
   "packageRules": [
+{
+  "matchUpdateTypes": ["lockFileMaintenance"],
+  "groupName": "Lock File Maintenance"
+},
     {
       "groupName": "GitHub Actions",
       "matchManagers": [
