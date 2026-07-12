@@ -54,7 +54,7 @@
         "pixi"
       ],
       "matchFileNames": [
-        "lefthook/**"
+        ".github/actions/lefthook/**"
       ]
     },
     {
