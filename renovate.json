@@ -8,7 +8,7 @@
     "* * 1 * *"
   ],
   "constraints": {
-    "rust": "1.97"
+    "rust": "1.97.0"
   },
   "enabledManagers": [
     "cargo",
