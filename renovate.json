@@ -14,7 +14,8 @@
     "nuget",
     "npm",
     "docker-compose",
-    "devcontainer"
+    "devcontainer",
+    "git-submodules"
   ],
   "commitMessagePrefix": "build:",
   "git-submodules": {
