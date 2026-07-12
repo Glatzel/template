@@ -30,7 +30,7 @@
       ]
     },
     {
-      "groupName": "Pixi {{packageFile}}",
+      "groupName": "{{packageFile}}",
       "matchManagers": [
         "pixi"
       ],
@@ -51,7 +51,7 @@
       "enabled": false
     },
     {
-      "groupName": "Cargo {{packageFile}}",
+      "groupName": "{{packageFile}}",
       "matchManagers": [
         "cargo"
       ],
