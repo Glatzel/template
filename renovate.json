@@ -7,15 +7,19 @@
   "schedule": [
     "* * 1 * *"
   ],
+  "constraints": {
+    "rust": "1.97"
+  },
   "enabledManagers": [
-    "github-actions",
-    "pixi",
     "cargo",
-    "nuget",
-    "npm",
-    "docker-compose",
     "devcontainer",
-    "git-submodules"
+    "docker-compose",
+    "git-submodules",
+    "github-actions",
+    "npm",
+    "nuget",
+    "pixi",
+    "rust-toolchain"
   ],
   "commitMessagePrefix": "build:",
   "git-submodules": {
@@ -64,6 +68,13 @@
         "cargo"
       ],
       "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "Rust Toolchain",
+      "matchManagers": [
+        "rust-toolchain"
+      ],
+      "rangeStrategy": "pin"
     },
     {
       "groupName": "Dotnet",
