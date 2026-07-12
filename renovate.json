@@ -30,7 +30,7 @@
       ]
     },
     {
-      "groupName": "Pixi",
+      "groupName": "Pixi {{packageFile}}",
       "matchManagers": [
         "pixi"
       ],
@@ -49,18 +49,9 @@
         "numpy"
       ],
       "enabled": false
-    },
+    },
     {
-      "description": "lefthook",
-      "matchManagers": [
-        "pixi"
-      ],
-      "matchFileNames": [
-        ".github/actions/lefthook/**"
-      ]
-    },
-    {
-      "groupName": "Cargo",
+      "groupName": "Cargo {{packageFile}}",
       "matchManagers": [
         "cargo"
       ],
