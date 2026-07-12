@@ -15,7 +15,8 @@
     "github-actions",
     "npm",
     "nuget",
-    "pixi"
+    "pixi",
+    "rust-toolchain"
   ],
   "commitMessagePrefix": "build:",
   "git-submodules": {
