@@ -49,7 +49,7 @@
         "numpy"
       ],
       "enabled": false
-    },
+    },
     {
       "groupName": "{{packageFile}}",
       "matchManagers": [
@@ -82,9 +82,11 @@
         "npm"
       ]
     },
-{
-  "matchUpdateTypes": ["lockFileMaintenance"],
-  "groupName": "Lock File Maintenance"
-}
+    {
+      "matchUpdateTypes": [
+        "lockFileMaintenance"
+      ],
+      "groupName": "Lock File Maintenance"
+    }
   ]
 }
