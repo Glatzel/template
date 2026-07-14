@@ -65,6 +65,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-15.2.0-he0feb66_19.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgomp-15.2.0-he0feb66_19.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-15.2.0-h934c35e_19.conda
+      - conda: https://prefix.dev/glatzel/noarch/csharpier-1.2.6-h4616a5c_0.conda
   lefthook:
     channels:
     - url: https://prefix.dev/glatzel/
@@ -1512,3 +1513,11 @@ packages:
   run_exports: {}
   size: 5355198
   timestamp: 1783275526672
+- conda: https://prefix.dev/glatzel/noarch/csharpier-1.2.6-h4616a5c_0.conda
+  sha256: 617afeb586ec477f263fe93c245aab0f8e58a5c6aa21e02dd83da0f62bebba41
+  md5: 42e9d19b6e32f49304606007f7288f43
+  depends:
+  - dotnet
+  run_exports: {}
+  size: 4533805
+  timestamp: 1784000607743
