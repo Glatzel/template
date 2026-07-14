@@ -6,7 +6,7 @@ templates:
   pixi-run: pixi run --no-progress --manifest-path ./.github/actions/lefthook/pixi.toml
 
 colors: true
-   
+
 output:
   - meta # Print lefthook version
   - summary # Print summary block (successful and failed steps)
