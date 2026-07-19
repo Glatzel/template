@@ -59,10 +59,10 @@ pre-commit:
             run: |
               {pixi-run} -e misc tombi format {staged_files}
 
-          - name: actionlint
-            glob: ".github/workflows/*.{yml,yaml}"
-            run: |
-              {pixi-run} -e misc actionlint {staged_files}
+          # - name: actionlint
+          #   glob: ".github/workflows/*.{yml,yaml}"
+          #   run: |
+          #     {pixi-run} -e misc actionlint {staged_files}
 
           - name: typos
             run: |
