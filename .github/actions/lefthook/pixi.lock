@@ -114,7 +114,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.6.17-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/markdownlint-cli2-0.23.1-h5ac6406_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-5.0.0-pyhd8ed1ab_2.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.13-8_cp313.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tomli-2.4.1-pyhcf101f3_0.conda
@@ -1260,18 +1260,17 @@ packages:
   run_exports: {}
   size: 91574
   timestamp: 1777103621679
-- conda: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-5.0.0-pyhd8ed1ab_2.conda
-  sha256: b3c0e650280e660268c5c3a609c1d008fab598c41eb310f5c6993590889625e7
-  md5: f41a1e00c55bc911fcc9cab2a88b4a66
+- conda: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
+  sha256: 292e8666ed5338b1a43a3a7f21030e95e393cfa245725c3d502d87481c4d6ef9
+  md5: 00a7fda6ccb684f36a8f2f0a17851da9
   depends:
-  - python >=3.9
+  - python >=3.10
   - ruamel.yaml >=0.15
   - tomli >=1.1.0
   license: MIT
-  license_family: MIT
   run_exports: {}
-  size: 34986
-  timestamp: 1734603755600
+  size: 35309
+  timestamp: 1784284500973
 - conda: https://conda.anaconda.org/conda-forge/noarch/pygments-2.20.0-pyhd8ed1ab_0.conda
   sha256: cf70b2f5ad9ae472b71235e5c8a736c9316df3705746de419b59d442e8348e86
   md5: 16c18772b340887160c79a6acc022db0
