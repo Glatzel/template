@@ -67,3 +67,4 @@ jobs:
       - uses: ./.github/actions/rust/cargo-build
         with:
           options: ${{ matrix.build-options }}
+          working-directory: test/rust
