@@ -29,7 +29,7 @@ jobs:
             uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
             with:
               run-install: false
-      - run: .ci/python/pytest.sh
+      - run: ./.ci/python/pytest.sh
         env:
           PIXI_ENVIRONMENT: ${{ matrix.pixi-environment }}
           PYTEST_ARGS: ${{ matrix.args }}
@@ -59,7 +59,7 @@ jobs:
             with:
               run-install: false
       - name: Set up Rust
-        run: .ci/rust/setup-rust.sh
+        run: ./.ci/rust/setup-rust.sh
         env:
           TOOLCHAIN: ${{ matrix.toolchain }}
           COMPONENTS: ${{ matrix.components }}
