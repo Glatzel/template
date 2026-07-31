@@ -19,6 +19,7 @@ else
     rustup toolchain install "$TOOLCHAIN" --profile minimal
     rustup default "$TOOLCHAIN"
 fi
+. "$HOME/.cargo/env"
 if [ -n "$COMPONENTS" ]; then
     rustup component add $COMPONENTS
 fi
