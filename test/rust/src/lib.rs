@@ -1,7 +1,12 @@
+fn _foo() {
+    println!("Hello, world!");
+}
+
 #[cfg(test)]
 mod tests {
+    use super::*;
     #[test]
     fn test() {
-        println!("Hello, world!");
+        _foo();
     }
 }
