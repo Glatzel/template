@@ -58,12 +58,10 @@ jobs:
             uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
             with:
               run-install: false
-
       - name: Set up Rust
         run: .ci/rust/setup-rust.sh
         env:
           TOOLCHAIN: ${{ matrix.toolchain }}
           COMPONENTS: ${{ matrix.components }}
           TARGETS: ${{ matrix.targets }}
-        working-directory: test/rust
         shell: bash
