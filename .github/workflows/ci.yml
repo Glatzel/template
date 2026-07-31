@@ -82,6 +82,6 @@ jobs:
       - uses: ./.github/actions/rust/cargo-doc
         with:
           working-directory: test/rust
-      - uses: ./.github/actions/rust/test
+      - uses: ./.github/actions/rust/cargo-test
         with:
           working-directory: test/rust
