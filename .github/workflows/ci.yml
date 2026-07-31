@@ -59,7 +59,7 @@ jobs:
             with:
               run-install: false
       - name: Set up Rust
-        run: ${{ github.workspace }}//.ci/rust/setup-rust.sh
+        run: ${{ github.workspace }}/.ci/rust/setup-rust.sh
         env:
           TOOLCHAIN: ${{ matrix.toolchain }}
           COMPONENTS: ${{ matrix.components }}
