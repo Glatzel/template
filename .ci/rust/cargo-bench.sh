@@ -15,7 +15,7 @@ if [ -f ./scripts/setup.sh ]; then
     . ./scripts/setup.sh
 fi
 
-if [ "$CI" ]
+if [ "${CI:-}" ]
 then
     pixi global install -c https://prefix.dev/glatzel cargo-codspeed \
     cargo codspeed build $CARGO_BENCH_OPTIONS
