@@ -24,17 +24,46 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - parallel:
-        - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-          with:
-            fetch-depth: 0
-            ref: main
-        - name: Set up pixi
-          uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
-          with:
-            run-install: false
+          - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+          - name: Set up pixi
+            uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
+            with:
+              run-install: false
       - run: .ci/python/pytest.sh
         env:
           PIXI_ENVIRONMENT: ${{ matrix.pixi-environment }}
-          DEFAULT_PYTEST_ARGS: ${{ matrix.args }}
+          PYTEST_ARGS: ${{ matrix.args }}
         working-directory: test/python
+        shell: bash
+  rust:
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - stable
+          - nightly
+        components:
+          - rustfmt
+          - "minimal,clippy"
+          - "rustfmt,clippy"
+        targets:
+          - x86_64-unknown-linux-gnu
+          - aarch64-unknown-linux-gnu
+
+    runs-on: ubuntu-slim
+    steps:
+      - parallel:
+          - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+          - name: Set up pixi
+            uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
+            with:
+              run-install: false
+
+      - name: Set up Rust
+        run: .ci/rust/setup-rust.sh
+        env:
+          TOOLCHAIN: ${{ matrix.toolchain }}
+          COMPONENTS: ${{ matrix.components }}
+          TARGETS: ${{ matrix.targets }}
+        working-directory: test/rust
         shell: bash

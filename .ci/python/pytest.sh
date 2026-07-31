@@ -1,8 +1,9 @@
+#!/usr/bin/env sh
+
 set -eu
 
-if [ -z "${PIXI_ENVIRONMENT:-}" ]; then
-    PIXI_ENVIRONMENT="default"
-fi
+PIXI_ENVIRONMENT=${PIXI_ENVIRONMENT:-default}
+
 
 DEFAULT_PYTEST_ARGS="
 ./tests
@@ -17,9 +18,7 @@ DEFAULT_PYTEST_ARGS="
 --verbose
 "
 
-if [ -z "${PYTEST_ARGS:-}" ]; then
-    PYTEST_ARGS="$DEFAULT_PYTEST_ARGS"
-fi
+PYTEST_ARGS=${PYTEST_ARGS:-"$DEFAULT_PYTEST_ARGS"}
 
 # shellcheck disable=SC2086
 pixi run -e "$PIXI_ENVIRONMENT" pytest $PYTEST_ARGS
