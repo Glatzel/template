@@ -38,20 +38,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        toolchain:
-          - stable
-          - nightly
-        components:
-          - clippy
-          - rustfmt clippy
-        targets:
-          - x86_64-unknown-linux-gnu
-          - aarch64-unknown-linux-gnu
-        build-options:
-          - --release
-          - --all-features
+        include:
+          - machine: ubuntu-slim
+            toolchain: stable
+            components: clippy
+            targets: x86_64-unknown-linux-gnu
+            build-options: --release
 
-    runs-on: ubuntu-slim
+          - machine: ubuntu-latest
+            toolchain: stable
+            components: "rustfmt clippy"
+            targets: x86_64-unknown-linux-gnu
+            build-options: --all-features
+
+          - machine: ubuntu-latest
+            toolchain: nightly
+            components: "rustfmt clippy"
+            targets: aarch64-unknown-linux-gnu
+            build-options: --release
+
+    runs-on: ${{ matrix.machine }}
     steps:
       - parallel:
           - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0

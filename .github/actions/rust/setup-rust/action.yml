@@ -27,7 +27,9 @@ runs:
 
     - name: Install rust
       shell: bash
-      run: ${{ github.workspace }}/.ci/rust/setup-rust.sh
+      run: |
+          ${{ github.workspace }}/.ci/rust/setup-rust.sh
+          "$HOME/.cargo/bin" >> "$GITHUB_PATH"
       env:
         TOOLCHAIN: ${{ inputs.toolchain }}
         COMPONENTS: ${{ inputs.components }}
