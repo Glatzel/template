@@ -17,6 +17,7 @@ fi
 
 if [ "$CI" ]
 then
+    pixi global install -c https://prefix.dev/glatzel cargo-codspeed \
     cargo codspeed build $CARGO_BENCH_OPTIONS
 else
     cargo bench $CARGO_BENCH_OPTIONS

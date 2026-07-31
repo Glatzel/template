@@ -2,7 +2,7 @@
 
 set -eu
 
-CARGO_BUILD_OPTIONS="${CARGO_BUILD_OPTIONS:-}"
+CARGO_BUILD_OPTIONS="${CARGO_BUILD_OPTIONS:---all-features}"
 
 if [ -f ./scripts/setup.sh ]; then
     . ./scripts/setup.sh

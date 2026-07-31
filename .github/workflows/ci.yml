@@ -76,3 +76,12 @@ jobs:
         with:
           options: ${{ matrix.build-options }}
           working-directory: test/rust
+      - uses: ./.github/actions/rust/cargo-clippy
+        with:
+          working-directory: test/rust
+      - uses: ./.github/actions/rust/cargo-doc
+        with:
+          working-directory: test/rust
+      - uses: ./.github/actions/rust/test
+        with:
+          working-directory: test/rust

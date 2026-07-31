@@ -10,11 +10,9 @@ inputs:
   options:
     description: Options passed to cargo clippy
     required: false
-    default: --workspace --all-features
   args:
     description: Additional arguments passed to cargo clippy
     required: false
-    default: -D warnings
 
 runs:
   using: composite
@@ -22,12 +20,7 @@ runs:
     - name: Run clippy
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
-      run: |
-        $ErrorActionPreference = "Stop"
-        $PSNativeCommandUseErrorActionPreference = $true
-
-        if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
-
-        cargo clippy ${{ inputs.options }} --no-deps -- ${{ inputs.args }}
+      run: ${{ github.workspace }}/.ci/rust/cargo-clippy.sh
       env:
-        RUSTFLAGS: "-D warnings"
+        CARGO_CLIPPY_OPTIONS: ${{ inputs.options }}
+        CARGO_CLIPPY_ARGS: ${{ inputs.args }}
