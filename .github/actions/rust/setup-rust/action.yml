@@ -10,11 +10,9 @@ inputs:
     required: false
   components:
     description: Rust components to install
-    default: ""
     required: false
   targets:
     description: Rust target to install
-    default: ""
     required: false
 
 runs:
