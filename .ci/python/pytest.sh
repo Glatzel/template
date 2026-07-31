@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+# This File is automatically synchronized from https://github.com/Glatzel/template
 
 set -eu
 

@@ -1,13 +1,1 @@
-# This File is automatically synchronized from https://github.com/Glatzel/template
-
-[files]
-exclude = ["**/external/**/*.toml"]
-
-[format.rules]
-trailing-comment-alignment = true
-
-# Renovate doesn't support 1.1.0
-[[schemas]]
-toml-version = "v1.0.0"
-path = "tombi://www.schemastore.org/cargo.json"
-include = ["**/Cargo.toml"]
+./common/tombi.toml
