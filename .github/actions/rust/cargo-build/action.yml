@@ -10,7 +10,6 @@ inputs:
   options:
     description: Options passed to cargo build
     required: false
-    default: --all-features
 
 runs:
   using: composite

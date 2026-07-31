@@ -13,7 +13,6 @@ inputs:
   args:
     description: Additional arguments passed to cargo fuzz test
     required: false
-    default: -- -D warnings
 
 runs:
   using: composite
