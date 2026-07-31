@@ -40,6 +40,8 @@ jobs:
       matrix:
         include:
           - machine: ubuntu-slim
+
+          - machine: ubuntu-slim
             toolchain: stable
             components: clippy
             targets: x86_64-unknown-linux-gnu
