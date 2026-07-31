@@ -32,8 +32,9 @@ jobs:
           uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
           with:
             run-install: false
-      - uses: ./.github/actions/python/pytest.yml
-        with:
-          pixi-environment: ${{ matrix.pixi-environment }}
-          working-directory: test/python
-          args: ${{ matrix.args }}
+      - run: .ci/python/pytest.sh
+        env:
+          PIXI_ENVIRONMENT: ${{ matrix.pixi-environment }}
+          DEFAULT_PYTEST_ARGS: ${{ matrix.args }}
+        working-directory: test/python
+        shell: bash
