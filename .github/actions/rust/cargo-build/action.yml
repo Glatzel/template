@@ -18,8 +18,6 @@ runs:
     - name: Build project
       shell: pwsh
       working-directory: ${{ inputs.working-directory }}
-      run: |
-        $ErrorActionPreference = "Stop"
-        $PSNativeCommandUseErrorActionPreference = $true
-        if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
-        cargo build ${{ inputs.options }}
+      run: ${{ github.workspace }}/.ci/rust/cargo-build.sh
+      env:
+        CARGO_BUILD_OPTIONS: ${{ inputs.options }}

@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+
   python:
     strategy:
       fail-fast: false
@@ -29,12 +30,10 @@ jobs:
             uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
             with:
               run-install: false
-      - run: ${{ github.workspace }}/.ci/python/pytest.sh
-        env:
-          PIXI_ENVIRONMENT: ${{ matrix.pixi-environment }}
-          PYTEST_ARGS: ${{ matrix.args }}
-        working-directory: test/python
-        shell: bash
+      - uses: ./.github/actions/python/pytest
+        with:
+          working-directory: test/python
+
   rust:
     strategy:
       fail-fast: false
@@ -48,6 +47,9 @@ jobs:
         targets:
           - x86_64-unknown-linux-gnu
           - aarch64-unknown-linux-gnu
+        build-options:
+          - --release
+          - --all-features
 
     runs-on: ubuntu-slim
     steps:
@@ -57,10 +59,11 @@ jobs:
             uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
             with:
               run-install: false
-      - name: Set up Rust
-        run: ${{ github.workspace }}/.ci/rust/setup-rust.sh
-        env:
-          TOOLCHAIN: ${{ matrix.toolchain }}
-          COMPONENTS: ${{ matrix.components }}
-          TARGETS: ${{ matrix.targets }}
-        shell: bash
+      - uses: ./.github/actions/rust/setup-rust
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: ${{ matrix.components }}
+          targets: ${{ matrix.targets }}
+      - uses: ./.github/actions/rust/cargo-build
+        with:
+          options: ${{ matrix.build-options }}
