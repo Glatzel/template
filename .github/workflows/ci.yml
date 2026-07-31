@@ -32,7 +32,7 @@ jobs:
           uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
           with:
             run-install: false
-      - uses: ./.github/workflows/ci-pytest.yml
+      - uses: ./.github/actions/python/pytest.yml
         with:
           pixi-environment: ${{ matrix.pixi-environment }}
           working-directory: test/python
