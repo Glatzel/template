@@ -4,4 +4,8 @@ set -eu
 
 CARGO_BUILD_OPTIONS="${CARGO_BUILD_OPTIONS:-}"
 
+if [ -f ./scripts/setup.sh ]; then
+    . ./scripts/setup.sh
+fi
+
 cargo build $CARGO_BUILD_OPTIONS
