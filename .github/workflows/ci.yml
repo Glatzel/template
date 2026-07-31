@@ -43,8 +43,7 @@ jobs:
           - stable
           - nightly
         components:
-          - rustfmt
-          - "minimal,clippy"
+          - clippy
           - "rustfmt,clippy"
         targets:
           - x86_64-unknown-linux-gnu
