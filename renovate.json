@@ -7,7 +7,6 @@
   "schedule": [
     "* * 1 * *"
   ],
-  "allowedUnsafeExecutions":["pixi"],
   "enabledManagers": [
     "cargo",
     "devcontainer",
