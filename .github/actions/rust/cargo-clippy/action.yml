@@ -14,7 +14,36 @@ inputs:
   args:
     description: Additional arguments passed to cargo clippy
     required: false
-    default: -D warnings
+    default: >
+      -D warnings
+      -D clippy::alloc_instead_of_core
+      -D clippy::branches_sharing_code
+      -D clippy::clear_with_drain
+      -D clippy::collection_is_never_read
+      -D clippy::equatable_if_let
+      -D clippy::imprecise_flops
+      -D clippy::missing_const_for_fn
+      -D clippy::needless_collect
+      -D clippy::needless_type_cast
+      -D clippy::negative_feature_names
+      -D clippy::nonstandard_macro_braces
+      -D clippy::option_if_let_else
+      -D clippy::or_fun_call
+      -D clippy::redundant_clone
+      -D clippy::redundant_feature_names
+      -D clippy::redundant_pub_crate
+      -D clippy::search_is_some
+      -D clippy::set_contains_or_insert
+      -D clippy::single_option_map
+      -D clippy::string_lit_as_bytes
+      -D clippy::suboptimal_flops
+      -D clippy::trait_duplication_in_bounds
+      -D clippy::unnecessary_struct_initialization
+      -D clippy::unused_rounding
+      -D clippy::unwrap_used
+      -D clippy::use_self
+      -D clippy::useless_let_if_seq
+      -D clippy::wildcard_dependencies
 
 runs:
   using: composite
