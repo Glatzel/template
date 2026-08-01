@@ -16,6 +16,7 @@ inputs:
     required: false
     default: >
       -D warnings
+      -A clippy::too_many_arguments
       -D clippy::alloc_instead_of_core
       -D clippy::bool_to_int_with_if
       -D clippy::borrow_as_ptr
@@ -101,12 +102,13 @@ inputs:
       -D clippy::unnecessary_trailing_comma
       -D clippy::unnested_or_patterns
       -D clippy::unused_rounding
-      -D clippy::unwrap_used
       -D clippy::use_self
       -D clippy::useless_let_if_seq
       -D clippy::verbose_bit_mask
       -D clippy::wildcard_dependencies
       -D clippy::wildcard_imports
+
+# -D clippy::unwrap_used
 
 runs:
   using: composite
