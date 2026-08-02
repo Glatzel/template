@@ -101,6 +101,7 @@ cargo clippy --fix --allow-dirty --workspace -- `
     -D clippy::unseparated_literal_suffix `
     -D clippy::unused_rounding `
     -D clippy::use_self `
+    -D clippy::used_underscore_items `
     -D clippy::useless_let_if_seq `
     -D clippy::verbose_bit_mask `
     -D clippy::wildcard_dependencies `
