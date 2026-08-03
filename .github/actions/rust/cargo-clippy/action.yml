@@ -33,7 +33,6 @@ inputs:
       -D clippy::empty_enum_variants_with_brackets
       -D clippy::empty_enums
       -D clippy::enum_glob_use
-      -D clippy::enum_glob_use
       -D clippy::equatable_if_let
       -D clippy::explicit_deref_methods
       -D clippy::explicit_into_iter_loop
