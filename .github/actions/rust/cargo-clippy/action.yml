@@ -30,6 +30,9 @@ inputs:
       -D clippy::deref_by_slicing
       -D clippy::duration_suboptimal_units
       -D clippy::elidable_lifetime_names
+      -D clippy::empty_enum_variants_with_brackets
+      -D clippy::empty_enums
+      -D clippy::enum_glob_use
       -D clippy::enum_glob_use
       -D clippy::equatable_if_let
       -D clippy::explicit_deref_methods
