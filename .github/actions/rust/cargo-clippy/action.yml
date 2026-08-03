@@ -40,6 +40,7 @@ inputs:
       -D clippy::if_not_else
       -D clippy::if_then_some_else_none
       -D clippy::ignored_unit_patterns
+      -D clippy::impl_trait_in_params
       -D clippy::implicit_clone
       -D clippy::imprecise_flops
       -D clippy::inconsistent_struct_constructor
