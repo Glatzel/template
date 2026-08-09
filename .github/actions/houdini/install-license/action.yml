@@ -27,7 +27,11 @@ runs:
             echo "sesinetd is up"
             break
           fi
-          echo "waiting for sesinetd ($i/30)..."
+
+          echo "sesinetd not responding, attempting restart ($i/30)..."
+          pkill -9 sesinetd 2>/dev/null
+          /usr/lib/sesi/sesinetd >/tmp/sesinetd.log 2>&1 &
+
           sleep 1
         done
 
@@ -41,8 +45,14 @@ runs:
           "$server_code" \
           HOUDINI-NC)
 
-        echo "$response" | jq -r '.license_keys[]' | while read -r key; do
-        sudo /usr/lib/sesi/sesictrl install "$key"
+        keys=$(echo "$response" | jq -r '.license_keys[]' 2>&1) || {
+          echo "jq failed, response was:" >&2
+          echo "$response" >&2
+          exit 1
+        }
+        
+        echo "$keys" | while read -r key; do
+          sudo /usr/lib/sesi/sesictrl install "$key"
         done
         /usr/lib/sesi/sesictrl print-server
         /usr/lib/sesi/sesictrl print-license
