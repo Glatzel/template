@@ -1,0 +1,71 @@
+name: install license
+inputs:
+  major:
+    description: Houdini version major
+    required: true
+  minor:
+    description: Houdini version minor
+    required: true
+  patch:
+    description: Houdini version patch
+    required: true
+  sidefx-client-id:
+    description: "SideFX client ID"
+    required: true
+  sidefx-client-secret:
+    description: "SideFX client secret"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: install license
+      run: |
+        for i in $(seq 1 30); do
+          if curl -sf -o /dev/null -X POST http://127.0.0.1:1715/api \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            --data 'json=["cmd_ping",[],{}]'; then
+            echo "sesinetd is up"
+            break
+          fi
+          echo "waiting for sesinetd ($i/30)..."
+          sleep 1
+        done
+
+        server_name=$(hostname)
+        server_code=$(/usr/lib/sesi/sesictrl print-server | grep '^SERVER' | awk '{print $3}')
+        echo "$server_name"
+
+        response=$(vinaya sidefx license.get_non_commercial_license \
+          --version ${{inputs.major}}.${{inputs.minor}} \
+          "$server_name" \
+          "$server_code" \
+          HOUDINI-NC)
+
+        echo "$response" | jq -r '.license_keys[]' | while read -r key; do
+        sudo /usr/lib/sesi/sesictrl install "$key"
+        done
+        /usr/lib/sesi/sesictrl print-server
+        /usr/lib/sesi/sesictrl print-license
+      env:
+        SIDEFX_CLIENT_ID: ${{inputs.sidefx-client-id}}
+        SIDEFX_CLIENT_SECRET: ${{inputs.sidefx-client-secret}}
+        shell: bash
+
+    - name: start hserver
+      run: |
+        cd /opt/hfs${{inputs.major}}.${{inputs.minor}}.${{inputs.patch}}
+        source houdini_setup
+        cd -
+        hserver -S localhost
+        hserver
+        for i in $(seq 1 30); do
+          if hserver -l 2>/dev/null | grep -q "Connected To:"; then
+            echo "hserver connected to sesinetd"
+            hserver -l
+            break
+          fi
+          echo "waiting for hserver to connect ($i/30)..."
+          sleep 1
+        done
+        hserver -l | grep -q "Connected To:" || { echo "hserver never connected"; exit 1; }
+      shell: bash

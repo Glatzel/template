@@ -1,0 +1,69 @@
+name: setup houdini
+inputs:
+  major:
+    description: Houdini version major
+    required: true
+  minor:
+    description: Houdini version minor
+    required: true
+  patch:
+    description: Houdini version patch
+    required: true
+  sidefx-client-id:
+    description: "SideFX client ID"
+    required: true
+  sidefx-client-secret:
+    description: "SideFX client secret"
+    required: true
+  install-directory:
+    description: houdini install directory
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - parallel:
+        - name: Set up pixi
+          uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
+          with:
+            run-install: false
+
+    - name: install houdini launcher
+      if: inputs.install
+      run: |
+        pixi global install -c https://prefix.dev/glatzel  -c conda-forge vinaya-cli houdini-launcher
+        install_houdini_launcher houdini_launcher
+        echo "client_id=$SIDEFX_CLIENT_ID" > "./houdini_launcher/bin/setting.ini"
+        echo "client_secret=$SIDEFX_CLIENT_SECRET" >> "./houdini_launcher/bin/setting.ini"
+      env:
+        SIDEFX_CLIENT_ID: ${{inputs.sidefx-client-id}}
+        SIDEFX_CLIENT_SECRET: ${{inputs.sidefx-client-secret}}
+      working-directory: ${{inputs.install-directory}}
+      shell: bash
+
+    - name: install houdini
+      if: inputs.install
+      run: |
+        sudo mkdir -p /usr/share/applications/
+        sudo -E ./houdini_launcher/bin/houdini_installer \
+        install -v \
+        --accept-EULA SideFX-2021-10-13 \
+        --settings-file ./houdini_launcher/bin/setting.ini \
+        --product Houdini \
+        --version ${{inputs.major}}.${{inputs.minor}}.${{inputs.patch}} \
+        --platform linux_x86_64_gcc14.2
+        houdini_launcher/bin/houdini_installer list
+      working-directory: ${{inputs.install-directory}}
+      shell: bash
+
+    - name: install houdini license server
+      if: inputs.install
+      run: |
+        sudo -E ./houdini_launcher/bin/houdini_installer \
+        install \
+        --accept-EULA SideFX-2021-10-13 \
+        --settings-file ./houdini_launcher/bin/setting.ini \
+        --product "License Server" \
+        --version ${{inputs.major}}.${{inputs.minor}}.${{inputs.patch}} \
+        --platform linux_x86_64_gcc14.2
+      working-directory: ${{inputs.install-directory}}
+      shell: bash
