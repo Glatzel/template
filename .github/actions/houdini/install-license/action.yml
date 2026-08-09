@@ -49,7 +49,7 @@ runs:
       env:
         SIDEFX_CLIENT_ID: ${{inputs.sidefx-client-id}}
         SIDEFX_CLIENT_SECRET: ${{inputs.sidefx-client-secret}}
-        shell: bash
+      shell: bash
 
     - name: start hserver
       run: |
