@@ -23,7 +23,8 @@ inputs:
     required: true
   install-directory:
     description: houdini install directory
-    required: true
+    required: false
+    default: /opt
 runs:
   using: "composite"
   steps:
@@ -54,7 +55,11 @@ runs:
         --product Houdini \
         --version ${{inputs.major}}.${{inputs.minor}}.${{inputs.patch}} \
         --platform ${{inputs.platform}}
-        houdini_launcher/bin/houdini_installer list
+      working-directory: ${{inputs.install-directory}}
+      shell: bash
+
+    - name: install info
+      run: houdini_launcher/bin/houdini_installer list
       working-directory: ${{inputs.install-directory}}
       shell: bash
 
