@@ -313,9 +313,6 @@ group:
       - source: ./.github/actions/rust
         dest: ./.github/actions/rust
         deleteOrphaned: true
-      # - source: ./.github/actions/houdini
-      #   dest: ./.github/actions/houdini
-      #   deleteOrphaned: true
       - source: ./.github/actions/common
         dest: ./.github/actions/common
         deleteOrphaned: true
