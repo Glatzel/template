@@ -3,8 +3,8 @@ group:
     files:
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -32,8 +32,8 @@ group:
     files:
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -58,8 +58,8 @@ group:
     files:
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -77,8 +77,8 @@ group:
     files:
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -95,8 +95,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -134,8 +134,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./dotnet/
         dest: ./src
@@ -164,8 +164,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./dotnet/
         dest: ./
@@ -194,8 +194,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -239,8 +239,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
@@ -284,8 +284,8 @@ group:
         dest: ./cliff.toml
       - source: ./tombi.toml
         dest: ./tombi.toml
-      - source: ./common/renovate.json
-        dest: ./renovate.json
+      - source: ./common/renovate.jsonc
+        dest: ./renovate.jsonc
 
       - source: ./.github/actions/lefthook/
         dest: ./.github/actions/lefthook/
