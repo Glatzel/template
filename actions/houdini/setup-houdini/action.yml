@@ -1,4 +1,5 @@
 name: setup houdini
+description: Sets up Houdini for use in a GitHub Actions workflow
 inputs:
   major:
     description: Houdini version major

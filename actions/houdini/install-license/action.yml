@@ -1,4 +1,5 @@
 name: install license
+description: Installs a license for Houdini
 inputs:
   major:
     description: Houdini version major

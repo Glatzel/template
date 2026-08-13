@@ -1,7 +1,7 @@
 # This file is automatically synchronized from https://github.com/Glatzel/template
 
-name: codecov
-description: Upload coverage and test results to Codecov
+name: lefthook
+description: Runs Lefthook pre-commit hooks
 inputs:
   flags:
     description: Flags to pass to Codecov
