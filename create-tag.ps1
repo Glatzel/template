@@ -1,4 +1,4 @@
-$build=25
+$build=26
 $version = Get-Date -Format 'yyyy.M'
 $tag="v$version.$build"
 git tag -a $tag -m "add tag $tag"
