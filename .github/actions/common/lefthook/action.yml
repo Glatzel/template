@@ -43,6 +43,8 @@ runs:
 
     - name: lefthook
       run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
+      shell: bash
+
     - if: ${{!cancelled()}}
       run: |
         if ! git diff --quiet || ! git diff --cached --quiet; then
