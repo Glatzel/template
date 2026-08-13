@@ -65,8 +65,7 @@ runs:
         ❌ Failed to commit fixes."
           fi
         else
-          COMMENT_BODY="**Lefthook finished**
-        ✅️ No changes were required."
+          exit 0
         fi
 
         # Always attempt to comment
