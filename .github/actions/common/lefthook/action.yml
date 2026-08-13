@@ -1,9 +1,9 @@
 name: lefthook
 description: Runs Lefthook pre-commit hooks
 inputs:
-  flags:
-    description: Flags to pass to Codecov
-    required: false
+  token:
+    description: GitHub token to use for authentication
+    required: true
 
 runs:
   using: composite
@@ -14,7 +14,7 @@ runs:
       env:
         REPO: ${{ github.repository }}
         PR_NO: ${{ github.event.issue.number }}
-        GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ inputs.token }}
       shell: bash
 
     - name: Checkout PR branch
@@ -28,7 +28,7 @@ runs:
         url=$(gh pr comment "${{ github.event.issue.number }}" --body "Lefthook is running 🚀")
         echo "comment_url=${url}" >> "$GITHUB_OUTPUT"
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ inputs.token }}
       shell: bash
 
     - name: Set up pixi
@@ -89,5 +89,5 @@ runs:
         # Always attempt to comment
         gh pr comment "${GITHUB_EVENT_ISSUE_NUMBER}" --edit-last --body "${COMMENT_BODY}" || echo "Failed to comment on PR"
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ inputs.token }}
       shell: bash
