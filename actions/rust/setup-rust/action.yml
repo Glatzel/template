@@ -1,7 +1,8 @@
-# This file is automatically synchronized from https://github.com/Glatzel/template
-
 name: setup rust
-description: Set up Rust toolchain with pixi
+description: |
+  Set up Rust toolchain with pixi.
+
+  This action will auto setup pixi.
 
 inputs:
   toolchain:
