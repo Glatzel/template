@@ -37,7 +37,7 @@ runs:
       shell: bash
 
     - name: Auto commit fixes
-      if: ${{ github.event_name == 'workflow_call' && !cancelled() }}
+      if: ${{ github.event_name == 'pull_request' && !cancelled() }}
       run: |
         rm ./lefthook.yaml
         rm -rf ./lefthook
