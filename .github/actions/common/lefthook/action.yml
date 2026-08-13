@@ -43,13 +43,6 @@ runs:
             cp $GITHUB_ACTION_PATH/pixi.lock ./lefthook/pixi.lock
           shell: bash
 
-    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-      with:
-        path: ./lefthook/.pixi
-        key: lefthook-${{ hashFiles('./lefthook/lefthook.yaml','./lefthook/pixi*')}}
-        restore-keys: |
-          lefthook
-
     - name: lefthook
       run: pixi run --manifest-path ./lefthook/pixi.toml lefthook-run
     - if: ${{!cancelled()}}
