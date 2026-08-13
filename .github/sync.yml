@@ -6,9 +6,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -21,12 +18,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/codecov.yml
         dest: ./.github/codecov.yml
-      - source: ./.github/actions/rust
-        dest: ./.github/actions/rust
-        deleteOrphaned: true
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
 
   - repos: Glatzel/cetus
     files:
@@ -35,9 +26,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -61,9 +49,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -80,9 +65,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -98,9 +80,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -118,15 +97,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/rust
-        dest: ./.github/actions/rust
-        deleteOrphaned: true
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
-      - source: ./.github/actions/python
-        dest: ./.github/actions/python
-        deleteOrphaned: true
 
   - repos: Glatzel/hippo
     files:
@@ -140,9 +110,6 @@ group:
       - source: ./dotnet/
         dest: ./src
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -154,9 +121,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
 
   - repos: Glatzel/mason
     files:
@@ -170,9 +134,6 @@ group:
       - source: ./dotnet/
         dest: ./
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -184,9 +145,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
 
   - repos: Glatzel/pyxis
     files:
@@ -197,9 +155,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -223,15 +178,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/rust
-        dest: ./.github/actions/rust
-        deleteOrphaned: true
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
-      - source: ./.github/actions/python
-        dest: ./.github/actions/python
-        deleteOrphaned: true
 
   - repos: Glatzel/toolbox
     files:
@@ -242,9 +188,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -268,15 +211,6 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/rust
-        dest: ./.github/actions/rust
-        deleteOrphaned: true
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
-      - source: ./.github/actions/python
-        dest: ./.github/actions/python
-        deleteOrphaned: true
 
   - repos: Glatzel/vinaya
     files:
@@ -287,9 +221,6 @@ group:
       - source: ./common/renovate.jsonc
         dest: ./renovate.jsonc
 
-      - source: ./.github/actions/lefthook/
-        dest: ./.github/actions/lefthook/
-        deleteOrphaned: true
       - source: ./.github/workflows/ci-lefthook.yml
         dest: ./.github/workflows/ci-lefthook.yml
 
@@ -310,12 +241,3 @@ group:
         dest: ./.github/semantic.yml
       - source: ./.github/workflows/release.yml
         dest: ./.github/workflows/release.yml
-      - source: ./.github/actions/rust
-        dest: ./.github/actions/rust
-        deleteOrphaned: true
-      - source: ./.github/actions/common
-        dest: ./.github/actions/common
-        deleteOrphaned: true
-      - source: ./.github/actions/python
-        dest: ./.github/actions/python
-        deleteOrphaned: true
