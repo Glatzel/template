@@ -10,5 +10,9 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: cp $GITHUB_ACTION_PATH/lefthook.yaml ./lefthook.yaml
+    - run: |
+        mkdir lefthook
+        cp $GITHUB_ACTION_PATH/lefthook.yaml ./lefthook.yaml
+        cp $GITHUB_ACTION_PATH/pixi.toml ./lefthook/pixi.toml
+        cp $GITHUB_ACTION_PATH/pixi.lock ./lefthook/pixi.lock
       shell: bash
