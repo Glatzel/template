@@ -1,5 +1,3 @@
-# This file is automatically synchronized from https://github.com/Glatzel/template
-
 name: codecov
 description: Upload coverage and test results to Codecov
 inputs:
