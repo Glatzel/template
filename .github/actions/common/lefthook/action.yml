@@ -8,11 +8,26 @@ inputs:
 runs:
   using: composite
   steps:
+    - id: get-branch
+      if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
+      run: echo "branch=$(gh pr view "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --json headRefName --jq '.headRefName')" >> "$GITHUB_OUTPUT"
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+      shell: bash
+
     - name: Checkout PR branch
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
-        ref: ${{ github.head_ref }}
-        token: ${{ inputs.token }}
+        ref: ${{ (github.event_name == 'issue_comment' && github.event.issue.pull_request != null) && steps.get-branch.outputs.branch || github.head_ref }}
+
+    - name: comment if triggered by comment
+      if: github.event_name == 'issue_comment' && github.event.issue.pull_request != null
+      run: |
+        url=$(gh pr comment "${{ github.event.issue.number }}" --body "Lefthook is running 🚀")
+        echo "comment_url=${url}" >> "$GITHUB_OUTPUT"
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+      shell: bash
 
     - name: Set up pixi
       uses: prefix-dev/setup-pixi@f00437f565399d418b0acc85936d12c1fb668347 # v0.10.1
@@ -40,7 +55,7 @@ runs:
       shell: bash
 
     - name: Auto commit fixes
-      if: ${{ github.event_name == 'pull_request' && !cancelled() }}
+      if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook') && !cancelled() }}
       run: |
         rm ./lefthook.yaml
         rm -rf ./lefthook
@@ -65,11 +80,12 @@ runs:
         ❌ Failed to commit fixes."
           fi
         else
-          exit 0
+          COMMENT_BODY="**Lefthook finished**
+        ✅️ No changes were required."
         fi
 
         # Always attempt to comment
-        gh pr comment "${{ github.event.pull_request.number }}" --edit-last --body "${COMMENT_BODY}" || echo "Failed to comment on PR"
+        gh pr comment "${{ github.event.issue.number }}" --edit-last --body "${COMMENT_BODY}" || echo "Failed to comment on PR"
       env:
         GH_TOKEN: ${{ inputs.token }}
       shell: bash
