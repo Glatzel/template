@@ -15,6 +15,6 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.issue.pull_request != null && contains(github.event.comment.body, 'lefthook')) }}
     runs-on: ubuntu-latest
     steps:
-      - uses: Glatzel/template/.github/actions/common/lefthook@v2026.8.23
+      - uses: Glatzel/template/.github/actions/common/lefthook@538acbfb7963e8b58e2f9a1fcc5585d0cfa88af0 # v2026.8.23
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
