@@ -36,7 +36,8 @@
       ],
       "registryUrls": [
         "https://prefix.dev/glatzel/",
-        "https://prefix.dev/conda-forge/"
+        "https://prefix.dev/conda-forge/",
+        "https://pypi.example.com/simple"
       ]
     },
     {
