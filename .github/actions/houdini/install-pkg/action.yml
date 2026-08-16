@@ -1,0 +1,7 @@
+name: install houdini dependencies
+description: install houdini dependencies
+runs:
+  using: "composite"
+  steps:
+    - run: sudo $GITHUB_ACTION_PATH/install-pkg.sh
+      shell: bash
