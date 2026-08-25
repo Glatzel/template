@@ -40,10 +40,10 @@ environments:
     packages:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.302-ha770c72_2.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.10-ha770c72_2.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.10-h5ede9df_2.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.302-h5ede9df_2.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.400-ha770c72_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.11-ha770c72_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.11-h4e4d5bb_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.400-h4e4d5bb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.1.0-ha9f2e26_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.1.0-he0feb66_1.conda
@@ -55,7 +55,7 @@ environments:
     - url: https://conda.anaconda.org/conda-forge/
     packages:
       linux-64:
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/lefthook-2.1.10-hfc2019e_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/lefthook-2.1.11-hfc2019e_0.conda
   misc:
     channels:
     - url: https://prefix.dev/glatzel/
@@ -101,7 +101,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tomli-2.4.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
-      - conda: https://prefix.dev/glatzel/linux-64/tombi-1.4.0-ha709c6e_0.conda
+      - conda: https://prefix.dev/glatzel/linux-64/tombi-1.4.1-ha709c6e_0.conda
   python:
     channels:
     - url: https://prefix.dev/glatzel/
@@ -129,7 +129,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.3-h35e630c_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.13.15-hb101c97_101_cp313.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/readline-8.3-h853b02a_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/ruff-0.16.2-h462bb3b_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/ruff-0.16.4-hc991c3d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_hd70dff1_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/alabaster-1.0.0-pyhd8ed1ab_1.conda
@@ -295,50 +295,54 @@ packages:
   run_exports: {}
   size: 33491
   timestamp: 1786527767794
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.302-ha770c72_2.conda
-  sha256: dbb756d44b016b211425383c663bdc51a92436e70c5a8f5b7c58c3006485e7f9
-  md5: 4b2e3a813411deb711429f5a6826d5e1
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.400-ha770c72_0.conda
+  sha256: d5de9f292615af557f44df5e3bcb5a6175889477fb3c61874c6fff2a0aee3efe
+  md5: 6b869ebb046cc0e0b48f937c8d21af9d
   depends:
-  - dotnet-aspnetcore 10.0.10.*
-  - dotnet-runtime 10.0.10.*
-  - dotnet-sdk 10.0.302.*
+  - dotnet-aspnetcore 10.0.11.*
+  - dotnet-runtime 10.0.11.*
+  - dotnet-sdk 10.0.400.*
   license: MIT
+  license_family: MIT
   run_exports: {}
-  size: 15938
-  timestamp: 1786555846953
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.10-ha770c72_2.conda
-  sha256: a0dbb59d69ea364e7efa766b841480d87a3ef0585a980401c091f88ce3cd7fb2
-  md5: b1311a64f781e3121237bfce45b63508
+  size: 15874
+  timestamp: 1787317015449
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.11-ha770c72_0.conda
+  sha256: a2b486276ccd9a7433ce175a7726f586b86f5d401e2b2cca3be897e8b7b18316
+  md5: 3094c021d2c8f7a304e9e1ba7783e016
   depends:
-  - dotnet-runtime 10.0.10.*
+  - dotnet-runtime 10.0.11.*
   license: MIT
+  license_family: MIT
   run_exports: {}
-  size: 9254043
-  timestamp: 1786555675196
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.10-h5ede9df_2.conda
-  sha256: 72a1198e889ae7aa8c3d671b56d9fca215c1dd370138e49eb90b43f3846f11fe
-  md5: bb0bb308f3491040b3df09c73f9196fe
+  size: 9233894
+  timestamp: 1787316831541
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.11-h4e4d5bb_0.conda
+  sha256: aaa2a96b6a37e0d3e1e263c1aee1a7e77b65db113b0cf2d4935796f90ac343fc
+  md5: 2baa3affb546396e7c45bee6b5520406
   depends:
   - __glibc >=2.28,<3.0.a0
   - icu
-  - libgcc >=14
-  - libstdcxx >=14
+  - libgcc >=15
+  - libstdcxx >=15
   license: MIT
+  license_family: MIT
   run_exports: {}
-  size: 28727588
-  timestamp: 1786555648262
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.302-h5ede9df_2.conda
-  sha256: 4da34efe9214d62c1b01948a8586dff882a0a90cbc6c3cfce4711a7c760e2a2c
-  md5: 5884a18c37411aed6c192211dee5563a
+  size: 28784161
+  timestamp: 1787316804845
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.400-h4e4d5bb_0.conda
+  sha256: 14dee02e92aa09030464a5f7c5f56bb62b17e68ab8b44b358dd3f328a93e5209
+  md5: d073f776e00d7790e472cc1afc9c9c76
   depends:
   - __glibc >=2.28,<3.0.a0
-  - dotnet-runtime 10.0.10.*
-  - libgcc >=14
-  - libstdcxx >=14
+  - dotnet-runtime 10.0.11.*
+  - libgcc >=15
+  - libstdcxx >=15
   license: MIT
+  license_family: MIT
   run_exports: {}
-  size: 133725522
-  timestamp: 1786555696414
+  size: 137353293
+  timestamp: 1787316853239
 - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
   sha256: 9f07834f0c546ab14d885ce0366285f61f44e326c0edd1fc63b8294e113ae432
   md5: 72a381cbad04f24b1c2a43ef707f45b4
@@ -365,14 +369,14 @@ packages:
   run_exports: {}
   size: 745303
   timestamp: 1784214507189
-- conda: https://conda.anaconda.org/conda-forge/linux-64/lefthook-2.1.10-hfc2019e_0.conda
-  sha256: e08893c6efc76033b28e44da5197bc0d7d0b3a6cf8ff99a0cfd7a20b2383ae37
-  md5: 7119ae3b26ca6e93765c6481a724ed8f
+- conda: https://conda.anaconda.org/conda-forge/linux-64/lefthook-2.1.11-hfc2019e_0.conda
+  sha256: 41f352047ed5f7959cd432bf8ffa15cd7fc723e2be13b4a578399365b9c988a4
+  md5: 443de33fe2d68f17e2a35be3c013eb98
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 5412676
-  timestamp: 1783527079406
+  size: 5415454
+  timestamp: 1787312804066
 - conda: https://conda.anaconda.org/conda-forge/linux-64/libabseil-20260526.0-cxx17_h7b12aa8_1.conda
   sha256: 32933de2d4fa6e6ffd949052815b49cb65a0649ad70007155c533ab97ea8cefd
   md5: c4393db381bffa0a83a8d9e47b238106
@@ -819,21 +823,21 @@ packages:
   run_exports: {}
   size: 149946
   timestamp: 1766159512977
-- conda: https://conda.anaconda.org/conda-forge/linux-64/ruff-0.16.2-h462bb3b_0.conda
+- conda: https://conda.anaconda.org/conda-forge/linux-64/ruff-0.16.4-hc991c3d_0.conda
   noarch: python
-  sha256: 2730d570f45ba836f5b85700776cc4527894c640ebacb536fb5db138c845ee63
-  md5: 8a00805aae730fb6266343985496ee07
+  sha256: f734f6f3f48c2bd044fd9cac20cba8598cb1874822ee31bf23db4f1f8dc6c7fd
+  md5: d3788f0b510e5357be1a2b7afac862e3
   depends:
   - python
   - __glibc >=2.17,<3.0.a0
-  - libgcc >=14
+  - libgcc >=15
   constrains:
   - __glibc >=2.17
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 9481279
-  timestamp: 1786151870074
+  size: 8941917
+  timestamp: 1787257899438
 - conda: https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_hd70dff1_3.conda
   build_number: 103
   sha256: 43624eab22f5f29df7d6ffe914cf442f28fd559b55b290906255492826e636e8
@@ -1272,16 +1276,16 @@ packages:
   run_exports: {}
   size: 1195498
   timestamp: 1786495675532
-- conda: https://prefix.dev/glatzel/linux-64/tombi-1.4.0-ha709c6e_0.conda
-  sha256: b2c485682696d2fce75bebb4d6e80b009af0615b2a832f142e9344a6520bc45f
-  md5: 988f4ba1d9daf524810d943bb0f398a9
+- conda: https://prefix.dev/glatzel/linux-64/tombi-1.4.1-ha709c6e_0.conda
+  sha256: f872c5f5ce079f888007ebec313491cc3d98b855f1e7636ad1269746ff8109fa
+  md5: b7fa9c310c38e578c2692c5c21997bb6
   depends:
   - __glibc >=2.28,<3.0.a0
   constrains:
   - __glibc >=2.17
   run_exports: {}
-  size: 5401856
-  timestamp: 1786637437750
+  size: 5416973
+  timestamp: 1787421266740
 - conda: https://prefix.dev/glatzel/noarch/csharpier-1.3.0-h4616a5c_0.conda
   sha256: 03f7b3c8f5e0e0f1fcf84a27a84e06a11381a75785032d21a08fa60cb7b1e02c
   md5: 4da5284c0f0aea6d30cac67006632d5e
