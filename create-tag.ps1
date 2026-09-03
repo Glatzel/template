@@ -13,4 +13,4 @@ if (git tag --list "$tag") {
 }
 git tag -a $tag -m "add tag $tag"
 git push origin $tag
-pinact run -u
+pinact run --update
