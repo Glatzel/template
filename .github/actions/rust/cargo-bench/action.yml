@@ -8,8 +8,6 @@ inputs:
   options:
     description: Options passed to cargo fuzz test
     required: false
-env:
-  RUSTFLAGS: -C opt-level=3 -C lto=fat -C codegen-units=1 -C target-cpu=native -C panic=abort -C debuginfo=2
 
 runs:
   using: composite
