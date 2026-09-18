@@ -1,16 +1,12 @@
-$version = Get-Date -Format 'yyyy.M.d'
-$tag="v$version"
-if($(gh api /repos/Glatzel/template/tags --jq '.[].name') -contains "$tag")
+$idx=18
+$version = Get-Date -Format 'yyyy.M.'
+$tag="v$version$idx"
+while($(gh api /repos/Glatzel/template/tags --jq '.[].name') -contains "$tag")
 {
-    write-output "tag $tag exists."
-    git push origin --delete $tag
-} else
-{
-    write-output "tag $tag does not exist."
+    $idx++
+    $tag="v$version$idx"
 }
-if (git tag --list "$tag") {
-    git tag -d "$tag"
-}
+write-output "tag $tag"
 git tag -a $tag -m "add tag $tag"
 git push origin $tag
 pinact run --update
