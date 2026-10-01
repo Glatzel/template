@@ -14,7 +14,7 @@ python = "3.13.*"
 ruff = "==0.16.9"
 
 [feature.rust.dependencies]
-cargo-shear = "==1.13.4"
+cargo-shear = "==1.13.5"
 
 [feature.misc.dependencies]
 python = "3.13.*"

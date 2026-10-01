@@ -170,7 +170,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_4.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_4.conda
-      - conda: https://prefix.dev/glatzel/linux-64/cargo-shear-1.13.4-hf804674_0.conda
+      - conda: https://prefix.dev/glatzel/linux-64/cargo-shear-1.13.5-hf804674_0.conda
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -1260,17 +1260,17 @@ packages:
   run_exports: {}
   size: 103560
   timestamp: 1778188657149
-- conda: https://prefix.dev/glatzel/linux-64/cargo-shear-1.13.4-hf804674_0.conda
-  sha256: 1504bb2490a2c19ab1ffe139997f1e222e341f1cb47539344153dfce6daee59c
-  md5: e200c4aec019d8996cb31fff75d22a6c
+- conda: https://prefix.dev/glatzel/linux-64/cargo-shear-1.13.5-hf804674_0.conda
+  sha256: 28e9fe9e54d2f6dbc08f765456592f4311b44a3741a8d0cbff78b465604f92d3
+  md5: a6a7a876417ec8a125c440e61e792eb0
   depends:
-  - __glibc >=2.28,<3.0.a0
   - libgcc >=14
+  - __glibc >=2.28,<3.0.a0
   constrains:
   - __glibc >=2.17
   run_exports: {}
-  size: 1195498
-  timestamp: 1786495675532
+  size: 1204049
+  timestamp: 1790874863273
 - conda: https://prefix.dev/glatzel/linux-64/tombi-1.6.1-ha709c6e_0.conda
   sha256: e72687a6c3878e37fca91fb4abc149d586fffd4981ba736741f8179ed8166540
   md5: 50895dc8a1fb7a97a667d2674e598b07
