@@ -1,4 +1,4 @@
-$idx=18
+$idx=1
 $version = Get-Date -Format 'yyyy.M.'
 $tag="v$version$idx"
 while($(gh api /repos/Glatzel/template/tags --jq '.[].name') -contains "$tag")
