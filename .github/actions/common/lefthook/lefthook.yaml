@@ -113,7 +113,7 @@ pre-commit:
               {pixi-run} -e python ruff format --force-exclude --exit-non-zero-on-format {staged_files}
           - name: numpydoc
             run: |
-              {pixi-run} -e python numpydoc lint {staged_files} --ignore ES01 EX01 GL08 PR04 RT03 SA01 SA04
+              {pixi-run} -e python numpydoc lint --ignore ES01,EX01,GL08,PR04,RT03,SA01,SA04 {staged_files}
 
     - name: rust
       stage_fixed: true
