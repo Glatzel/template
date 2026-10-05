@@ -1,3 +1,4 @@
+Set-Location $PSScriptRoot
 $idx=1
 $version = Get-Date -Format 'yyyy.M.'
 $tag="v$version$idx"
