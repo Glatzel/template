@@ -17,8 +17,20 @@ runs:
       shell: pwsh
     - name: Build benchmark targets
       run: |
+        '[profile.bench]
+        inherits = "release"
+        opt-level = 3
+        debug = true
+        strip = "none"
+        lto = "fat"
+        codegen-units = 1' >> Cargo.toml
+
+      working-directory: ${{ inputs.working-directory }}
+      shell: pwsh
+    - name: Build benchmark targets
+      run: |
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
-        cargo codspeed build ${{ inputs.options }}
+        cargo codspeed build ${{ inputs.options }} --profile bench
       working-directory: ${{ inputs.working-directory }}
       shell: pwsh
 
