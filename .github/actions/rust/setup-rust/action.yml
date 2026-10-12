@@ -36,7 +36,7 @@ runs:
     - name: Install Rust toolchain
       shell: pwsh
       run: |
-          rustup toolchain install ${{ inputs.toolchain }} --profile minimal
+          rustup install ${{ inputs.toolchain }} --profile minimal
           rustup default ${{ inputs.toolchain }}
 
     - name: Install Rust components
