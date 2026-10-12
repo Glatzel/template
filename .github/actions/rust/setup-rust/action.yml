@@ -36,12 +36,8 @@ runs:
     - name: Install Rust toolchain
       shell: pwsh
       run: |
-        if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) {
-          rustup-init -y --default-toolchain ${{ inputs.toolchain }} --profile minimal
-        } else {
           rustup toolchain install ${{ inputs.toolchain }} --profile minimal
           rustup default ${{ inputs.toolchain }}
-        }
 
     - name: Install Rust components
       if: ${{ inputs.components != '' }}
