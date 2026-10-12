@@ -30,7 +30,7 @@ runs:
       shell: pwsh
       run: |
         if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) {
-          pixi global install -c https://prefix.dev/glatzel -c conda-forge rustup-init
+          pixi global install -c https://prefix.dev/glatzel -c conda-forge rustup
         }
 
     - name: Install Rust toolchain
