@@ -58,19 +58,6 @@ group:
       - source: ./.github/semantic.yml
         dest: ./.github/semantic.yml
 
-  - repos: Glatzel/dxf2kml
-    files:
-      - source: ./tombi.toml
-        dest: ./tombi.toml
-      - source: ./common/renovate.jsonc
-        dest: ./renovate.jsonc
-
-      - source: ./.github/workflows/ci-lefthook.yml
-        dest: ./.github/workflows/ci-lefthook.yml
-
-      - source: ./python/ruff.toml
-        dest: ./ruff.toml
-
   - repos: Glatzel/fornax
     files:
       - source: ./common/cliff.toml
