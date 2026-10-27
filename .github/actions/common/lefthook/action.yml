@@ -47,8 +47,9 @@ runs:
 
     - if: ${{!cancelled()}}
       run: |
-        if ! git diff --quiet || ! git diff --cached --quiet; then
+        if ! git diff --quiet HEAD; then
           echo "❌ Lefthook modified files. Please run lefthook locally and commit the fixes."
+          git status --short
           git --no-pager diff
           exit 1
         fi
