@@ -35,7 +35,7 @@ runs:
       shell: pwsh
 
     - name: Run benchmarks
-      uses: CodSpeedHQ/action@f842b9a3ffe213dbb81768fd7f7eeb4dfcf1c369 # v5.4.2
+      uses: CodSpeedHQ/action@61efe07e57e55bedeab750c434504de272a56e8c # v5.6.1
       with:
         run: cargo codspeed run
         mode: simulation
