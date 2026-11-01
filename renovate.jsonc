@@ -11,7 +11,7 @@
     "cargo",
     "devcontainer",
     "docker-compose",
-    "git-submodules",
+    // "git-submodules",
     "github-actions",
     "npm",
     "nuget",
@@ -71,12 +71,12 @@
         "nuget"
       ]
     },
-    {
-      "groupName": "git-submodules",
-      "matchManagers": [
-        "git-submodules"
-      ]
-    },
+    // {
+    //   "groupName": "git-submodules",
+    //   "matchManagers": [
+    //     "git-submodules"
+    //   ]
+    // },
     {
       "groupName": "npm",
       "matchManagers": [
