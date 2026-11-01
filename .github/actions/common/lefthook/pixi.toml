@@ -19,7 +19,7 @@ cargo-shear = "==1.14.0"
 [feature.misc.dependencies]
 python = "3.13.*"
 actionlint = "==1.7.12"
-nodejs="==26.12.1"
+nodejs = "==26.12.1"
 markdownlint-cli2 = "==0.24.0"
 pre-commit-hooks = "==6.0.0"
 tombi = "==1.9.8"
