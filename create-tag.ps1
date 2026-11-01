@@ -1,5 +1,5 @@
 Set-Location $PSScriptRoot
-$idx=1
+$idx=0
 $version = Get-Date -Format 'yyyy.M.'
 $tag="v$version$idx"
 while($(gh api /repos/Glatzel/template/tags --jq '.[].name') -contains "$tag")
