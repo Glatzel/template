@@ -165,6 +165,6 @@ runs:
 
         if (Test-Path ./scripts/setup.ps1) { . ./scripts/setup.ps1 }
 
-        cargo clippy ${{ inputs.options }} --no-deps -- ${{ inputs.args }}
+        cargo +stable clippy ${{ inputs.options }} --no-deps -- ${{ inputs.args }}
       env:
         RUSTFLAGS: "-D warnings"
