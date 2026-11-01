@@ -90,7 +90,6 @@ inputs:
       -D clippy::option_option
       -D clippy::or_fun_call
       -D clippy::pathbuf_init_then_push
-      -D clippy::print_stderr
       -D clippy::ptr_offset_by_literal
       -D clippy::pub_underscore_fields
       -D clippy::range_minus_one
