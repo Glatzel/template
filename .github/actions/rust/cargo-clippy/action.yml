@@ -69,7 +69,6 @@ inputs:
       -D clippy::manual_string_new
       -D clippy::map_unwrap_or
       -D clippy::match_bool
-      -D clippy::match_same_arms
       -D clippy::match_wild_err_arm
       -D clippy::missing_const_for_fn
       -D clippy::mixed_read_write_in_expression
