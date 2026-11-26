@@ -75,8 +75,6 @@ group:
 
       - source: ./rust
         dest: ./
-      - source: ./clang
-        dest: ./
 
       - source: ./.github/workflows/changelog.yml
         dest: ./.github/workflows/changelog.yml
