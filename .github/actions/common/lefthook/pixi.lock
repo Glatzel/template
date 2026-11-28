@@ -40,10 +40,10 @@ environments:
     packages:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.401-ha770c72_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.12-ha770c72_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.12-h4e4d5bb_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.401-h4e4d5bb_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-11.0.100-ha770c72_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-11.0.0-ha770c72_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-11.0.0-h4e4d5bb_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-11.0.100-h4e4d5bb_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-79.1-py314hb486520_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda
@@ -309,31 +309,31 @@ packages:
   run_exports: {}
   size: 33699
   timestamp: 1794343633227
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-10.0.401-ha770c72_0.conda
-  sha256: 0b90949c674063da5a7b8577ed12b5c5de64ecdb7476e65067d83dc9f1077fbd
-  md5: 12b22966661ae49d19852b98b4981f96
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-11.0.100-ha770c72_1.conda
+  sha256: 2f215949d860da947a8f681167665522434d43d616db45dba2dcd0472f9c26b8
+  md5: 4d65871b6028182ee2f6cef753592a4b
   depends:
-  - dotnet-aspnetcore 10.0.12.*
-  - dotnet-runtime 10.0.12.*
-  - dotnet-sdk 10.0.401.*
+  - dotnet-aspnetcore 11.0.0.*
+  - dotnet-runtime 11.0.0.*
+  - dotnet-sdk 11.0.100.*
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 15934
-  timestamp: 1789405779580
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-10.0.12-ha770c72_0.conda
-  sha256: dbed24594ea57c9ea38ea458f8c01bc210206d099650b3e09c75fe09371b3093
-  md5: 864c4abf9c7254474a87beaa39fcb51d
+  size: 16363
+  timestamp: 1794852687808
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-aspnetcore-11.0.0-ha770c72_1.conda
+  sha256: 2eae641e6591a5a6a4a8bd04e55d70d49605e1f0329f4cf868e57cbf7cae93d4
+  md5: 88d2d86d4576107c2a2f0b341c73bb51
   depends:
-  - dotnet-runtime 10.0.12.*
+  - dotnet-runtime 11.0.0.*
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 9235292
-  timestamp: 1789405566157
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-10.0.12-h4e4d5bb_0.conda
-  sha256: ac880a50aae514ba09137f26e29f80962bf575b07e3fd52fb7cfc591b5090063
-  md5: 19636a6d9f87383eee064ccd49945724
+  size: 9350753
+  timestamp: 1794852445773
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-runtime-11.0.0-h4e4d5bb_1.conda
+  sha256: 4bdf702901a87d2b798c5d5c798ad0857a34bbf11b95cffd8315eb7d38df8747
+  md5: e736948113285bfa9522cb3c9293d49d
   depends:
   - __glibc >=2.28,<3.0.a0
   - icu
@@ -342,21 +342,21 @@ packages:
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 28579162
-  timestamp: 1789405535302
-- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-10.0.401-h4e4d5bb_0.conda
-  sha256: 251259a701fdef459cddfae14f538cc39be8c355212315b2f4c782dbcfb786e9
-  md5: 942dfa3ec1c6a9af258fe54ef340962f
+  size: 29900671
+  timestamp: 1794852412360
+- conda: https://conda.anaconda.org/conda-forge/linux-64/dotnet-sdk-11.0.100-h4e4d5bb_1.conda
+  sha256: 3d0a9d6ed582fa1a0fc5416083ae21c865368bdabff4744a2fdc92191093a1fc
+  md5: 112bc0665df8b71e8835eeed80fadd65
   depends:
   - __glibc >=2.28,<3.0.a0
-  - dotnet-runtime 10.0.12.*
+  - dotnet-runtime 11.0.0.*
   - libgcc >=15
   - libstdcxx >=15
   license: MIT
   license_family: MIT
   run_exports: {}
-  size: 137976595
-  timestamp: 1789405590402
+  size: 166472412
+  timestamp: 1794852468698
 - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-py310h44b86e0_2.conda
   sha256: 9f07834f0c546ab14d885ce0366285f61f44e326c0edd1fc63b8294e113ae432
   md5: 72a381cbad04f24b1c2a43ef707f45b4
