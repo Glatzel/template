@@ -6,12 +6,12 @@ platforms = ["linux-64"]
 lefthook-run = "lefthook run pre-commit --all-files --no-auto-install"
 
 [feature.lefthook.dependencies]
-lefthook = "==2.2.2"
+lefthook = "==2.2.4"
 
 [feature.python.dependencies]
 numpydoc = "==1.11.0"
 python = "3.13.*"
-ruff = "==0.17.5"
+ruff = "==0.17.6"
 
 [feature.rust.dependencies]
 cargo-shear = "==1.14.1"
@@ -20,17 +20,17 @@ cargo-shear = "==1.14.1"
 python = "3.13.*"
 actionlint = "==1.7.12"
 nodejs = "==26.13.1"
-markdownlint-cli2 = "==0.24.1"
+markdownlint-cli2 = "==0.24.2"
 pre-commit-hooks = "==6.0.0"
-tombi = "==1.11.2"
+tombi = "==1.11.3"
 typos = "==1.52.2"
 
 [feature.clang.dependencies]
-clang-format = "==23.1.5"
+clang-format = "==23.1.6"
 
 [feature.dotnet.dependencies]
 dotnet = "==11.0.100"
-csharpier = "==1.3.0"
+csharpier = "==1.4.1"
 
 [environments]
 lefthook = ["lefthook"]
